@@ -30,7 +30,9 @@ class CWElementHeader extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
 
-        return '<div class="paramHeaderContainer"><div class="paramHeaderContent">' . JText::_($value) . '</div><div class="cwclr"></div></div>';
+        return '<div class="paramHeaderContainer">'
+                . '<div class="paramHeaderContent">' . JText::_($value) . '</div>'
+                . '<div class="cwclr"></div></div>';
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {

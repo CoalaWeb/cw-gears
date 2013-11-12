@@ -18,6 +18,7 @@
     <files>
         <filename plugin="cwgears">cwgears.php</filename>
         <filename>index.html</filename>
+        <filename>version.php</filename>
         <folder>fields</folder>
         <folder>assets</folder>
         <folder>language</folder>
@@ -50,8 +51,9 @@
         
                 <field 
                     name="jquery_on" 
-                    type="list" 
-                    default="0" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0"
                     label="PLG_CWGEARS_FIELD_JQ_ON_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_ON_DESC" >
                     <option value="0">CW_NO</option>
@@ -84,7 +86,8 @@
                 
                 <field 
                     name="jquery_noconflict" 
-                    type="list" 
+            type="radio"
+            class="btn-group"  
                     default="0" 
                     label="PLG_CWGEARS_FIELD_JQ_NOCONFLICT_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_NOCONFLICT_DESC" >
@@ -94,7 +97,8 @@
                 
                 <field 
                     name="jquery_migrate" 
-                    type="radio" 
+            type="radio"
+            class="btn-group"  
                     default="0" 
                     label="PLG_CWGEARS_FIELD_JQ_MIGRATE_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_MIGRATE_DESC" >
@@ -104,7 +108,8 @@
                 
                 <field 
                     name="jquery_backend" 
-                    type="radio" 
+            type="radio"
+            class="btn-group"  
                     default="0" 
                     label="PLG_CWGEARS_FIELD_JQ_BACKEND_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_BACKEND_DESC" >

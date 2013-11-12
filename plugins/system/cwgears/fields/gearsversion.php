@@ -53,14 +53,15 @@ class CWElementGearsVersion extends CWElement {
             $ispro = JText::_('PLG_CWGEARS_RELEASE_TYPE_CORE');
         }
 
-        return '<span class="cw-module">'
+        return '<div class="cw-message-block">'
+                . '<div class="cw-module">'
                 . '<h3>' . JText::_('PLG_CWGEARS_RELEASE_TITLE') . '</h3>'
                 . '<ul class="cw_module">'
                 . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_TYPE_LABEL') . ' <strong>' . $ispro . '</strong></li>'
                 . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $version . '</strong></li>'
                 . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' <strong>' . $date . '</strong></li>'
                 . '</ul>'
-                . '</span>';
+                . '</div></div>';
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {

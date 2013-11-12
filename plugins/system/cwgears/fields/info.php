@@ -30,9 +30,10 @@ class CWElementInfo extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
 
-        return '<span class="cw-message">'
+        return '<div class="cw-message-block">'
+                . '<div class="cw-message">'
                 . '<p class="info">' . JText::_($value) . '</p>'
-                . '</span>';
+                . '</div></div>';
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {

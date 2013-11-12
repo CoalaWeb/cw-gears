@@ -18,13 +18,13 @@
 
 #invisible { display: none; }
 
-span.unit { line-height:34px; }
+.unit { line-height:34px; }
 
 /* togglers */
 
 .pane-sliders .panel { border: none !important; }
 
-div.panel > h3 { 
+.panel > h3 { 
     height: 43px; 
     background: transparent url('../images/icons/cw-panel-bg.png') repeat-x 0 0 !important; 
     border: 1px solid #d8d8d8; 
@@ -35,13 +35,13 @@ div.panel > h3 {
     text-transform: uppercase; 
 }
 
-div.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
+.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
 
-div.panel > h3 a:hover,
+.panel > h3 a:hover,
 
-div.panel h3.pane-toggler-down a { color: #1272A5 }
+.panel h3.pane-toggler-down a { color: #1272A5 }
 
-div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
+.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
 
 .pane-toggler span { background: transparent url('../images/icons/cw-panel-arrow.png') no-repeat 5px 50% !important; }
 
@@ -78,7 +78,7 @@ fieldset.panelform input {
     padding: 4px;  
 }
 
-span.spacer label {
+.spacer label {
     color: #1272A5;
     font: bold 12px/30px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
@@ -147,7 +147,7 @@ fieldset.adminform-legacy fieldset.radio {
 
 /* Module description styling
 ------------------------------------------------------------------------------*/
-span.cw-module { 
+.cw-module { 
     padding: 0px; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:13px !important; 
@@ -155,7 +155,7 @@ span.cw-module {
     text-align: justify; color: #4d4d4d; 
 }
 
-span.cw-module h1 { 
+.cw-module h1 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:38px; 
@@ -165,7 +165,7 @@ span.cw-module h1 {
     font-weight: normal; 
 }
 
-span.cw-module h3 { 
+.cw-module h3 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:22px !important; 
@@ -175,71 +175,75 @@ span.cw-module h3 {
     font-weight: normal !important; 
 }
 
-span.cw-module strong { color: #1272A5; }
-span.cw-module p { margin: 10px }
+.cw-module strong { color: #1272A5; }
+.cw-module p { margin: 10px }
 
-span.cw-module p a, span.cw-module ul a  { 
+.cw-module p a, .cw-module ul a  { 
     color: #1272A5; 
     text-decoration:none; 
 }
 
-span.cw-module p a:hover, span.cw-module ul a:hover  { 
+.cw-module p a:hover, .cw-module ul a:hover  { 
     color: #419EC9; 
     text-decoration:none; 
 }
 
-span.cw-module p.info {
+.cw-module p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border-bottom: 1px solid #D2DCE1;
     border-top: 1px solid #D2DCE1; 
     padding: 10px;
 }
 
-span.cw-module p.forum a { color:#CE6A23; }
-span.cw-module p.forum a:hover {color:#E2AB53;}
-span.cw-module p.forum {
+.cw-module p.forum a { color:#CE6A23; }
+.cw-module p.forum a:hover {color:#E2AB53;}
+.cw-module p.forum {
     background: url("../images/icons/cw-forum.png") no-repeat scroll 0 0  #FFFAE6; 
     border-bottom: 1px solid #FAE6BE;
     border-top: 1px solid #FAE6BE; 
     padding: 10px;
 }
 
-span.cw-module p.vote a { color:#8a916e; }
-span.cw-module p.vote a:hover {color:#b0bf7f;}
-span.cw-module p.vote {
+.cw-module p.vote a { color:#8a916e; }
+.cw-module p.vote a:hover {color:#b0bf7f;}
+.cw-module p.vote {
     background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
     border-bottom: 1px solid #DCE6BE;
     border-top: 1px solid #DCE6BE; 
     padding: 10px;
 }
 
-span.cw-module p.donate a, span.cw-module p.donate em { color:#A05A2C; }
-span.cw-module p.donate a:hover {color:#D38D5F;}
-span.cw-module p.donate {
+.cw-module p.donate a, .cw-module p.donate em { color:#A05A2C; }
+.cw-module p.donate a:hover {color:#D38D5F;}
+.cw-module p.donate {
     background: url("../images/icons/cw-coffee2.png") no-repeat scroll 0 0 #F6ECE6; 
     border-bottom: 1px solid #EDD7C9;
     border-top: 1px solid #EDD7C9;
     padding: 10px;
 }
 
-span.cw-module p.info, span.cw-module p.forum, span.cw-module p.vote, span.cw-module p.donate{
+.cw-module p.info, .cw-module p.forum, .cw-module p.vote, .cw-module p.donate{
     padding-left:40px;
     line-height: 18px; 
     margin: 15px 20px; 
 }
 
-span.cw-module p a:hover, span.cw-module ul a:hover  {
+.cw-module p a:hover, .cw-module ul a:hover  {
     -webkit-transition: color 0.2s ease-out;
     -moz-transition: color 0.2s ease-out;
     -o-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
 }
 
-span.cw-module ul li {
-    margin-left:10px;
+.cw-module ul li {
+    margin-left:10px !important;
     background: transparent url('../images/icons/cw-panel-arrow.png') no-repeat 5px 50% !important;
-    padding-left:20px;
+    padding-left:20px !important;
     list-style: none outside none;
+}
+
+span.readonly{
+    margin-left: 0px !important;
 }
 
 /* End
@@ -249,7 +253,7 @@ span.cw-module ul li {
 ------------------------------------------------------------------------------*/
 .button2-left { margin-top: 7px; }
 .fieldset img { margin-top: 0 !important; }
-div.media-preview, span.hasTipPreview { margin-top: 12px !important;}
+.media-preview, .hasTipPreview { margin-top: 12px !important;}
 
 /* End
 ------------------------------------------------------------------------------*/
@@ -262,7 +266,7 @@ fieldset.adminform fieldset.radio label, fieldset.panelform fieldset.radio label
 /* Messages
 ------------------------------------------------------------------------------*/
 /* General message */
-span.cw-message p.info, span.cw-message p.alert, span.cw-message p.vote {
+.cw-message p.info, .cw-message p.alert, .cw-message p.vote {
     padding:10px 10px 10px 40px;
     line-height: 18px; 
     margin: 5px 10px 10px; 
@@ -273,40 +277,41 @@ span.cw-message p.info, span.cw-message p.alert, span.cw-message p.vote {
     font-weight: normal !important;
     color: #4D4D4D;
 }
-span.cw-message p { margin: 10px 20px }
+.cw-message p { margin: 10px 20px }
 
-span.cw-message p a, span.cw-message ul a  { 
+.cw-message p a, .cw-message ul a  { 
     color: #1272A5; 
     text-decoration:none; 
 }
 
-span.cw-message p a:hover, span.cw-message ul a:hover  { 
+.cw-message p a:hover, .cw-message ul a:hover  { 
     color: #419EC9; 
     text-decoration:none; 
 }
 
 /* Info Message */
-span.cw-message p.info {
+.cw-message p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border: 1px solid #D2DCE1;
 }
 
-span.cw-message p.info a, span.cw-message p.info em { color: #1272A5;}
+.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
 
 
 /* Alert Message */
-span.cw-message p.alert {
+.cw-message p.alert {
     background: url("../images/icons/cw-alert.png") no-repeat scroll 0 0 #FFF0EB;
     border: 1px solid #FFD7CD;
 }
-span.cw-message p.alert a, span.cw-message p.alert em { color: #B1191C;}
+.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
 
-span.cw-message p.alert a:hover { color: #D85863;}
+.cw-message p.alert a:hover { color: #D85863;}
 
 /* Vote Message */
-span.cw-message p.vote a, span.cw-message p.vote em { color:#268413; }
-span.cw-message p.vote a:hover {color:#b0bf7f;}
-span.cw-message p.vote {
+.cw-message p.vote a, .cw-message p.vote em { color:#268413; }
+.cw-message p.vote a:hover {color:#b0bf7f;}
+.cw-message p.vote {
     background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
     border: 1px solid #DCE6BE;
 }
+

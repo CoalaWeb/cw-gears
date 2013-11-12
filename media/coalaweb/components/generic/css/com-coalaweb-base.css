@@ -126,7 +126,7 @@ div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
 
 /* Admin Config Style
 ------------------------------------------------------------------------------*/
-div.current label, div.current span.faux-label{ 
+.current label, .current span.faux-label{ 
     color: #444; 
     font-size: 11px; 
     font-weight: bold; 
@@ -134,12 +134,12 @@ div.current label, div.current span.faux-label{
     text-align: right; 
 }
 
-div.current fieldset.radio label { 
+.current fieldset.radio label { 
     text-align: left;
     min-width:20px !important;
 }
 
-div.current select {
+.current select {
     height: auto; 
     color: #555; 
     line-height: 24px; 
@@ -151,13 +151,13 @@ div.current select {
     margin-bottom:5px !important;
 }
 
-div.current input { 
+.current input { 
     height: 16px; 
     color: #555; 
     line-height: 16px; 
     padding: 4px;  
 }
-span.spacer label {
+.spacer label {
     color: #1272A5;
     font: bold 12px/30px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
@@ -204,7 +204,7 @@ ul#rules table.group-rules td label {
 
 /* Slider Content Styling
 ------------------------------------------------------------------------------*/
-span.cw-slider { 
+.cw-slider { 
     padding: 10px; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:13px !important; 
@@ -213,7 +213,7 @@ span.cw-slider {
     /*    text-align: justify;*/
 }
 
-span.cw-slider h1 { 
+.cw-slider h1 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:34px; 
@@ -224,7 +224,7 @@ span.cw-slider h1 {
     line-height: 30px; 
 }
 
-span.cw-slider h3 { 
+.cw-slider h3 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:22px; 
@@ -233,7 +233,7 @@ span.cw-slider h3 {
     color:#333;  
     font-weight: normal; 
 }
-span.cw-slider h4 {
+.cw-slider h4 {
     font: bold 14px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
     color: #1272A5;
@@ -241,73 +241,73 @@ span.cw-slider h4 {
     padding:0px; 
 }
 
-span.cw-slider p { margin: 10px 20px }
+.cw-slider p { margin: 10px 20px }
 
-span.cw-slider p a, span.cw-slider ul a  { 
+.cw-slider p a, .cw-slider ul a  { 
     color: #1272A5; 
     text-decoration:none; 
 }
 
-span.cw-slider p a:hover, span.cw-slider ul a:hover  { 
+.cw-slider p a:hover, .cw-slider ul a:hover  { 
     color: #419EC9; 
     text-decoration:none; 
 }
 
-span.cw-slider p.info {
+.cw-slider p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border-bottom: 1px solid #D2DCE1;
     border-top: 1px solid #D2DCE1; 
     padding: 10px;
 }
 
-span.cw-slider p.forum a, span.cw-slider p.forum em { color:#CE6A23; }
-span.cw-slider p.forum a:hover {color:#E2AB53;}
-span.cw-slider p.forum {
+.cw-slider p.forum a, .cw-slider p.forum em { color:#CE6A23; }
+.cw-slider p.forum a:hover {color:#E2AB53;}
+.cw-slider p.forum {
     background: url("../images/icons/cw-forum.png") no-repeat scroll 0 0  #FFFAE6; 
     border-bottom: 1px solid #FAE6BE;
     border-top: 1px solid #FAE6BE; 
     padding: 10px;
 }
 
-span.cw-slider p.vote a, span.cw-slider p.vote em { color:#268413; }
-span.cw-slider p.vote a:hover {color:#b0bf7f;}
-span.cw-slider p.vote {
+.cw-slider p.vote a, .cw-slider p.vote em { color:#268413; }
+.cw-slider p.vote a:hover {color:#b0bf7f;}
+.cw-slider p.vote {
     background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
     border-bottom: 1px solid #DCE6BE;
     border-top: 1px solid #DCE6BE; 
     padding: 10px;
 }
 
-span.cw-slider p.donate a, span.cw-slider p.donate em { color:#A05A2C; }
-span.cw-slider p.donate a:hover {color:#D38D5F;}
-span.cw-slider p.donate {
+.cw-slider p.donate a, .cw-slider p.donate em { color:#A05A2C; }
+.cw-slider p.donate a:hover {color:#D38D5F;}
+.cw-slider p.donate {
     background: url("../images/icons/cw-coffee.png") no-repeat scroll 0 0 #F6ECE6; 
     border-bottom: 1px solid #EDD7C9;
     border-top: 1px solid #EDD7C9;
     padding: 10px;
 }
 
-span.cw-slider p.info, span.cw-slider p.forum, span.cw-slider p.vote, span.cw-slider p.donate {
+.cw-slider p.info, .cw-slider p.forum, .cw-slider p.vote, .cw-slider p.donate {
     padding-left:40px;
     line-height: 18px; 
     margin: 15px 20px; 
 }
 
-span.cw-slider p a:hover, span.cw-slider ul a:hover  {
+.cw-slider p a:hover, .cw-slider ul a:hover  {
     -webkit-transition: color 0.2s ease-out;
     -moz-transition: color 0.2s ease-out;
     -o-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
 }
 
-span.cw-slider ul li {
+.cw-slider ul li {
     margin-left:10px;
     background: transparent url('../images/icons/cw-panel-arrow.png') no-repeat 5px 50% !important;
     padding-left:20px;
     list-style: none outside none;
 }
 
-span.cw-slider em {
+.cw-slider em {
     color:#1272A5;
     font-weight: bold;
 }
@@ -418,7 +418,7 @@ span.cw-slider em {
 /* Messages
 ------------------------------------------------------------------------------*/
 /* General message */
-span.cw-message p.info, span.cw-message p.alert, span.cw-message p.vote {
+.cw-message p.info, .cw-message p.alert, .cw-message p.vote {
     padding:10px 10px 10px 40px;
     line-height: 18px; 
     margin: 5px 10px 10px; 
@@ -429,40 +429,40 @@ span.cw-message p.info, span.cw-message p.alert, span.cw-message p.vote {
     font-weight: normal !important;
     color: #4D4D4D;
 }
-span.cw-message p { margin: 10px 20px }
+.cw-message p { margin: 10px 20px }
 
-span.cw-message p a, span.cw-message ul a  { 
+.cw-message p a, .cw-message ul a  { 
     color: #1272A5; 
     text-decoration:none; 
 }
 
-span.cw-message p a:hover, span.cw-message ul a:hover  { 
+.cw-message p a:hover, .cw-message ul a:hover  { 
     color: #419EC9; 
     text-decoration:none; 
 }
 
 /* Info Message */
-span.cw-message p.info {
+.cw-message p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border: 1px solid #D2DCE1;
 }
 
-span.cw-message p.info a, span.cw-message p.info em { color: #1272A5;}
+.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
 
 
 /* Alert Message */
-span.cw-message p.alert {
+.cw-message p.alert {
     background: url("../images/icons/cw-alert.png") no-repeat scroll 0 0 #FFF0EB;
     border: 1px solid #FFD7CD;
 }
-span.cw-message p.alert a, span.cw-message p.alert em { color: #B1191C;}
+.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
 
-span.cw-message p.alert a:hover { color: #D85863;}
+.cw-message p.alert a:hover { color: #D85863;}
 
 /* Vote Message */
-span.cw-message p.vote a, span.cw-message p.vote em { color:#268413; }
-span.cw-message p.vote a:hover {color:#b0bf7f;}
-span.cw-message p.vote {
+.cw-message p.vote a, .cw-message p.vote em { color:#268413; }
+.cw-message p.vote a:hover {color:#b0bf7f;}
+.cw-message p.vote {
     background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
     border: 1px solid #DCE6BE;
 }
