@@ -216,22 +216,22 @@ ul#rules table.group-rules td label {
 .cw-slider h1 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
-    font-size:34px; 
+    font-size:32px !important;
     margin:10px 15px; 
     padding:0px 0px 5px 0px; 
-    color:#333; 
-    font-weight: normal;
+    color:#333 !important; 
+    font-weight: normal !important;
     line-height: 30px; 
 }
 
 .cw-slider h3 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
-    font-size:22px; 
+    font-size:22px !important;
     margin:10px 15px; 
     padding:0px; 
-    color:#333;  
-    font-weight: normal; 
+    color:#333 !important;  
+    font-weight: normal !important;
 }
 .cw-slider h4 {
     font: bold 14px Arial, Helvetica, sans-serif; 
@@ -442,22 +442,19 @@ ul#rules table.group-rules td label {
 }
 
 /* Info Message */
+.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
 .cw-message p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border: 1px solid #D2DCE1;
 }
 
-.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
-
-
 /* Alert Message */
+.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
+.cw-message p.alert a:hover { color: #D85863;}
 .cw-message p.alert {
     background: url("../images/icons/cw-alert.png") no-repeat scroll 0 0 #FFF0EB;
     border: 1px solid #FFD7CD;
 }
-.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
-
-.cw-message p.alert a:hover { color: #D85863;}
 
 /* Vote Message */
 .cw-message p.vote a, .cw-message p.vote em { color:#268413; }
@@ -465,6 +462,14 @@ ul#rules table.group-rules td label {
 .cw-message p.vote {
     background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
     border: 1px solid #DCE6BE;
+}
+
+/* Upgrade message*/
+.cw-message p.upgrade a, .cw-message p.upgrade em  { color:#CE6A23; }
+.cw-message p.upgrade a:hover {color:#E2AB53;}
+.cw-message p.upgrade {
+    background: url("../images/icons/cw-forum.png") no-repeat scroll 0 0  #FFFAE6; 
+    border: 1px solid #FAE6BE;
 }
 
 

@@ -184,8 +184,8 @@ ul#rules table.group-rules td label {
     padding:0px; 
     font-weight: normal; 
     border-bottom: 4px solid #1272A5 !important;
-    width:100%; 
-    margin: 2px 0 2px -160px;
+/*    width:100%; */
+    margin: 2px 0 2px -180px;
     font: bold 14px/30px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
 }
@@ -413,14 +413,14 @@ ul#rules table.group-rules td label {
 /* Messages
 ------------------------------------------------------------------------------*/
 /* General message */
-.cw-message p.info, .cw-message p.alert, .cw-message p.vote {
+.cw-message p.info, .cw-message p.alert, .cw-message p.vote, .cw-message p.upgrade {
     padding:10px 10px 10px 40px;
     line-height: 18px; 
-    margin: 5px 10px 10px; 
+    margin: 0px 0px 10px 0px; 
     border-radius:5px;
     text-align:left;
     font-family: "Trebuchet MS",Helvetica,sans-serif;
-    font-size: 12px !important;
+    font-size: 14px !important;
     font-weight: normal !important;
     color: #4D4D4D;
 }
@@ -437,22 +437,19 @@ ul#rules table.group-rules td label {
 }
 
 /* Info Message */
+.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
 .cw-message p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border: 1px solid #D2DCE1;
 }
 
-.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
-
-
 /* Alert Message */
+.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
+.cw-message p.alert a:hover { color: #D85863;}
 .cw-message p.alert {
     background: url("../images/icons/cw-alert.png") no-repeat scroll 0 0 #FFF0EB;
     border: 1px solid #FFD7CD;
 }
-.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
-
-.cw-message p.alert a:hover { color: #D85863;}
 
 /* Vote Message */
 .cw-message p.vote a, .cw-message p.vote em { color:#268413; }
@@ -462,13 +459,23 @@ ul#rules table.group-rules td label {
     border: 1px solid #DCE6BE;
 }
 
+/* Upgrade message*/
+.cw-message p.upgrade a, .cw-message p.upgrade em  { color:#CE6A23; }
+.cw-message p.upgrade a:hover {color:#E2AB53;}
+.cw-message p.upgrade {
+    background: url("../images/icons/cw-forum.png") no-repeat scroll 0 0  #FFFAE6; 
+    border: 1px solid #FAE6BE;
+}
 
 #permissions-sliders .pane-toggler-down span.level, 
 #permissions-sliders .pane-toggler span.level,
 #permissions-sliders .pane-sliders{
     background-image: none !important;
     margin:0px;
+}
 
+.controls .cw-message-block {
+    margin-left: -180px !important;
 }
 
 /* END Messages
