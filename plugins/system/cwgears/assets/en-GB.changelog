@@ -1,8 +1,10 @@
 <?php
+
 defined("_JEXEC") or die("Restricted access");
+
 /**
  * @package             Joomla
- * @subpackage          CoalaWeb Open Graph Plugin
+ * @subpackage          CoalaWeb Gears
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
@@ -24,11 +26,18 @@ defined("_JEXEC") or die("Restricted access");
  */
 ?>
 
-Version 0.1.3 October 2013
+Version 0.0.3 November 2013
 ^ -> Tweaks to language files and method of loading.
++ -> Tweaks to css for J3.2.
++ -> New fields added.
 
-Version 0.1.2 September 2013
-! Integrated into the CoalaWeb Social Links extension.
+Version 0.0.2 October 2013
+^ -> Tweaks to language files and method of loading.
++ -> Tweaks to css.
++ -> New fields added.
+
+Version 0.0.1 September 2013
+! Integrated into the CoalaWeb extensions.
 
 * -> Security Fix
 # -> Bug Fix
