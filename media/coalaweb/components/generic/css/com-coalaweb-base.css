@@ -210,7 +210,7 @@ ul#rules table.group-rules td label {
     font-size:13px !important; 
     font-weight: normal !important; 
     color: #4d4d4d; 
-    /*    text-align: justify;*/
+    text-align: left;
 }
 
 .cw-slider h1 { 
@@ -222,6 +222,7 @@ ul#rules table.group-rules td label {
     color:#333 !important; 
     font-weight: normal !important;
     line-height: 30px; 
+    background:none !important;
 }
 
 .cw-slider h3 { 
@@ -232,6 +233,7 @@ ul#rules table.group-rules td label {
     padding:0px; 
     color:#333 !important;  
     font-weight: normal !important;
+    background:none !important;
 }
 .cw-slider h4 {
     font: bold 14px Arial, Helvetica, sans-serif; 
@@ -239,6 +241,7 @@ ul#rules table.group-rules td label {
     color: #1272A5;
     margin:10px 15px; 
     padding:0px; 
+    background:none !important;
 }
 
 .cw-slider p { margin: 10px 20px }

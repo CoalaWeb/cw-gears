@@ -29,15 +29,16 @@ require_once (JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 class CWElementUpgrade extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
+        return NULL;
 
-        return '<div class="cw-message-block">'
-                . '<div class="cw-message">'
-                . '<p class="upgrade">' . JText::_($value) . '</p>'
-                . '</div></div>';
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        return NULL;
+
+                return '<div class="cw-message-block">'
+                . '<div class="cw-message">'
+                . '<p class="upgrade">' . JText::_($label) . '</p>'
+                . '</div></div>';
     }
 
 }

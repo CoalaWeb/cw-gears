@@ -24,20 +24,17 @@
 /* Powered By Styling
 ------------------------------------------------------------------------------*/
 span.cw-powerby-back {
-    text-align: right;
-    background :  url(../images/icons/icon-32-cw-copyright.png) no-repeat scroll center left;
-    padding:5px 0px 5px 36px;
+    padding:5px;
 }
 
 div.cw-powerby-back a:link, div.cw-powerbyfront a:visited { text-decoration: none;}
 div.cw-powerby-back a:hover { text-decoration: none;}
 
 .cw-powerby-back {
-    margin-top: 20px;
-    overflow: hidden;
-    padding: 10px;
+    width: 100%;
+    display: block;
+    clear: both;
     text-align: center;
-    width:100%;
 }
 /* END Powered By
 ------------------------------------------------------------------------------*/
@@ -78,6 +75,7 @@ togglers
     font: bold 12px/43px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
     margin:2px;
+    overflow: hidden;
 }
 
 .panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
@@ -216,7 +214,8 @@ ul#rules table.group-rules td label {
     padding:0px 0px 5px 0px; 
     color:#333; 
     font-weight: normal;
-    line-height: 30px; 
+    line-height: 30px;
+    background:none !important;
 }
 
 .cw-slider h3 { 
@@ -226,7 +225,8 @@ ul#rules table.group-rules td label {
     margin:10px 15px; 
     padding:0px; 
     color:#333;  
-    font-weight: normal; 
+    font-weight: normal;
+    background:none !important;
 }
 .cw-slider h4 {
     font: bold 14px Arial, Helvetica, sans-serif; 
@@ -234,6 +234,7 @@ ul#rules table.group-rules td label {
     color: #1272A5;
     margin:10px 15px; 
     padding:0px; 
+    background:none !important;
 }
 
 .cw-slider p { margin: 10px 20px }
@@ -474,9 +475,9 @@ ul#rules table.group-rules td label {
     margin:0px;
 }
 
-.controls .cw-message-block {
+/*.controls .cw-message-block {
     margin-left: -180px !important;
-}
+}*/
 
 /* END Messages
 ------------------------------------------------------------------------------*/
