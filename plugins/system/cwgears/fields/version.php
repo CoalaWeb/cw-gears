@@ -29,7 +29,12 @@ require_once (JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 class CWElementVersion extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
+return NULL;
+    }
 
+    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
+        
+        
         // Require helper file
         if (!defined('DS')) {
             define('DS', DIRECTORY_SEPARATOR);
@@ -37,13 +42,13 @@ class CWElementVersion extends CWElement {
 
         // Load version.php
         jimport('joomla.filesystem.file');
-        $version_php = JPATH_ADMINISTRATOR . DS . 'components/' . $value . '/version.php';
+        $version_php = JPATH_ADMINISTRATOR . DS . 'components/' . $label . '/version.php';
         if (JFile::exists($version_php)) {
             require_once $version_php;
         }
 
         //Which extension is being displayed?
-        switch ($value) {
+        switch ($label) {
             case "com_coalawebcontact":
                 $version = (COM_CWCONTACT_VERSION);
                 $date = (COM_CWCONTACT_DATE);
@@ -71,10 +76,6 @@ class CWElementVersion extends CWElement {
                 . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' <strong>' . $date . '</strong></li>'
                 . '</ul>'
                 . '</div></div>';
-    }
-
-    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        return NULL;
     }
 
 }
