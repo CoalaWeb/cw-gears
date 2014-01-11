@@ -111,7 +111,7 @@ div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
     font-size: 11px; 
     font-weight: bold; 
     height: 24px; 
-    line-height: 24px; 
+/*    line-height: 24px; */
     padding: 0 20px 0 10px; 
     text-align: right; 
     max-width: 30%!important; 
@@ -421,7 +421,7 @@ ul#rules table.group-rules td label {
 /* Messages
 ------------------------------------------------------------------------------*/
 /* General message */
-.cw-message p.info, .cw-message p.alert, .cw-message p.vote {
+.cw-message p.info, .cw-message p.alert, .cw-message p.vote, .cw-message p.upgrade {
     padding:10px 10px 10px 40px;
     line-height: 18px; 
     margin: 5px 10px 10px; 
@@ -747,7 +747,7 @@ table.adminlist a:hover {text-decoration: none !important;}
 
 /* Media Field Type 
 ------------------------------------------------------------------------------*/
-.button2-left { margin-top: 7px; }
+/*.button2-left { margin-top: 7px; }*/
 .fieldset img { margin-top: 0 !important; }
 div.media-preview, span.hasTipPreview { margin-top: 12px !important;}
 

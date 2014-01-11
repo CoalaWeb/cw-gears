@@ -268,7 +268,7 @@ fieldset.adminform fieldset.radio label, fieldset.panelform fieldset.radio label
 /* Messages
 ------------------------------------------------------------------------------*/
 /* General message */
-.cw-message p.info, .cw-message p.alert, .cw-message p.vote {
+.cw-message p.info, .cw-message p.alert, .cw-message p.vote, .cw-message p.upgrade {
     padding:10px 10px 10px 40px;
     line-height: 18px; 
     margin: 5px 10px 10px; 

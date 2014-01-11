@@ -49,12 +49,18 @@ class plgSystemCwgears extends JPlugin {
 
         if (JFactory::getApplication()->isAdmin()) {
 
-            if ($option == 'com_categories' && $ext == 'com_coalawebquotes') {
-                // we are in the administrator
-                $doc->addStyleSheet($baseUrl . "components/coalawebquotes/css/com_cwq_cats.css");
+            if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket')) {
+                 if (version_compare(JVERSION, '3.0', '>')) {
+                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
+                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
+                } else {
+                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base.css");
+                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
+                }
             }
+            
 
-            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks'))) {
+            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket'))) {
 
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
