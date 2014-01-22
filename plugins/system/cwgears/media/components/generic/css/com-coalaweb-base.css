@@ -111,7 +111,7 @@ div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
     font-size: 11px; 
     font-weight: bold; 
     height: 24px; 
-    line-height: 24px; 
+/*    line-height: 24px; */
     padding: 0 20px 0 10px; 
     text-align: right; 
     max-width: 30%!important; 
@@ -210,7 +210,7 @@ ul#rules table.group-rules td label {
     font-size:13px !important; 
     font-weight: normal !important; 
     color: #4d4d4d; 
-    /*    text-align: justify;*/
+    text-align: left;
 }
 
 .cw-slider h1 { 
@@ -222,6 +222,7 @@ ul#rules table.group-rules td label {
     color:#333 !important; 
     font-weight: normal !important;
     line-height: 30px; 
+    background:none !important;
 }
 
 .cw-slider h3 { 
@@ -232,6 +233,7 @@ ul#rules table.group-rules td label {
     padding:0px; 
     color:#333 !important;  
     font-weight: normal !important;
+    background:none !important;
 }
 .cw-slider h4 {
     font: bold 14px Arial, Helvetica, sans-serif; 
@@ -239,6 +241,7 @@ ul#rules table.group-rules td label {
     color: #1272A5;
     margin:10px 15px; 
     padding:0px; 
+    background:none !important;
 }
 
 .cw-slider p { margin: 10px 20px }
@@ -418,7 +421,7 @@ ul#rules table.group-rules td label {
 /* Messages
 ------------------------------------------------------------------------------*/
 /* General message */
-.cw-message p.info, .cw-message p.alert, .cw-message p.vote {
+.cw-message p.info, .cw-message p.alert, .cw-message p.vote, .cw-message p.upgrade {
     padding:10px 10px 10px 40px;
     line-height: 18px; 
     margin: 5px 10px 10px; 
@@ -744,7 +747,7 @@ table.adminlist a:hover {text-decoration: none !important;}
 
 /* Media Field Type 
 ------------------------------------------------------------------------------*/
-.button2-left { margin-top: 7px; }
+.button2-left { margin-top: 5px; }
 .fieldset img { margin-top: 0 !important; }
 div.media-preview, span.hasTipPreview { margin-top: 12px !important;}
 

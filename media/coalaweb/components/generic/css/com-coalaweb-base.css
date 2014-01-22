@@ -747,7 +747,7 @@ table.adminlist a:hover {text-decoration: none !important;}
 
 /* Media Field Type 
 ------------------------------------------------------------------------------*/
-/*.button2-left { margin-top: 7px; }*/
+.button2-left { margin-top: 5px; }
 .fieldset img { margin-top: 0 !important; }
 div.media-preview, span.hasTipPreview { margin-top: 12px !important;}
 

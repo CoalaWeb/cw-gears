@@ -24,8 +24,14 @@ defined('_JEXEC') or die('Restricted access');
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+jimport('joomla.plugin.plugin');
+jimport('joomla.environment.browser');
+jimport('joomla.filesystem.file');
+jimport( 'joomla.application.module.helper' );
 
 class plgSystemCwgears extends JPlugin {
+    
+    var $pinterest;
 
     function __construct(&$subject, $config) {
         parent::__construct($subject, $config);
@@ -37,6 +43,13 @@ class plgSystemCwgears extends JPlugin {
             $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, 'en-GB');
         }
         $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, null, 1);
+        
+        //Lets add Pinterest JS if the Social Links module needs it.
+        $module = &JModuleHelper::getModule( 'mod_coalawebsociallinks');
+        if($module){
+            $modParams = new JParameter($module->params);
+            $this->pinterest = $modParams->get('display_pinterest_bm');
+        }
     }
 
     public function onAfterInitialise() {
@@ -50,7 +63,7 @@ class plgSystemCwgears extends JPlugin {
         if (JFactory::getApplication()->isAdmin()) {
 
             if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket')) {
-                 if (version_compare(JVERSION, '3.0', '>')) {
+                if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
                 } else {
@@ -58,7 +71,6 @@ class plgSystemCwgears extends JPlugin {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
                 }
             }
-            
 
             if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket'))) {
 
@@ -73,108 +85,160 @@ class plgSystemCwgears extends JPlugin {
 
     public function onBeforeCompileHead() {
 
+        $app = JFactory::getApplication();
+        $doc = JFactory::getDocument();
+
+        //Jquery Loading-----------------------------------------------------
         //Should we load jQuery at all?
         $loadJquery = $this->params->get('jquery_on', 0);
-        if (!$loadJquery) {
+
+        if ($loadJquery) {
+            // Do we want jQuery in the Admin area?
+            $loadBackend = $this->params->get("jquery_backend", 0);
+            if (!$loadBackend) {
+                if ($app->isAdmin()) {
+                    return;
+                }
+            }
+
+            // Let create a link to our local directory.
+            $localURL = JURI::root() . "media/coalaweb/plugins/system/gears/js";
+
+            // Lets choose the location we want to use.
+            switch ($this->params->get("jquery_server")) {
+
+                case 1: // code.jquery.com
+                    $url = "//code.jquery.com/jquery-" . $this->params->get("jquery_library") . ".min.js";
+                    break;
+
+                case 2: // ajax.googleapis.com
+                    $url = "//ajax.googleapis.com/ajax/libs/jquery/" . $this->params->get("jquery_library") . "/jquery.min.js";
+                    break;
+
+                case 3: // ajax.aspnetcdn.com
+                    $url = "//ajax.aspnetcdn.com/ajax/jQuery/jquery-" . $this->params->get("jquery_library") . ".min.js";
+                    break;
+
+                case 4: // cdnjs.cloudflare.com
+                    $url = "//cdnjs.cloudflare.com/ajax/libs/jquery/" . $this->params->get("jquery_library") . "/jquery.min.js";
+                    break;
+
+                default: // Localhost
+                    $url = $localURL . "/jquery-" . $this->params->get("jquery_library") . ".min.js";
+                    break;
+            }
+
+            if ($this->params->get("jquery_noconflict")) {
+                JHtml::_('behavior.framework');
+            }
+
+            $doc->addScript($url);
+
+            if ($this->params->get("jquery_noconflict")) {
+                $doc->addScript($localURL . "/jquery-noconflict.js");
+            }
+
+            if ($this->params->get("jquery_migrate")) {
+                $doc->addScript($localURL . "/jquery-migrate-1.2.1.min.js");
+            }
+
+            // Order scripts
+            $headData = $doc->getHeadData();
+
+            $allowedJQuery = array("jquery.min.js", "jquery-" . $this->params->get("jquery_library") . ".min.js", "jquery-noconflict.js", "jquery-migrate-1.2.1.min.js");
+
+            $first = array();
+            $jquery = array();
+            foreach ($headData["scripts"] as $key => $value) {
+
+                if ((false !== strpos($key, "mootools-core-uncompressed.js")) OR (false !== strpos($key, "mootools-core.js"))) {
+                    $first[$key] = $value;
+                    unset($headData["scripts"][$key]);
+                }
+
+                if ((false !== strpos($key, "mootools-more-uncompressed.js")) OR (false !== strpos($key, "mootools-more.js"))) {
+                    $first[$key] = $value;
+                    unset($headData["scripts"][$key]);
+                }
+
+                if (false !== strpos($key, "jquery")) {
+                    $baseName = basename($key);
+
+                    // Order only jQuery library and no conflict script
+                    if (in_array($baseName, $allowedJQuery)) {
+                        $jquery[$key] = $value;
+                    }
+                }
+            }
+
+            $jquery = $this->orderLibrarires($jquery);
+            $first = array_merge($first, $jquery);
+
+            $second = $headData["scripts"];
+            $headData["scripts"] = array_merge($first, $second);
+
+            $doc->setHeadData($headData);
+
+            unset($first);
+            unset($second);
+            unset($scripts);
+            unset($headData);
+        }
+        //Async -----------------------------------------------------
+        if ($app->isAdmin()) {
             return;
         }
+        
+        $scripts_to_handle = trim((string) $this->params->get('script_list', ''));
 
-        // Do we want jQuery in the Admin area?
-        $loadBackend = $this->params->get("jquery_backend", 0);
-        if (!$loadBackend) {
-            $app = JFactory::getApplication();
-            if ($app->isAdmin()) {
-                return;
-            }
-        }
+        // Detect language
+        $lang = JFactory::getLanguage();
+        $locale = $lang->getTag();
+        $locale = str_replace("-", "_", $locale);
 
-        // Let create a link to our local directory.
-        $doc = JFactory::getDocument();
-        $localURL = JURI::root() . "media/coalaweb/plugins/system/gears/js";
+        // Facebook and Google only seem to support es_ES and es_LA for all of LATAM
+        $locale = (substr($locale, 0, 3) == 'es_' && $locale != 'es_ES') ? 'es_LA' : $locale;
 
-        // Lets choose the location we want to use.
-        switch ($this->params->get("jquery_server")) {
+        if ($scripts_to_handle) {
+            $paths = array_map('trim', (array) explode(",", $scripts_to_handle));
+            foreach ($paths as $path) {
+                if (strpos($path, 'http') === 0) {
+                    continue;
+                }
 
-            case 1: // code.jquery.com
-                $url = "//code.jquery.com/jquery-" . $this->params->get("jquery_library") . ".min.js";
-                break;
+                $withoutroot = str_replace(JURI::root(true), '', $path);
+                if ($withoutroot != $path) {
+                    $paths[] = $withoutroot;
+                }
+                $withroot = JURI::root(true) . $path;
+                if ($withroot != $path) {
+                    $paths[] = $withroot;
+                }
+                $withdomain = JURI::root(false) . $path;
+                if ($withdomain != $path) {
+                    $paths[] = $withdomain;
+                }
 
-            case 2: // ajax.googleapis.com
-                $url = "//ajax.googleapis.com/ajax/libs/jquery/" . $this->params->get("jquery_library") . "/jquery.min.js";
-                break;
-
-            case 3: // ajax.aspnetcdn.com
-                $url = "//ajax.aspnetcdn.com/ajax/jQuery/jquery-" . $this->params->get("jquery_library") . ".min.js";
-                break;
-
-            case 4: // cdnjs.cloudflare.com
-                $url = "//cdnjs.cloudflare.com/ajax/libs/jquery/" . $this->params->get("jquery_library") . "/jquery.min.js";
-                break;
-
-            default: // Localhost
-                $url = $localURL . "/jquery-" . $this->params->get("jquery_library") . ".min.js";
-                break;
-        }
-
-        // Should we include no conflict?
-        if ($this->params->get("jquery_noconflict")) {
-            JHtml::_('behavior.framework');
-        }
-
-        $doc->addScript($url);
-
-        if ($this->params->get("jquery_noconflict")) {
-            $doc->addScript($localURL . "/jquery-noconflict.js");
-        }
-
-        // Should we include migrate?
-        if ($this->params->get("jquery_migrate")) {
-            $doc->addScript($localURL . "/jquery-migrate-1.2.1.min.js");
-        }
-
-        // Order scripts
-        $headData = $doc->getHeadData();
-
-        // These are allowed jQuery librarie, no conflict script and migrate script.
-        // Only they can be rearranged.
-        $allowedJQuery = array("jquery.min.js", "jquery-" . $this->params->get("jquery_library") . ".min.js", "jquery-noconflict.js", "jquery-migrate-1.2.1.min.js");
-
-        $first = array();
-        $jquery = array();
-        foreach ($headData["scripts"] as $key => $value) {
-
-            if ((false !== strpos($key, "mootools-core-uncompressed.js")) OR (false !== strpos($key, "mootools-core.js"))) {
-                $first[$key] = $value;
-                unset($headData["scripts"][$key]);
+                $facebook = '//connect.facebook.net/all.js#xfbml=1';
+                if ($path === $facebook) {
+                    $facebookLang = '//connect.facebook.net/' . $locale . '/all.js#xfbml=1';
+                    $paths[] = $facebookLang;
+                }
             }
 
-            if ((false !== strpos($key, "mootools-more-uncompressed.js")) OR (false !== strpos($key, "mootools-more.js"))) {
-                $first[$key] = $value;
-                unset($headData["scripts"][$key]);
-            }
-
-            if (false !== strpos($key, "jquery")) {
-                $baseName = basename($key);
-
-                // Order only jQuery library and no conflict script
-                if (in_array($baseName, $allowedJQuery)) {
-                    $jquery[$key] = $value;
+            foreach ($doc->_scripts as $url => $scriptparams) {
+                if (in_array($url, $paths)) {
+                    if ($this->params->get('defer')) {
+                        $doc->_scripts[$url]['defer'] = true;
+                    }
+                    if ($this->params->get('async')) {
+                        $doc->_scripts[$url]['async'] = true;
+                    }
                 }
             }
         }
 
-        $jquery = $this->orderLibrarires($jquery);
-        $first = array_merge($first, $jquery);
-
-        $second = $headData["scripts"];
-        $headData["scripts"] = array_merge($first, $second);
-
-        $doc->setHeadData($headData);
-
-        unset($first);
-        unset($second);
-        unset($scripts);
-        unset($headData);
+        return true;
     }
 
     /**
@@ -198,6 +262,15 @@ class plgSystemCwgears extends JPlugin {
 
         $first = array_merge($first, $libs);
         return $first;
+    }
+
+    function onAfterRender() {
+        $option = JRequest::getCmd('option');
+        if ($this->pinterest) {
+            $body = JResponse::getBody();
+            $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
+            JResponse::setBody($body);
+        }
     }
 
 }

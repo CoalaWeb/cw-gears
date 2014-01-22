@@ -29,7 +29,7 @@ require_once (JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 class CWElementVersion extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
-return NULL;
+        return NULL;
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {
