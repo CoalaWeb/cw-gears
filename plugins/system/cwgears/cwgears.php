@@ -43,13 +43,6 @@ class plgSystemCwgears extends JPlugin {
             $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, 'en-GB');
         }
         $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, null, 1);
-        
-        //Lets add Pinterest JS if the Social Links module needs it.
-        $module = &JModuleHelper::getModule( 'mod_coalawebsociallinks');
-        if($module){
-            $modParams = new JParameter($module->params);
-            $this->pinterest = $modParams->get('display_pinterest_bm');
-        }
     }
 
     public function onAfterInitialise() {
@@ -265,11 +258,38 @@ class plgSystemCwgears extends JPlugin {
     }
 
     function onAfterRender() {
-        $option = JRequest::getCmd('option');
+        $app = JFactory::getApplication();
+        $doc = JFactory::getDocument();
+
+        // Only render for the front end.
+        if ($app->getName() !== 'site') {
+            return;
+        }
+
+        // Only render for HTML output
+        if ($doc->getType() !== 'html') {
+            return;
+        }
+
+        //Lets add Pinterest JS if the Social Links module needs it.
+        $module = JModuleHelper::getModule('mod_coalawebsociallinks');
+        if ($module) {
+            $modParams = new JRegistry;
+            $modParams->loadString($module->params, 'JSON');
+            $this->pinterest = $modParams->get('display_pinterest_bm');
+        } else {
+            return;
+        }
+
         if ($this->pinterest) {
             $body = JResponse::getBody();
-            $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
-            JResponse::setBody($body);
+            $pos = JString::strpos($body, "//assets.pinterest.com/js/pinit.js");
+            if (!$pos) {
+                $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
+                JResponse::setBody($body);
+            } else {
+                return;
+            }
         }
     }
 
