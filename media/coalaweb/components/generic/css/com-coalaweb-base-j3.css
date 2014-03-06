@@ -109,11 +109,15 @@ togglers
     font-size: 11px; 
     font-weight: bold; 
     height: 24px; 
-/*    line-height: 24px; */
     padding: 0 20px 0 10px; 
     text-align: right; 
     max-width: 30%!important; 
     min-width: 30%!important; 
+}
+
+input.readonly {
+    padding:0px !important;
+    color: rgb(18, 114, 165) !important;
 }
 
 .pane-sliders .panel {

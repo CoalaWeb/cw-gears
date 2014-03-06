@@ -45,7 +45,7 @@ class plgSystemCwgears extends JPlugin {
         $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, null, 1);
     }
 
-    public function onAfterInitialise() {
+    public function onAfterRoute() {
 
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
@@ -65,7 +65,7 @@ class plgSystemCwgears extends JPlugin {
                 }
             }
 
-            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket'))) {
+            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket', 'com_coalawebpaypal'))) {
 
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
@@ -95,7 +95,7 @@ class plgSystemCwgears extends JPlugin {
             }
 
             // Let create a link to our local directory.
-            $localURL = JURI::root() . "media/coalaweb/plugins/system/gears/js";
+            $localURL = JURI::root(true) . "/media/coalaweb/plugins/system/gears/js";
 
             // Lets choose the location we want to use.
             switch ($this->params->get("jquery_server")) {
