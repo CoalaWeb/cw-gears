@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2014-03-05</creationDate>
+    <creationDate>2014-04-05</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2013 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <languages folder="language">
@@ -39,15 +39,32 @@
         <fields 
             name="params" 
             addfieldpath="plugins/system/cwgears/fields">
-           
+            
             <fieldset 
-                name="JQUERY_PLG"
-                label="PLG_CWGEARS_JQUERY_TITLE" 
+                name="GENERAL_PLG"
+                label="PLG_CWGEARS_GENERAL_TITLE" 
                 addfieldpath="/plugins/system/cwgears/fields">
         
                 <field 
                     name="css_import" 
                     type="css"/>
+        
+                <field 
+                    name="zoo_editor_tweak" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0"
+                    label="PLG_CWGEARS_FIELD_ZOOEDITOR_ON_LABEL" 
+                    description="PLG_CWGEARS_FIELD_ZOOEDITOR_ON_DESC" >
+                    <option value="0">CW_NO</option>
+                    <option value="1">CW_YES</option>
+                </field>
+                		
+            </fieldset>
+           
+            <fieldset 
+                name="JQUERY_PLG"
+                label="PLG_CWGEARS_JQUERY_TITLE">
         
                 <field 
                     name="jquery_on" 
@@ -105,17 +122,6 @@
                     <option value="0">CW_NO</option>
                     <option value="1">CW_YES</option>
                 </field>
-                
-                <field 
-                    name="jquery_backend" 
-                    type="radio"
-                    class="btn-group"  
-                    default="0" 
-                    label="PLG_CWGEARS_FIELD_JQ_BACKEND_LABEL" 
-                    description="PLG_CWGEARS_FIELD_JQ_BACKEND_DESC" >
-                    <option value="0">CW_NO</option>
-                    <option value="1">CW_YES</option>
-                </field>
                 		
             </fieldset>
             
@@ -123,39 +129,150 @@
                 name="ASYNC_PLG"
                 label="PLG_CWGEARS_ASYNC_TITLE">
             
-            <field 
-                name="async" 
-                type="radio"
-                class="btn-group"   
-                default="1" 
-                label="PLG_CWGEARS_FIELD_ASYNC_LABEL" 
-                description="PLG_CWGEARS_FIELD_ASYNC_DESC">
-                <option value="0">JNO</option>
-                <option value="1">JYES</option>
-            </field>
+                <field 
+                    name="async" 
+                    type="radio"
+                    class="btn-group"   
+                    default="1" 
+                    label="PLG_CWGEARS_FIELD_ASYNC_LABEL" 
+                    description="PLG_CWGEARS_FIELD_ASYNC_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
             
-            <field 
-                name="defer" 
-                type="radio"
-                class="btn-group"  
-                default="0" 
-                label="PLG_CWGEARS_FIELD_DEFER_LABEL" 
-                description="PLG_CWGEARS_FIELD_DEFER_DESC">
-                <option value="0">JNO</option>
-                <option value="1">JYES</option>
-            </field>
+                <field 
+                    name="defer" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0" 
+                    label="PLG_CWGEARS_FIELD_DEFER_LABEL" 
+                    description="PLG_CWGEARS_FIELD_DEFER_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
             
-            <field 
-                name="script_list" 
-                type="textarea" 
-                cols="60" 
-                rows="10" 
-                default="//www.xing-share.com/js/external/share.js,//platform.twitter.com/widgets.js,//apis.google.com/js/plusone.js,//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js,//connect.facebook.net/en_GB/all.js#xfbml=1,//assets.pinterest.com/js/pinit.js,//platform.stumbleupon.com/1/widgets.js" 
-                filter="raw" 
-                label="PLG_CWGEARS_FIELD_SCRIPTS_LABEL" 
-                description="PLG_CWGEARS_FIELD_SCRIPTS_DESC"/>
+                <field 
+                    name="script_list" 
+                    type="textarea" 
+                    cols="60" 
+                    rows="10" 
+                    default="//www.xing-share.com/js/external/share.js,//platform.twitter.com/widgets.js,//apis.google.com/js/plusone.js,//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js,//connect.facebook.net/en_GB/all.js#xfbml=1,//assets.pinterest.com/js/pinit.js,//platform.stumbleupon.com/1/widgets.js" 
+                    filter="raw" 
+                    label="PLG_CWGEARS_FIELD_SCRIPTS_LABEL" 
+                    description="PLG_CWGEARS_FIELD_SCRIPTS_DESC"/>
             
-        </fieldset>
+            </fieldset>
+        
+            <fieldset 
+                name="CUSTOMCSS_PLG"
+                label="PLG_CWGEARS_CUSTOMCSS_TITLE">
+             
+                <field 
+                    name="ccss_add" 
+                    type="radio"
+                    class="btn-group"   
+                    default="0" 
+                    label="PLG_CWGEARS_FIELD_CCSS_ADD_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CCSS_ADD_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            
+                <field 
+                    name="ccss_minimize" 
+                    type="radio"
+                    class="btn-group"  
+                    default="1" 
+                    label="PLG_CWGEARS_FIELD_MINIMIZE_LABEL" 
+                    description="PLG_CWGEARS_FIELD_MINIMIZE_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            
+                <field 
+                    name="ccss_full_paths" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0" 
+                    label="PLG_CWGEARS_FIELD_FULL_PATH_LABEL" 
+                    description="PLG_CWGEARS_FIELD_FULL_PATH_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            
+                <field 
+                    name="ccss_remove_comments" 
+                    type="radio"
+                    class="btn-group"  
+                    default="1" 
+                    label="PLG_CWGEARS_FIELD_RCOMMENTS_LABEL" 
+                    description="PLG_CWGEARS_FIELD_RCOMMENTS_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            
+                <field 
+                    name="ccss_code" 
+                    type="textarea" 
+                    cols="60" 
+                    rows="10" 
+                    default="" 
+                    filter="raw" 
+                    label="PLG_CWGEARS_FIELD_CODE_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CODE_DESC"/>
+            
+            </fieldset>
+        
+            <fieldset 
+                name="CUSTOMJS_PLG"
+                label="PLG_CWGEARS_CUSTOMJS_TITLE">
+             
+                <field 
+                    name="cjs_add" 
+                    type="radio"
+                    class="btn-group"   
+                    default="0" 
+                    label="PLG_CWGEARS_FIELD_CJS_ADD_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CJS_ADD_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+             
+                <field 
+                    name="cjs_minimize" 
+                    type="radio"
+                    class="btn-group"  
+                    default="1" 
+                    label="PLG_CWGEARS_FIELD_MINIMIZE_LABEL" 
+                    description="PLG_CWGEARS_FIELD_MINIMIZE_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            
+                <field 
+                    name="cjs_remove_comments" 
+                    type="radio"
+                    class="btn-group"  
+                    default="1" 
+                    label="PLG_CWGEARS_FIELD_RCOMMENTS_LABEL" 
+                    description="PLG_CWGEARS_FIELD_RCOMMENTS_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            
+
+            
+                <field 
+                    name="cjs_code" 
+                    type="textarea" 
+                    cols="60" 
+                    rows="10" 
+                    default="" 
+                    filter="raw" 
+                    label="PLG_CWGEARS_FIELD_CODE_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CODE_DESC"/>
+            
+            </fieldset>
             
             <fieldset 
                 name="VERSION"
@@ -164,7 +281,7 @@
                 <field 
                     name="version_info"
                     type="gearsversion"
-                    default="cwgears"/>
+                    label="plugins/system/cwgears"/>
             </fieldset>
             
         </fields>

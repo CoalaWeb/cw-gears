@@ -33,16 +33,10 @@ class CWElementVersion extends CWElement {
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        
-        
-        // Require helper file
-        if (!defined('DS')) {
-            define('DS', DIRECTORY_SEPARATOR);
-        }
 
         // Load version.php
         jimport('joomla.filesystem.file');
-        $version_php = JPATH_ADMINISTRATOR . DS . 'components/' . $label . '/version.php';
+        $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
         if (JFile::exists($version_php)) {
             require_once $version_php;
         }
@@ -58,6 +52,11 @@ class CWElementVersion extends CWElement {
                 $version = (COM_CWSOCIALLINKS_VERSION);
                 $date = (COM_CWSOCIALLINKS_DATE);
                 $ispro = (COM_CWSOCIALLINKS_PRO);
+                break;
+            case "com_coalawebtraffic":
+                $version = (COM_CWTRAFFIC_VERSION);
+                $date = (COM_CWTRAFFIC_DATE);
+                $ispro = (COM_CWTRAFFIC_PRO);
                 break;
         }
 

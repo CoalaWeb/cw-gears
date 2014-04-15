@@ -27,10 +27,10 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.plugin.plugin');
 jimport('joomla.environment.browser');
 jimport('joomla.filesystem.file');
-jimport( 'joomla.application.module.helper' );
+jimport('joomla.application.module.helper');
 
 class plgSystemCwgears extends JPlugin {
-    
+
     var $pinterest;
 
     function __construct(&$subject, $config) {
@@ -55,7 +55,7 @@ class plgSystemCwgears extends JPlugin {
 
         if (JFactory::getApplication()->isAdmin()) {
 
-            if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket')) {
+            if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic')) {
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
@@ -81,18 +81,11 @@ class plgSystemCwgears extends JPlugin {
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
 
-        //Jquery Loading-----------------------------------------------------
+        //Jquery Loading--------------------------------------------------------
         //Should we load jQuery at all?
         $loadJquery = $this->params->get('jquery_on', 0);
 
-        if ($loadJquery) {
-            // Do we want jQuery in the Admin area?
-            $loadBackend = $this->params->get("jquery_backend", 0);
-            if (!$loadBackend) {
-                if ($app->isAdmin()) {
-                    return;
-                }
-            }
+        if ($loadJquery && !$app->isAdmin()) {
 
             // Let create a link to our local directory.
             $localURL = JURI::root(true) . "/media/coalaweb/plugins/system/gears/js";
@@ -144,12 +137,12 @@ class plgSystemCwgears extends JPlugin {
             $jquery = array();
             foreach ($headData["scripts"] as $key => $value) {
 
-                if ((false !== strpos($key, "mootools-core-uncompressed.js")) OR (false !== strpos($key, "mootools-core.js"))) {
+                if ((false !== strpos($key, "mootools-core-uncompressed.js")) OR ( false !== strpos($key, "mootools-core.js"))) {
                     $first[$key] = $value;
                     unset($headData["scripts"][$key]);
                 }
 
-                if ((false !== strpos($key, "mootools-more-uncompressed.js")) OR (false !== strpos($key, "mootools-more.js"))) {
+                if ((false !== strpos($key, "mootools-more-uncompressed.js")) OR ( false !== strpos($key, "mootools-more.js"))) {
                     $first[$key] = $value;
                     unset($headData["scripts"][$key]);
                 }
@@ -177,61 +170,115 @@ class plgSystemCwgears extends JPlugin {
             unset($scripts);
             unset($headData);
         }
-        //Async -----------------------------------------------------
-        if ($app->isAdmin()) {
-            return;
+
+        //Custom CSS -----------------------------------------------------------
+        $ccssAdd = $this->params->get('ccss_add');
+        if ($ccssAdd && !$app->isAdmin()) {
+            $ccssCode = $this->params->get('ccss_code');
+            // Remove comments.
+            if ($this->params->get('ccss_remove_comments')) {
+                $ccssCode = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $ccssCode);
+            }
+
+            // Convert short absolute paths to full absolute paths.
+            if ($this->params->get('ccss_full_paths')) {
+                $ccssCode = str_replace('url(/', 'url(' . JURI::base(), $ccssCode);
+                $ccssCode = str_replace("url('/", "url('" . JURI::base(), $ccssCode);
+                $ccssCode = str_replace('url("/', 'url("' . JURI::base(), $ccssCode);
+            }
+
+            // Minimize.
+            if ($this->params->get('ccss_minimize')) {
+                $ccssCode = str_replace(array("\r\n", "\r", "\n", "\t"), '', $ccssCode);
+                $ccssCode = preg_replace('/ +/', ' ', $ccssCode); // Replace multiple spaces with single space.
+                $ccssCode = trim($ccssCode);  // Trim the string of leading and trailing space.
+            }
+
+            $doc->addCustomTag('<style type="text/css">' . $ccssCode . '</style>');
+        }
+
+        //Custom Javascript ----------------------------------------------------
+        $cjsAdd = $this->params->get('cjs_add');
+        if ($cjsAdd && !$app->isAdmin()) {
+            $cjsCode = $this->params->get('cjs_code');
+
+            // Remove comments.
+            if ($this->params->get('cjs_remove_comments')) {
+                $cjsCode = preg_replace('(// .+)', '', $cjsCode);
+                $cjsCode = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $cjsCode);
+            }
+
+            // Minimize.
+            if ($this->params->get('cjs_minimize')) {
+                $cjsCode = str_replace(array("\r\n", "\r", "\n", "\t"), '', $cjsCode);
+                $cjsCode = preg_replace('/ +/', ' ', $cjsCode); // Replace multiple spaces with single space.
+                $cjsCode = trim($cjsCode);  // Trim the string of leading and trailing space.
+            }
+
+            $doc->addScriptDeclaration($cjsCode);
+        }
+
+        //Async ----------------------------------------------------------------
+        if (!$app->isAdmin()) {
+
+            $scripts_to_handle = trim((string) $this->params->get('script_list', ''));
+
+            // Detect language
+            $lang = JFactory::getLanguage();
+            $locale = $lang->getTag();
+            $locale = str_replace("-", "_", $locale);
+
+            // Facebook and Google only seem to support es_ES and es_LA for all of LATAM
+            $locale = (substr($locale, 0, 3) == 'es_' && $locale != 'es_ES') ? 'es_LA' : $locale;
+
+            if ($scripts_to_handle) {
+                $paths = array_map('trim', (array) explode(",", $scripts_to_handle));
+                foreach ($paths as $path) {
+                    if (strpos($path, 'http') === 0) {
+                        continue;
+                    }
+
+                    $withoutroot = str_replace(JURI::root(true), '', $path);
+                    if ($withoutroot != $path) {
+                        $paths[] = $withoutroot;
+                    }
+                    $withroot = JURI::root(true) . $path;
+                    if ($withroot != $path) {
+                        $paths[] = $withroot;
+                    }
+                    $withdomain = JURI::root(false) . $path;
+                    if ($withdomain != $path) {
+                        $paths[] = $withdomain;
+                    }
+
+                    $facebook = '//connect.facebook.net/all.js#xfbml=1';
+                    if ($path === $facebook) {
+                        $facebookLang = '//connect.facebook.net/' . $locale . '/all.js#xfbml=1';
+                        $paths[] = $facebookLang;
+                    }
+                }
+
+                foreach ($doc->_scripts as $url => $scriptparams) {
+                    if (in_array($url, $paths)) {
+                        if ($this->params->get('defer')) {
+                            $doc->_scripts[$url]['defer'] = true;
+                        }
+                        if ($this->params->get('async')) {
+                            $doc->_scripts[$url]['async'] = true;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
         
-        $scripts_to_handle = trim((string) $this->params->get('script_list', ''));
-
-        // Detect language
-        $lang = JFactory::getLanguage();
-        $locale = $lang->getTag();
-        $locale = str_replace("-", "_", $locale);
-
-        // Facebook and Google only seem to support es_ES and es_LA for all of LATAM
-        $locale = (substr($locale, 0, 3) == 'es_' && $locale != 'es_ES') ? 'es_LA' : $locale;
-
-        if ($scripts_to_handle) {
-            $paths = array_map('trim', (array) explode(",", $scripts_to_handle));
-            foreach ($paths as $path) {
-                if (strpos($path, 'http') === 0) {
-                    continue;
-                }
-
-                $withoutroot = str_replace(JURI::root(true), '', $path);
-                if ($withoutroot != $path) {
-                    $paths[] = $withoutroot;
-                }
-                $withroot = JURI::root(true) . $path;
-                if ($withroot != $path) {
-                    $paths[] = $withroot;
-                }
-                $withdomain = JURI::root(false) . $path;
-                if ($withdomain != $path) {
-                    $paths[] = $withdomain;
-                }
-
-                $facebook = '//connect.facebook.net/all.js#xfbml=1';
-                if ($path === $facebook) {
-                    $facebookLang = '//connect.facebook.net/' . $locale . '/all.js#xfbml=1';
-                    $paths[] = $facebookLang;
-                }
-            }
-
-            foreach ($doc->_scripts as $url => $scriptparams) {
-                if (in_array($url, $paths)) {
-                    if ($this->params->get('defer')) {
-                        $doc->_scripts[$url]['defer'] = true;
-                    }
-                    if ($this->params->get('async')) {
-                        $doc->_scripts[$url]['async'] = true;
-                    }
-                }
-            }
+        //Zoo Editor Tweak -----------------------------------------------------
+        $yooEditorTweak = $this->params->get('zoo_editor_tweak');
+        if ($yooEditorTweak && $app->isAdmin()) {
+            $zooEditorTweak = '.creation-form textarea {width: 100%; height:400px;}';
+            $doc->addCustomTag('<style type="text/css">' . $zooEditorTweak . '</style>');
         }
-
-        return true;
     }
 
     /**

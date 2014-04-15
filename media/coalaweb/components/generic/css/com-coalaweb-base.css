@@ -425,6 +425,75 @@ ul#rules table.group-rules td label {
     background: #EBF5FA;
 }
 
+.coalaweb {
+    border: solid #ccc 1px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 95%;    
+    margin: 7px 15px 15px;
+}
+
+.coalaweb tr:hover {
+    background: #E8F6FE;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.coalaweb td, .coalaweb th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.coalaweb th {
+    background:url("../images/icons/cw-panel-bg.png") repeat-x scroll 0px 0px transparent !important;
+    border-top: none;
+    color: #333;
+    text-shadow: 0px 1px 1px #FFF;
+    border-bottom:4px solid rgb(18, 114, 165) !important;
+}
+
+.coalaweb td:first-child, .coalaweb th:first-child {
+    border-left: none;
+}
+
+.coalaweb th:first-child {
+    -moz-border-radius: 3px 0 0 0;
+    -webkit-border-radius: 3px 0 0 0;
+    border-radius: 3px 0 0 0;
+}
+
+.coalaweb th:last-child {
+    -moz-border-radius: 0 3px 0 0;
+    -webkit-border-radius: 0 3px 0 0;
+    border-radius: 0 3px 0 0;
+}
+
+.coalaweb th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.coalaweb tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 3px;
+    -webkit-border-radius: 0 0 0 3px;
+    border-radius: 0 0 0 3px;
+}
+
+.coalaweb tr:last-child td:last-child {
+    -moz-border-radius: 0 0 3px 0;
+    -webkit-border-radius: 0 0 3px 0;
+    border-radius: 0 0 3px 0;
+}
+
 /* END Tables
 ------------------------------------------------------------------------------*/
 

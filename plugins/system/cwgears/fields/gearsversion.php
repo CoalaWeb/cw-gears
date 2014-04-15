@@ -29,22 +29,31 @@ require_once (JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 class CWElementGearsVersion extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
+        return NULL;
+    }
 
-        // Require helper file
-        if (!defined('DS')) {
-            define('DS', DIRECTORY_SEPARATOR);
-        }
+    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
 
         // Load version.php
         jimport('joomla.filesystem.file');
-        $version_php = JPATH_SITE . DS . 'plugins/system/' . $value . '/version.php';
+        $version_php = JPATH_SITE . '/' . $label . '/version.php';
         if (JFile::exists($version_php)) {
             require_once $version_php;
         }
 
-        $version = (PLG_CWGEARS_VERSION);
-        $date = (PLG_CWGEARS_DATE);
-        $ispro = (PLG_CWGEARS_PRO);
+                //Which extension is being displayed?
+        switch ($label) {
+            case "plugins/system/cwgears":
+                $version = (PLG_CWGEARS_VERSION);
+                $date = (PLG_CWGEARS_DATE);
+                $ispro = (PLG_CWGEARS_PRO);
+                break;
+            case "plugins/content/cwmarkdown":
+                $version = (PLG_CWMARKDOWN_VERSION);
+                $date = (PLG_CWMARKDOWN_DATE);
+                $ispro = (PLG_CWMARKDOWN_PRO);
+                break;
+        }
 
 
         if ($ispro == 1) {
@@ -62,10 +71,7 @@ class CWElementGearsVersion extends CWElement {
                 . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' <strong>' . $date . '</strong></li>'
                 . '</ul>'
                 . '</div></div>';
-    }
-
-    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        return NULL;
+    
     }
 
 }
