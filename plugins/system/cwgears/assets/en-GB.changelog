@@ -26,6 +26,12 @@ defined("_JEXEC") or die("Restricted access");
  */
 ?>
 
+Version 0.0.8 May 2014
++ -> Custom CSS option.
++ -> Custom JS option.
++ -> Zoo editor tweak.
+# -> Several bug fixes and tweaks.
+
 Version 0.0.3 November 2013
 ^ -> Tweaks to language files and method of loading.
 + -> Tweaks to css for J3.2.

@@ -163,7 +163,8 @@ fieldset.adminform-legacy fieldset.radio {
     margin:10px 5px; 
     padding:0px 0px 5px 0px; 
     color:#333; 
-    font-weight: normal; 
+    font-weight: normal;
+    background:none !important;
 }
 
 .cw-module h3 { 
@@ -173,10 +174,15 @@ fieldset.adminform-legacy fieldset.radio {
     margin:10px 5px; 
     padding:0px; 
     color:#333;  
-    font-weight: normal; 
+    font-weight: normal;
+    background:none !important;
 }
 
-.cw-module strong { color: #1272A5; }
+.cw-module em, .cw-module strong {
+    color:#1272A5;
+    font-weight: bold;
+}
+
 .cw-module p { margin: 10px }
 
 .cw-module p a, span.cw-module ul a  { 
@@ -300,9 +306,9 @@ fieldset.adminform-legacy fieldset.radio {
     border: 1px solid #FAE6BE;
 }
 
-.controls .cw-message-block {
+/*.controls .cw-message-block {
     margin-left: -180px !important;
-}
+}*/
 
 /* End
 ------------------------------------------------------------------------------*/

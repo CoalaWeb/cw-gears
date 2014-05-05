@@ -320,7 +320,7 @@ ul#rules table.group-rules td label {
     list-style: none outside none;
 }
 
-.cw-slider em {
+.cw-slider em, .cw-slider strong {
     color:#1272A5;
     font-weight: bold;
 }
@@ -426,7 +426,15 @@ ul#rules table.group-rules td label {
 }
 
 .coalaweb {
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    color: #4D4D4D;
+}
+
+.coalaweb {
     border: solid #ccc 1px;
+    background: #fff;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -444,7 +452,11 @@ ul#rules table.group-rules td label {
     -ms-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;     
 }    
-    
+
+.coalaweb tr.row1 {
+    background-color: #F0F0EE;
+}
+
 .coalaweb td, .coalaweb th {
     border-left: 1px solid #ccc;
     border-top: 1px solid #ccc;
@@ -492,6 +504,11 @@ ul#rules table.group-rules td label {
     -moz-border-radius: 0 0 3px 0;
     -webkit-border-radius: 0 0 3px 0;
     border-radius: 0 0 3px 0;
+}
+
+.coalaweb em, .coalaweb strong {
+    color:#1272A5;
+    font-weight: bold;
 }
 
 /* END Tables
@@ -816,9 +833,13 @@ div.liveupdate-noupdates .cw-liveupdate {
 
 /* Info icon
 ------------------------------------------------------------------------------*/
-td.center img, th.center img {
-    margin-top: -8px;
-}
+a.cw-info-icon{ 
+    background: url("../images/icons/icon-16-cw-info.png") 0px 0px no-repeat;
+    width: 18px;
+    height: 18px;
+    padding-right:20px;
+    padding-bottom:2px;
+} 
 
 /*Admin Links 
 ------------------------------------------------------------------------------*/

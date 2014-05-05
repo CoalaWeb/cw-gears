@@ -163,17 +163,19 @@ fieldset.adminform-legacy fieldset.radio {
     margin:10px 5px; 
     padding:0px 0px 5px 0px; 
     color:#333; 
-    font-weight: normal; 
+    font-weight: normal;
+    background:none !important;
 }
 
 .cw-module h3 { 
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
-    font-size:22px; 
+    font-size:22px !important; 
     margin:10px 5px; 
     padding:0px; 
-    color:#333;  
-    font-weight: normal; 
+    color:#333 !important;  
+    font-weight: normal !important;
+    background:none !important;    
 }
 
 .cw-module strong { color: #1272A5; }

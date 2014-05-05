@@ -69,7 +69,7 @@
                 <field 
                     name="jquery_on" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0"
                     label="PLG_CWGEARS_FIELD_JQ_ON_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_ON_DESC" >
@@ -104,7 +104,7 @@
                 <field 
                     name="jquery_noconflict" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno" 
                     default="0" 
                     label="PLG_CWGEARS_FIELD_JQ_NOCONFLICT_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_NOCONFLICT_DESC" >
@@ -115,7 +115,7 @@
                 <field 
                     name="jquery_migrate" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno" 
                     default="0" 
                     label="PLG_CWGEARS_FIELD_JQ_MIGRATE_LABEL" 
                     description="PLG_CWGEARS_FIELD_JQ_MIGRATE_DESC" >
@@ -132,7 +132,7 @@
                 <field 
                     name="async" 
                     type="radio"
-                    class="btn-group"   
+                    class="btn-group btn-group-yesno" 
                     default="1" 
                     label="PLG_CWGEARS_FIELD_ASYNC_LABEL" 
                     description="PLG_CWGEARS_FIELD_ASYNC_DESC">
@@ -143,7 +143,7 @@
                 <field 
                     name="defer" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0" 
                     label="PLG_CWGEARS_FIELD_DEFER_LABEL" 
                     description="PLG_CWGEARS_FIELD_DEFER_DESC">
@@ -170,7 +170,7 @@
                 <field 
                     name="ccss_add" 
                     type="radio"
-                    class="btn-group"   
+                    class="btn-group btn-group-yesno" 
                     default="0" 
                     label="PLG_CWGEARS_FIELD_CCSS_ADD_LABEL" 
                     description="PLG_CWGEARS_FIELD_CCSS_ADD_DESC">
@@ -181,7 +181,7 @@
                 <field 
                     name="ccss_minimize" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno" 
                     default="1" 
                     label="PLG_CWGEARS_FIELD_MINIMIZE_LABEL" 
                     description="PLG_CWGEARS_FIELD_MINIMIZE_DESC">
@@ -192,7 +192,7 @@
                 <field 
                     name="ccss_full_paths" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0" 
                     label="PLG_CWGEARS_FIELD_FULL_PATH_LABEL" 
                     description="PLG_CWGEARS_FIELD_FULL_PATH_DESC">
@@ -203,7 +203,7 @@
                 <field 
                     name="ccss_remove_comments" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="1" 
                     label="PLG_CWGEARS_FIELD_RCOMMENTS_LABEL" 
                     description="PLG_CWGEARS_FIELD_RCOMMENTS_DESC">
@@ -230,7 +230,7 @@
                 <field 
                     name="cjs_add" 
                     type="radio"
-                    class="btn-group"   
+                    class="btn-group btn-group-yesno"   
                     default="0" 
                     label="PLG_CWGEARS_FIELD_CJS_ADD_LABEL" 
                     description="PLG_CWGEARS_FIELD_CJS_ADD_DESC">
@@ -241,7 +241,7 @@
                 <field 
                     name="cjs_minimize" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="1" 
                     label="PLG_CWGEARS_FIELD_MINIMIZE_LABEL" 
                     description="PLG_CWGEARS_FIELD_MINIMIZE_DESC">
@@ -252,7 +252,7 @@
                 <field 
                     name="cjs_remove_comments" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="1" 
                     label="PLG_CWGEARS_FIELD_RCOMMENTS_LABEL" 
                     description="PLG_CWGEARS_FIELD_RCOMMENTS_DESC">

@@ -24,20 +24,17 @@
 /* Powered By Styling
 ------------------------------------------------------------------------------*/
 span.cw-powerby-back {
-    text-align: right;
-    background :  url(../images/icons/icon-32-cw-copyright.png) no-repeat scroll center left;
-    padding:5px 0px 5px 36px;
+    padding:5px;
 }
 
 div.cw-powerby-back a:link, div.cw-powerbyfront a:visited { text-decoration: none;}
 div.cw-powerby-back a:hover { text-decoration: none;}
 
 .cw-powerby-back {
-    margin-top: 20px;
-    overflow: hidden;
-    padding: 10px;
+    width: 100%;
+    display: block;
+    clear: both;
     text-align: center;
-    width:100%;
 }
 /* END Powered By
 ------------------------------------------------------------------------------*/
@@ -78,6 +75,7 @@ togglers
     font: bold 12px/43px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
     margin:2px;
+    overflow: hidden;
 }
 
 .panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
@@ -111,11 +109,15 @@ togglers
     font-size: 11px; 
     font-weight: bold; 
     height: 24px; 
-    line-height: 24px; 
     padding: 0 20px 0 10px; 
     text-align: right; 
     max-width: 30%!important; 
     min-width: 30%!important; 
+}
+
+input.readonly {
+    padding:0px !important;
+    color: rgb(18, 114, 165) !important;
 }
 
 .pane-sliders .panel {
@@ -216,7 +218,8 @@ ul#rules table.group-rules td label {
     padding:0px 0px 5px 0px; 
     color:#333; 
     font-weight: normal;
-    line-height: 30px; 
+    line-height: 30px;
+    background:none !important;
 }
 
 .cw-slider h3 { 
@@ -226,7 +229,8 @@ ul#rules table.group-rules td label {
     margin:10px 15px; 
     padding:0px; 
     color:#333;  
-    font-weight: normal; 
+    font-weight: normal;
+    background:none !important;
 }
 .cw-slider h4 {
     font: bold 14px Arial, Helvetica, sans-serif; 
@@ -234,6 +238,7 @@ ul#rules table.group-rules td label {
     color: #1272A5;
     margin:10px 15px; 
     padding:0px; 
+    background:none !important;
 }
 
 .cw-slider p { margin: 10px 20px }
@@ -302,7 +307,7 @@ ul#rules table.group-rules td label {
     list-style: none outside none;
 }
 
-.cw-slider em {
+.cw-slider em, .cw-slider strong {
     color:#1272A5;
     font-weight: bold;
 }
@@ -407,6 +412,92 @@ ul#rules table.group-rules td label {
     background: #EBF5FA;
 }
 
+.coalaweb {
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    color: #4D4D4D;
+}
+
+.coalaweb {
+    border: solid #ccc 1px;
+    background: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 95%;    
+    margin: 7px 15px 15px;
+}
+
+.coalaweb tr:hover {
+    background: #E8F6FE;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+ 
+.coalaweb tr.row1 {
+    background-color: #F0F0EE;
+}
+
+.coalaweb td, .coalaweb th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.coalaweb th {
+    background:url("../images/icons/cw-panel-bg.png") repeat-x scroll 0px 0px transparent !important;
+    border-top: none;
+    color: #333;
+    text-shadow: 0px 1px 1px #FFF;
+    border-bottom:4px solid rgb(18, 114, 165) !important;
+}
+
+.coalaweb td:first-child, .coalaweb th:first-child {
+    border-left: none;
+}
+
+.coalaweb th:first-child {
+    -moz-border-radius: 3px 0 0 0;
+    -webkit-border-radius: 3px 0 0 0;
+    border-radius: 3px 0 0 0;
+}
+
+.coalaweb th:last-child {
+    -moz-border-radius: 0 3px 0 0;
+    -webkit-border-radius: 0 3px 0 0;
+    border-radius: 0 3px 0 0;
+}
+
+.coalaweb th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.coalaweb tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 3px;
+    -webkit-border-radius: 0 0 0 3px;
+    border-radius: 0 0 0 3px;
+}
+
+.coalaweb tr:last-child td:last-child {
+    -moz-border-radius: 0 0 3px 0;
+    -webkit-border-radius: 0 0 3px 0;
+    border-radius: 0 0 3px 0;
+}
+
+.coalaweb em, .coalaweb strong {
+    color:#1272A5;
+    font-weight: bold;
+}
+
 /* END Tables
 ------------------------------------------------------------------------------*/
 
@@ -474,9 +565,9 @@ ul#rules table.group-rules td label {
     margin:0px;
 }
 
-.controls .cw-message-block {
+/*.controls .cw-message-block {
     margin-left: -180px !important;
-}
+}*/
 
 /* END Messages
 ------------------------------------------------------------------------------*/
@@ -696,7 +787,7 @@ div.liveupdate-noupdates .cw-liveupdate {
 /* Upload Window
 ------------------------------------------------------------------------------*/
 .cw-upload-window {
-    height:40px;
+    height:60px;
     margin-top:3px;
     padding:10px;
     margin-left:10px;
@@ -738,4 +829,17 @@ td.center img, th.center img {
 /*Admin Links 
 ------------------------------------------------------------------------------*/
 table.adminlist a:hover {text-decoration: none !important;}
+
+/* Tool tips
+------------------------------------------------------------------------------*/
+.tool-title {
+    text-align: left !important;
+    text-decoration: none;
+}
+
+/* Admin Forms
+------------------------------------------------------------------------------*/
+.adminform ul li{
+    list-style: none outside none;
+}
 
