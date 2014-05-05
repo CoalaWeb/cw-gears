@@ -7,7 +7,7 @@
     <authorUrl>http://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2013 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <languages folder="language">
