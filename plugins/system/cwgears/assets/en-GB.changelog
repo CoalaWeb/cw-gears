@@ -27,6 +27,7 @@ defined("_JEXEC") or die("Restricted access");
 ?>
 
 Version 0.0.8 May 2014
++ -> System message demo option.
 + -> Custom CSS option.
 + -> Custom JS option.
 + -> Zoo editor tweak.

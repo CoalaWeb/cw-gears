@@ -340,4 +340,18 @@ class plgSystemCwgears extends JPlugin {
         }
     }
 
+    function onBeforeRender() {
+        $app = JFactory::getApplication();
+        $doc = JFactory::getDocument();
+        $loadMsg = $this->params->get('sys_msg_demo');
+
+        // Only render for HTML output
+        if ($doc->getType() == 'html' && $loadMsg) {
+            $classes = JText::_('PLG_CWGEARS_SYSMSG_MSG');
+            foreach (array('Message', 'Notice', 'Warning', 'Error') as $type) {
+                $app->enqueueMessage($classes, $type);
+            }
+        }
+    }
+
 }

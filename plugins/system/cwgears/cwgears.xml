@@ -64,6 +64,17 @@
                     <option value="0">CW_NO</option>
                     <option value="1">CW_YES</option>
                 </field>
+                
+                <field 
+                    name="sys_msg_demo" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0"
+                    label="PLG_CWGEARS_FIELD_SYSMSG_ON_LABEL" 
+                    description="PLG_CWGEARS_FIELD_SYSMSG_ON_DESC" >
+                    <option value="0">CW_NO</option>
+                    <option value="1">CW_YES</option>
+                </field>
                 		
             </fieldset>
            
