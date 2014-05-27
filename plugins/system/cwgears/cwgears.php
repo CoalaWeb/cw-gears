@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2013 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2014 Steven Palmer All rights reserved.
  *
  * CoalaWeb Contact is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@ class plgSystemCwgears extends JPlugin {
         $ext = JRequest::getCmd('extension');
         $baseUrl = '../media/coalaweb/';
 
+
         if (JFactory::getApplication()->isAdmin()) {
 
             if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic')) {
@@ -82,9 +83,7 @@ class plgSystemCwgears extends JPlugin {
         $doc = JFactory::getDocument();
 
         //Jquery Loading--------------------------------------------------------
-        //Should we load jQuery at all?
         $loadJquery = $this->params->get('jquery_on', 0);
-
         if ($loadJquery && !$app->isAdmin()) {
 
             // Let create a link to our local directory.
@@ -173,7 +172,7 @@ class plgSystemCwgears extends JPlugin {
 
         //Custom CSS -----------------------------------------------------------
         $ccssAdd = $this->params->get('ccss_add');
-        if ($ccssAdd && !$app->isAdmin()) {
+        if ($ccssAdd && !$app->isAdmin() && $doc->getType() == 'html') {
             $ccssCode = $this->params->get('ccss_code');
             // Remove comments.
             if ($this->params->get('ccss_remove_comments')) {
@@ -199,7 +198,7 @@ class plgSystemCwgears extends JPlugin {
 
         //Custom Javascript ----------------------------------------------------
         $cjsAdd = $this->params->get('cjs_add');
-        if ($cjsAdd && !$app->isAdmin()) {
+        if ($cjsAdd && !$app->isAdmin() && $doc->getType() == 'html') {
             $cjsCode = $this->params->get('cjs_code');
 
             // Remove comments.
@@ -219,7 +218,9 @@ class plgSystemCwgears extends JPlugin {
         }
 
         //Async ----------------------------------------------------------------
-        if (!$app->isAdmin()) {
+        $defer = $this->params->get('defer');
+        $async = $this->params->get('async');
+        if (($defer || $async) && !$app->isAdmin() && $doc->getType() == 'html') {
 
             $scripts_to_handle = trim((string) $this->params->get('script_list', ''));
 
@@ -260,10 +261,10 @@ class plgSystemCwgears extends JPlugin {
 
                 foreach ($doc->_scripts as $url => $scriptparams) {
                     if (in_array($url, $paths)) {
-                        if ($this->params->get('defer')) {
+                        if ($defer) {
                             $doc->_scripts[$url]['defer'] = true;
                         }
-                        if ($this->params->get('async')) {
+                        if ($async) {
                             $doc->_scripts[$url]['async'] = true;
                         }
                     }
@@ -272,7 +273,7 @@ class plgSystemCwgears extends JPlugin {
 
             return true;
         }
-        
+
         //Zoo Editor Tweak -----------------------------------------------------
         $yooEditorTweak = $this->params->get('zoo_editor_tweak');
         if ($yooEditorTweak && $app->isAdmin()) {
@@ -308,34 +309,33 @@ class plgSystemCwgears extends JPlugin {
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
 
-        // Only render for the front end.
-        if ($app->getName() !== 'site') {
-            return;
-        }
-
         // Only render for HTML output
-        if ($doc->getType() !== 'html') {
-            return;
-        }
+        if ($doc->getType() == 'html' && $app->getName() == 'site') {
 
-        //Lets add Pinterest JS if the Social Links module needs it.
-        $module = JModuleHelper::getModule('mod_coalawebsociallinks');
-        if ($module) {
-            $modParams = new JRegistry;
-            $modParams->loadString($module->params, 'JSON');
-            $this->pinterest = $modParams->get('display_pinterest_bm');
-        } else {
-            return;
-        }
-
-        if ($this->pinterest) {
-            $body = JResponse::getBody();
-            $pos = JString::strpos($body, "//assets.pinterest.com/js/pinit.js");
-            if (!$pos) {
-                $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
-                JResponse::setBody($body);
+            //Lets add Pinterest JS if the Social Links module needs it.
+            $module = JModuleHelper::getModule('coalawebsociallinks');
+            $moduleTwo = JModuleHelper::getModule('coalawebsocialtabs');
+            if ($module) {
+                $modParams = new JRegistry;
+                $modParams->loadString($module->params, 'JSON');
+                $this->pinterest = $modParams->get('display_pinterest_bm');
+            } elseif ($moduleTwo) {
+                $modParams = new JRegistry;
+                $modParams->loadString($moduleTwo->params, 'JSON');
+                $this->pinterest = $modParams->get('display_pinterest');
             } else {
                 return;
+            }
+
+            if ($this->pinterest) {
+                $body = JResponse::getBody();
+                $pos = JString::strpos($body, "//assets.pinterest.com/js/pinit.js");
+                if (!$pos) {
+                    $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
+                    JResponse::setBody($body);
+                } else {
+                    return;
+                }
             }
         }
     }

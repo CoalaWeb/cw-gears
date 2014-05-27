@@ -2,7 +2,7 @@
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
- * @copyright           Copyright (c) 2013 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2014 Steven Palmer All rights reserved.
 */
 
 /* Module configuration styling
@@ -18,13 +18,13 @@
 
 #invisible { display: none; }
 
-span.unit { line-height:34px; }
+.unit { line-height:34px; }
 
 /* togglers */
 
 .pane-sliders .panel { border: none !important; }
 
-div.panel > h3 { 
+.panel > h3 { 
     height: 43px; 
     background: transparent url('../images/icons/cw-panel-bg.png') repeat-x 0 0 !important; 
     border: 1px solid #d8d8d8; 
@@ -35,13 +35,13 @@ div.panel > h3 {
     text-transform: uppercase; 
 }
 
-div.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
+.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
 
-div.panel > h3 a:hover,
+.panel > h3 a:hover,
 
-div.panel h3.pane-toggler-down a { color: #1272A5 }
+.panel h3.pane-toggler-down a { color: #1272A5 }
 
-div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
+.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
 
 .pane-toggler span { background: transparent url('../images/icons/cw-panel-arrow.png') no-repeat 5px 50% !important; }
 
@@ -78,7 +78,7 @@ fieldset.panelform input {
     padding: 4px;  
 }
 
-span.spacer label {
+.spacer label {
     color: #1272A5;
     font: bold 14px/30px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
@@ -185,12 +185,12 @@ fieldset.adminform-legacy fieldset.radio {
 
 .cw-module p { margin: 10px }
 
-.cw-module p a, span.cw-module ul a  { 
+.cw-module p a, .cw-module ul a  { 
     color: #1272A5; 
     text-decoration:none; 
 }
 
-.cw-module p a:hover, span.cw-module ul a:hover  { 
+.cw-module p a:hover, .cw-module ul a:hover  { 
     color: #419EC9; 
     text-decoration:none; 
 }

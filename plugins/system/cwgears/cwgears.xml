@@ -5,7 +5,7 @@
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
-    <copyright>Copyright (c) 2013 Steven Palmer All rights reserved.</copyright>
+    <copyright>Copyright (c) 2014 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
     <version>0.0.8</version>
     <description>PLG_CWGEARS_DESC</description>
@@ -26,14 +26,19 @@
         
     <media destination="coalaweb" folder="media">
         <filename>index.html</filename>
-        <folder>components/generic</folder>
-        <folder>modules/generic</folder>
-        <folder>plugins/generic</folder>
+        <folder>components</folder>
+        <folder>modules</folder>
+        <folder>plugins</folder>
     </media>
     
         
     <!-- HELP FILE -->
     <help url="PLG_GWGEARS_HELP_URL" />
+    
+    <!-- UPDATE SERVER -->
+    <updateservers>
+    	<server type="extension" priority="1" name="CoalaWeb Gears Update">http://cdn.coalaweb.com/updates/cw-gears-core.xml</server>
+    </updateservers>
 
     <config>
         <fields 
@@ -259,8 +264,6 @@
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
-            
-
             
                 <field 
                     name="cjs_code" 
