@@ -2,7 +2,7 @@
 
 /**
  * @package             Joomla
- * @subpackage          CoalaWeb Social Links Module
+ * @subpackage          CoalaWeb JSColor Field
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com

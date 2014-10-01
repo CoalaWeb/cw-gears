@@ -18,13 +18,13 @@
 
 #invisible { display: none; }
 
-.unit { line-height:34px; }
+span.unit { line-height:34px; }
 
 /* togglers */
 
 .pane-sliders .panel { border: none !important; }
 
-.panel > h3 { 
+div.panel > h3 { 
     height: 43px; 
     background: transparent url('../images/icons/cw-panel-bg.png') repeat-x 0 0 !important; 
     border: 1px solid #d8d8d8; 
@@ -35,13 +35,13 @@
     text-transform: uppercase; 
 }
 
-.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
+div.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
 
-.panel > h3 a:hover,
+div.panel > h3 a:hover,
 
-.panel h3.pane-toggler-down a { color: #1272A5 }
+div.panel h3.pane-toggler-down a { color: #1272A5 }
 
-.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
+div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
 
 .pane-toggler span { background: transparent url('../images/icons/cw-panel-arrow.png') no-repeat 5px 50% !important; }
 
@@ -78,7 +78,7 @@ fieldset.panelform input {
     padding: 4px;  
 }
 
-.spacer label {
+span.spacer label {
     color: #1272A5;
     font: bold 14px/30px Arial, Helvetica, sans-serif; 
     text-transform: uppercase;
@@ -185,12 +185,12 @@ fieldset.adminform-legacy fieldset.radio {
 
 .cw-module p { margin: 10px }
 
-.cw-module p a, .cw-module ul a  { 
+.cw-module p a, span.cw-module ul a  { 
     color: #1272A5; 
     text-decoration:none; 
 }
 
-.cw-module p a:hover, .cw-module ul a:hover  { 
+.cw-module p a:hover, span.cw-module ul a:hover  { 
     color: #419EC9; 
     text-decoration:none; 
 }
@@ -249,8 +249,12 @@ fieldset.adminform-legacy fieldset.radio {
     list-style: none outside none;
 }
 
+/* End
+------------------------------------------------------------------------------*/
+
 /* Messages
 ------------------------------------------------------------------------------*/
+
 /* General message */
 .cw-message p.info, .cw-message p.alert, .cw-message p.vote, .cw-message p.upgrade {
     padding:10px 10px 10px 40px;
@@ -306,9 +310,48 @@ fieldset.adminform-legacy fieldset.radio {
     border: 1px solid #FAE6BE;
 }
 
-/*.controls .cw-message-block {
-    margin-left: -180px !important;
-}*/
+/* End
+------------------------------------------------------------------------------*/
+
+/* Sorting Style */
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ul#sortable {
+    float: left;
+    list-style: none;
+}
+
+ul#sortable li {
+    background: #ECECEC;
+    border-color: #D8D8D8 #D8D8D8 #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    margin: 4px 0px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.027), 0 1px 0 rgba(255, 255, 255, 0.69) inset, 0 -1px 0 rgba(0, 0, 0, 0.02) inset, 0 15px 14px rgba(255, 255, 255, 0.57) inset;
+    color: #666666;
+    padding: 10px 15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.59);
+    cursor: move !important;
+    min-width:150px;
+}
+
+ul#sortable .sort span {
+    margin-top: -2px;
+    height: 24px;
+    width: 24px;
+    display: block;
+    float: left;
+    background: url("../images/icons/cw-drag.png") no-repeat scroll 0 0; 
+    padding-right: 10px;
+}
 
 /* End
 ------------------------------------------------------------------------------*/

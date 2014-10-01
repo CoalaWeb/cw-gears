@@ -326,3 +326,48 @@ fieldset.adminform fieldset.radio label, fieldset.panelform fieldset.radio label
     border: 1px solid #FAE6BE;
 }
 
+/* End
+------------------------------------------------------------------------------*/
+
+/* Sorting Style */
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ul#sortable {
+    float: left;
+    list-style: none;
+}
+
+ul#sortable li {
+    background: #ECECEC;
+    border-color: #D8D8D8 #D8D8D8 #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    margin: 4px 0px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.027), 0 1px 0 rgba(255, 255, 255, 0.69) inset, 0 -1px 0 rgba(0, 0, 0, 0.02) inset, 0 15px 14px rgba(255, 255, 255, 0.57) inset;
+    color: #666666;
+    padding: 10px 15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.59);
+    cursor: move !important;
+    min-width:150px;
+}
+
+ul#sortable .sort span {
+    margin-top: -2px;
+    height: 24px;
+    width: 24px;
+    display: block;
+    float: left;
+    background: url("../images/icons/cw-drag.png") no-repeat scroll 0 0; 
+    padding-right: 10px;
+}
+
+/* End
+------------------------------------------------------------------------------*/

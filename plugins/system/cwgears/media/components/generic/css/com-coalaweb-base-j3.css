@@ -428,7 +428,7 @@ ul#rules table.group-rules td label {
     *border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0;
     width: 95%;    
-    margin: 7px 15px 15px;
+    margin: 7px 15px 15px !important;
 }
 
 .coalaweb tr:hover {
@@ -447,14 +447,14 @@ ul#rules table.group-rules td label {
 .coalaweb td, .coalaweb th {
     border-left: 1px solid #ccc;
     border-top: 1px solid #ccc;
-    padding: 10px;
+    padding: 10px !important;
     text-align: left;    
 }
 
 .coalaweb th {
     background:url("../images/icons/cw-panel-bg.png") repeat-x scroll 0px 0px transparent !important;
     border-top: none;
-    color: #333;
+    color: #333 !important;
     text-shadow: 0px 1px 1px #FFF;
     border-bottom:4px solid rgb(18, 114, 165) !important;
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2014-5-25</creationDate>
+    <creationDate>2014-10-01</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2014 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <languages folder="language">
@@ -226,6 +226,12 @@
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
+                
+                <field 
+                    name="ccss_file" 
+                    type="text" 
+                    label="PLG_CWGEARS_FIELD_CUSTOM_FILE_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CUSTOM_FILE_DESC"/>
             
                 <field 
                     name="ccss_code" 

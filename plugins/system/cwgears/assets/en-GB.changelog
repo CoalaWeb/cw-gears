@@ -26,11 +26,18 @@ defined("_JEXEC") or die("Restricted access");
  */
 ?>
 
+Version 0.0.9 October 2014
++ -> Custom CSS link option.
++ -> New sorting form field.
+# -> Code improvements.
+# -> Several bug fixes and tweaks.
+
 Version 0.0.8 May 2014
 + -> System message demo option.
 + -> Custom CSS option.
 + -> Custom JS option.
 + -> Zoo editor tweak.
++ -> Added update server.
 # -> Several bug fixes and tweaks.
 
 Version 0.0.3 November 2013

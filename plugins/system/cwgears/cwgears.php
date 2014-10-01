@@ -174,6 +174,7 @@ class plgSystemCwgears extends JPlugin {
         $ccssAdd = $this->params->get('ccss_add');
         if ($ccssAdd && !$app->isAdmin() && $doc->getType() == 'html') {
             $ccssCode = $this->params->get('ccss_code');
+            $ccssFile = $this->params->get('ccss_file');
             // Remove comments.
             if ($this->params->get('ccss_remove_comments')) {
                 $ccssCode = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $ccssCode);
@@ -192,8 +193,12 @@ class plgSystemCwgears extends JPlugin {
                 $ccssCode = preg_replace('/ +/', ' ', $ccssCode); // Replace multiple spaces with single space.
                 $ccssCode = trim($ccssCode);  // Trim the string of leading and trailing space.
             }
-
-            $doc->addCustomTag('<style type="text/css">' . $ccssCode . '</style>');
+            if ($ccssCode){
+                $doc->addCustomTag('<style type="text/css">' . $ccssCode . '</style>');
+            }
+            if ($ccssFile){
+                $doc->addStyleSheet(JURI::base(true) . $ccssFile);
+            }
         }
 
         //Custom Javascript ----------------------------------------------------
@@ -319,13 +324,14 @@ class plgSystemCwgears extends JPlugin {
                 $modParams = new JRegistry;
                 $modParams->loadString($module->params, 'JSON');
                 $this->pinterest = $modParams->get('display_pinterest_bm');
-            } elseif ($moduleTwo) {
+            } 
+            
+            if ($moduleTwo && $this->pinterest == 0) {
                 $modParams = new JRegistry;
                 $modParams->loadString($moduleTwo->params, 'JSON');
                 $this->pinterest = $modParams->get('display_pinterest');
-            } else {
-                return;
             }
+            
 
             if ($this->pinterest) {
                 $body = JResponse::getBody();

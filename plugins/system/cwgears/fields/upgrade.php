@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 
 /**
  * @package             Joomla
- * @subpackage          CoalaWeb Header Field
+ * @subpackage          CoalaWeb Upgrade Element
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
