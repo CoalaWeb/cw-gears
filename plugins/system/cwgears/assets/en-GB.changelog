@@ -29,7 +29,7 @@ defined("_JEXEC") or die("Restricted access");
 Version 0.0.9 October 2014
 + -> Custom CSS link option.
 + -> New sorting form field.
-# -> Code improvements.
+^ -> Code improvements.
 # -> Several bug fixes and tweaks.
 
 Version 0.0.8 May 2014
