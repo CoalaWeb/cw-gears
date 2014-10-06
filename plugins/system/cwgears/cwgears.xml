@@ -75,6 +75,17 @@
                     <option value="0">CW_NO</option>
                     <option value="1">CW_YES</option>
                 </field>
+                
+                <field 
+                    name="gzip_help" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0"
+                    label="PLG_CWGEARS_FIELD_GZIPHELP_LABEL" 
+                    description="PLG_CWGEARS_FIELD_GZIPHELP_DESC" >
+                    <option value="0">CW_NO</option>
+                    <option value="1">CW_YES</option>
+                </field>
                 		
             </fieldset>
            
