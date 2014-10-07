@@ -244,6 +244,13 @@ class plgSystemCwgears extends JPlugin {
 
             $doc->addScriptDeclaration($cjsCode);
         }
+        
+        //Zoo Editor Tweak -----------------------------------------------------
+        $yooEditorTweak = $this->params->get('zoo_editor_tweak');
+        if ($yooEditorTweak && $app->isAdmin()) {
+            $zooEditorTweak = '.creation-form textarea {width: 100%; height:400px;}';
+            $doc->addCustomTag('<style type="text/css">' . $zooEditorTweak . '</style>');
+        }
 
         //Async ----------------------------------------------------------------
         $defer = $this->params->get('defer');
@@ -302,12 +309,6 @@ class plgSystemCwgears extends JPlugin {
             return true;
         }
 
-        //Zoo Editor Tweak -----------------------------------------------------
-        $yooEditorTweak = $this->params->get('zoo_editor_tweak');
-        if ($yooEditorTweak && $app->isAdmin()) {
-            $zooEditorTweak = '.creation-form textarea {width: 100%; height:400px;}';
-            $doc->addCustomTag('<style type="text/css">' . $zooEditorTweak . '</style>');
-        }
     }
 
     /**
