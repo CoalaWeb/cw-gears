@@ -30,6 +30,7 @@ Version 0.0.9 October 2014
 + -> Added Gzip help option.
 + -> Custom CSS link option.
 + -> New sorting form field.
++ -> New specific cache off option.
 ^ -> Code improvements.
 # -> Several bug fixes and tweaks.
 

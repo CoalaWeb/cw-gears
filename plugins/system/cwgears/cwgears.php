@@ -32,6 +32,7 @@ jimport('joomla.application.module.helper');
 class plgSystemCwgears extends JPlugin {
 
     var $pinterest;
+    private $caching = 0;
 
     function __construct(&$subject, $config) {
         parent::__construct($subject, $config);
@@ -53,7 +54,7 @@ class plgSystemCwgears extends JPlugin {
         $ext = JRequest::getCmd('extension');
         $baseUrl = '../media/coalaweb/';
 
-
+        //Lets add some style for backend extension configurations.
         if ($app->isAdmin()) {
 
             if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic')) {
@@ -76,6 +77,7 @@ class plgSystemCwgears extends JPlugin {
             }
         }
         
+        //Lets stop Gzip affecting Facebook and Linkedin scrapper bots.
         $gziphelp = $this->params->get('gzip_help', 1);
         if ($gziphelp && !$app->isAdmin()) {
             
@@ -97,6 +99,14 @@ class plgSystemCwgears extends JPlugin {
             if (($app->get('gzip') == 1) && ($agent)) {
                 $app->set('gzip', 0);
             }
+        }
+        
+        //Let stop Joomla cache from affecting specific parts of the website.
+        //Inspired by Crosstec
+        $loadCacheControl = $this->params->get('cache_off', 0);
+        if ($loadCacheControl && $this->checkRules() && !$app->isAdmin()) {
+            $this->caching = JFactory::getConfig()->get('caching');
+            JFactory::getConfig()->set('caching', 0);
         }
     }
 
@@ -383,5 +393,46 @@ class plgSystemCwgears extends JPlugin {
             }
         }
     }
+    
+    //Lets check what shouldn't be cached.
+    function checkRules() {
+        $app = JFactory::getApplication();
+        $plugin = JPluginHelper::getPlugin('system', 'cwgears');
+        $params = new JRegistry($plugin->params);
+        $loadCacheControl = $params->get('cache_off', 0);
+
+        if ($loadCacheControl && !$app->isAdmin()) {
+            $defs = str_replace("\r", "", $params->get('rules', ''));
+            $defs = explode("\n", $defs);
+
+            foreach ($defs As $def) {
+                $result = $this->parseQueryString($def);
+                if (is_array($result)) {
+                    $found = 0;
+                    $required = count($result);
+                    foreach ($result As $key => $value) {
+                        if (JRequest::getVar($key) == $value || ( JRequest::getVar($key, null) !== null && $value == '?' )) {
+                            $found++;
+                        }
+                    }
+                    if ($found == $required) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+    }
+
+    function parseQueryString($str) {
+            $op = array();
+            $pairs = explode("&", $str);
+            foreach ($pairs as $pair) {
+                list($k, $v) = array_map("urldecode", explode("=", $pair));
+                $op[$k] = $v;
+            }
+            return $op;
+        } 
 
 }

@@ -86,7 +86,7 @@
                     <option value="0">CW_NO</option>
                     <option value="1">CW_YES</option>
                 </field>
-                		
+      		
             </fieldset>
            
             <fieldset 
@@ -303,6 +303,32 @@
                     label="PLG_CWGEARS_FIELD_CODE_LABEL" 
                     description="PLG_CWGEARS_FIELD_CODE_DESC"/>
             
+            </fieldset>
+            
+            <fieldset 
+                name="CACHE_PLG"
+                label="PLG_CWGEARS_CACHE_TITLE">
+                
+                <field 
+                    name="cache_off" 
+                    type="radio"
+                    class="btn-group btn-group-yesno"   
+                    default="0" 
+                    label="PLG_CWGEARS_FIELD_CACHE_OFF_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CACHE_OFF_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                
+                <field 
+                    name="rules" 
+                    type="textarea" 
+                    cols="30" 
+                    rows="10" 
+                    default="option=com_content" 
+                    label="PLG_CWGEARS_FIELD_CACHE_RULES_LABEL" 
+                    description="PLG_CWGEARS_FIELD_CACHE_RULES_DESC"/>
+                
             </fieldset>
             
             <fieldset 
