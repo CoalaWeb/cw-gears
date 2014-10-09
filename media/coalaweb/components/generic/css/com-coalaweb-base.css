@@ -573,13 +573,14 @@ ul#rules table.group-rules td label {
     border: 1px solid #FAE6BE;
 }
 
+/* Info message in Component config */
+.cw-message-block {clear:both;}
 
 #permissions-sliders .pane-toggler-down span.level, 
 #permissions-sliders .pane-toggler span.level,
 #permissions-sliders .pane-sliders{
     background-image: none !important;
     margin:0px;
-
 }
 
 /* END Messages
