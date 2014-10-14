@@ -108,6 +108,7 @@ class plgSystemCwgears extends JPlugin {
             $this->caching = JFactory::getConfig()->get('caching');
             JFactory::getConfig()->set('caching', 0);
         }
+
     }
 
     public function onBeforeCompileHead() {
