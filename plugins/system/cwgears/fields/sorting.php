@@ -27,7 +27,7 @@ defined('_JEXEC') or die('Restricted access');
 class JFormFieldSorting extends JFormField {
 
     protected $type = 'Sorting';
-    
+
     protected function getInput() {
         $document = JFactory::getDocument();
 
@@ -67,15 +67,21 @@ class JFormFieldSorting extends JFormField {
                 })
             });
         ');
-        
-        // Explode possibly new values
-        $possibleNew = explode(',', $this->default);
-        
-        // Explode currently stored values
+
+        // Get possible new options.
+        $possibleNew = '';
+        if ($this->name === 'jform[params][sorting_tabs]') {
+            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,contact_f,customone_c,customtwo_c';
+            $possibleNew = explode(',', $default);
+        }
+        // Explode currently stored values.
         $currentItems = explode(',', $this->value);
-        
-        //Append new options to list
-        $items = array_replace($possibleNew, $currentItems);
+
+        //Are there any new options?
+        $foo = array_diff($possibleNew, $currentItems);
+
+        //Append new options to list.
+        $items = array_merge((array) $currentItems, (array) $foo);
 
         $input = '<ul id="sortable">';
 
