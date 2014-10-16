@@ -78,10 +78,10 @@ class JFormFieldSorting extends JFormField {
         $currentItems = explode(',', $this->value);
 
         //Are there any new options?
-        $foo = array_diff($possibleNew, $currentItems);
+        $newItems = array_diff($possibleNew, $currentItems);
 
         //Append new options to list.
-        $items = array_merge((array) $currentItems, (array) $foo);
+        $items = array_merge((array) $currentItems, (array) $newItems);
 
         $input = '<ul id="sortable">';
 
