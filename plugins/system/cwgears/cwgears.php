@@ -57,7 +57,7 @@ class plgSystemCwgears extends JPlugin {
         //Lets add some style for backend extension configurations.
         if ($app->isAdmin()) {
 
-            if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic')) {
+            if ($option == 'com_categories' && ($ext == 'com_coalawebquotes' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic'|| $ext == 'com_coalaweblingual')) {
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
@@ -67,7 +67,7 @@ class plgSystemCwgears extends JPlugin {
                 }
             }
 
-            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket', 'com_coalawebpaypal'))) {
+            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket', 'com_coalawebpaypal', 'com_coalaweblingual'))) {
 
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
@@ -204,6 +204,11 @@ class plgSystemCwgears extends JPlugin {
             unset($headData);
         }
 
+        //Fontawesome
+        if (!$app->isAdmin() && $doc->getType() == 'html' && $this->params->get('fawesome_add')) {
+         $doc->addStyleSheet(JURI::base(true). "/media/coalaweb/plugins/system/gears/fontawesome/css/font-awesome.min.css");
+        }
+        
         //Custom CSS -----------------------------------------------------------
         $ccssAdd = $this->params->get('ccss_add');
         if ($ccssAdd && !$app->isAdmin() && $doc->getType() == 'html') {

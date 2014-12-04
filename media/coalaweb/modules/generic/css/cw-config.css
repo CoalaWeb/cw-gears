@@ -96,7 +96,6 @@ fieldset.panelform input[type=button] {
 }
 
 fieldset.panelform select { 
-    height: 26px; 
     color: #555; 
     line-height: 24px; 
     padding: 4px; 

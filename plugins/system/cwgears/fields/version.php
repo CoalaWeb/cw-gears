@@ -36,7 +36,13 @@ class CWElementVersion extends CWElement {
 
         // Load version.php
         jimport('joomla.filesystem.file');
-        $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
+        $arr = explode("_", $label, 2);
+        if ($arr[0] == 'com') {
+            $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
+        } else {
+            $version_php = JPATH_SITE . '/' . 'modules/' . $label . '/version.php';
+        }
+        
         if (JFile::exists($version_php)) {
             require_once $version_php;
         }
@@ -57,6 +63,16 @@ class CWElementVersion extends CWElement {
                 $version = (COM_CWTRAFFIC_VERSION);
                 $date = (COM_CWTRAFFIC_DATE);
                 $ispro = (COM_CWTRAFFIC_PRO);
+                break;
+            case "mod_coalawebpanel":
+                $version = (MOD_CWPANEL_VERSION);
+                $date = (MOD_CWPANEL_DATE);
+                $ispro = (MOD_CWPANEL_PRO);
+                break;
+            case "mod_coalawebnews":
+                $version = (MOD_CWNEWS_VERSION);
+                $date = (MOD_CWNEWS_DATE);
+                $ispro = (MOD_CWNEWS_PRO);
                 break;
         }
 
