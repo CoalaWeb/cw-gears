@@ -1,33 +1,39 @@
 ##Change Log
 
+#### Version 0.1.0 December 2014
+- **(A)** Integrated CoalaWeb Flair into version field
+- **(A)** Version field can now handle modules without components
+- **(C)** CSS improvements
+- **(C)** Support links updated
+
 #### Version 0.0.9 November 2014
-- **(A)** Added Gzip help option.
-- **(A)** Custom CSS link option.
-- **(A)** New sorting form field.
-- **(A)** New specific cache off option.
-- **(C)** Code improvements.
-- **(B)** Several bug fixes and tweaks.
+- **(A)** Added Gzip help option
+- **(A)** Custom CSS link option
+- **(A)** New sorting form field
+- **(A)** New specific cache off option
+- **(C)** Code improvements
+- **(B)** Several bug fixes and tweaks
 
 #### Version 0.0.8 May 2014
-- **(A)** System message demo option.
-- **(A)** Custom CSS option.
-- **(A)** Custom JS option.
-- **(A)** Zoo editor tweak.
-- **(A)** Added update server.
-- **(B)** Several bug fixes and tweaks.
+- **(A)** System message demo option
+- **(A)** Custom CSS option
+- **(A)** Custom JS option
+- **(A)** Zoo editor tweak
+- **(A)** Added update server
+- **(B)** Several bug fixes and tweaks
 
 #### Version 0.0.3 November 2013
-- **(C)** Tweaks to language files and method of loading.
-- **(A)** Tweaks to css for J3.2.
-- **(A)** New fields added.
+- **(C)** Tweaks to language files and method of loading
+- **(A)** Tweaks to css for J3.2
+- **(A)** New fields added
 
 #### Version 0.0.2 October 2013
-- **(C)** Tweaks to language files and method of loading.
-- **(A)** Tweaks to css.
-- **(A)** New fields added.
+- **(C)** Tweaks to language files and method of loading
+- **(A)** Tweaks to css
+- **(A)** New fields added
 
 #### Version 0.0.1 September 2013
-- **(N)** Integrated into the CoalaWeb extensions.
+- **(N)** Integrated into the CoalaWeb extensions
 
 ### Key
 - **(S)** Security Fix

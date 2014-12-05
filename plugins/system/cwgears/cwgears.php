@@ -203,11 +203,6 @@ class plgSystemCwgears extends JPlugin {
             unset($scripts);
             unset($headData);
         }
-
-        //Fontawesome
-        if (!$app->isAdmin() && $doc->getType() == 'html' && $this->params->get('fawesome_add')) {
-         $doc->addStyleSheet(JURI::base(true). "/media/coalaweb/plugins/system/gears/fontawesome/css/font-awesome.min.css");
-        }
         
         //Custom CSS -----------------------------------------------------------
         $ccssAdd = $this->params->get('ccss_add');

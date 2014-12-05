@@ -74,6 +74,11 @@ class CWElementVersion extends CWElement {
                 $date = (MOD_CWNEWS_DATE);
                 $ispro = (MOD_CWNEWS_PRO);
                 break;
+            case "mod_coalawebflair":
+                $version = (MOD_CWFLAIR_VERSION);
+                $date = (MOD_CWFLAIR_DATE);
+                $ispro = (MOD_CWFLAIR_PRO);
+                break;
         }
 
         if ($ispro == 1) {
