@@ -5,7 +5,7 @@
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
-    <copyright>Copyright (c) 2014 Steven Palmer All rights reserved.</copyright>
+    <copyright>Copyright (c) 2015 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
     <version>0.1.0</version>
     <description>PLG_CWGEARS_DESC</description>
@@ -37,7 +37,7 @@
     
     <!-- UPDATE SERVER -->
     <updateservers>
-    	<server type="extension" priority="1" name="CoalaWeb Gears Update">http://cdn.coalaweb.com/updates/cw-gears-core.xml</server>
+        <server type="extension" priority="1" name="CoalaWeb Gears Update">http://cdn.coalaweb.com/updates/cw-gears-core.xml</server>
     </updateservers>
 
     <config>
@@ -191,6 +191,34 @@
             </fieldset>
         
             <fieldset 
+                name="UIKIT_PLG"
+                label="PLG_CWGEARS_UIKIT_TITLE">
+                
+                <field 
+                    name="uikit_add" 
+                    type="radio"
+                    class="btn-group btn-group-yesno" 
+                    default="1" 
+                    label="PLG_CWGEARS_FIELD_UIKIT_ADD_LABEL" 
+                    description="PLG_CWGEARS_FIELD_UIKIT_ADD_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                
+                <field 
+                    name="uikit_theme" 
+                    type="list" 
+                    default="default" 
+                    label="PLG_CWGEARS_FIELD_UIKIT_THEME_LABEL" 
+                    description="PLG_CWGEARS_FIELD_UIKIT_THEME_DESC" >
+                    <option value="default">PLG_CWGEARS_FIELD_UIKIT_THEME_OP1</option>
+                    <option value="gradient">PLG_CWGEARS_FIELD_UIKIT_THEME_OP2</option>
+                    <option value="flat">PLG_CWGEARS_FIELD_UIKIT_THEME_OP3</option>
+                </field>
+                
+            </fieldset>
+                    
+            <fieldset 
                 name="CUSTOMCSS_PLG"
                 label="PLG_CWGEARS_CUSTOMCSS_TITLE">
              
@@ -337,8 +365,8 @@
                 
                 <field 
                     name="version_info"
-                    type="gearsversion"
-                    label="plugins/system/cwgears"/>
+                    type="version"
+                    label="plg_system_cwgears"/>
             </fieldset>
             
         </fields>

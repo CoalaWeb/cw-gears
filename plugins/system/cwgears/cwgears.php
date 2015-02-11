@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2014 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2015 Steven Palmer All rights reserved.
  *
  * CoalaWeb Contact is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -204,6 +204,41 @@ class plgSystemCwgears extends JPlugin {
             unset($headData);
         }
         
+        // Uikit ---------------------------------------------------------------
+        $uikitAdd = $this->params->get('uikit_add');
+        $uikitTheme = $this->params->get('uikit_theme');
+        $uikitCount = $app->get('CWUikitCount', 0);
+
+        if ($uikitCount > 0 && $uikitAdd) {
+            // Let create a link to our local uikit directory.
+            $uikitLocal = JURI::root(true) . "/media/coalaweb/plugins/system/gears/uikit/";
+
+            //Now for a uikit theme
+            switch ($uikitTheme) {
+                case "default":
+                    $uikitCss = 'css/coalaweb.uikit.min.css';
+                    break;
+                case "flat":
+                    $uikitCss = 'css/coalaweb.uikit.almost-flat.min.css';
+                    break;
+                case "gradient":
+                    $uikitCss = 'css/coalaweb.uikit.gradient.min.css';
+                    break;
+                default:
+                    $uikitCss = 'css/coalaweb.uikit.min.css';
+            }
+
+            //Define our custom uikit prefix for the JavaScript
+            $uikitPre = "var myUIkit = UIkit.noConflict('cw');";
+
+            //Add all the stuff we need
+            $doc->addScriptDeclaration($uikitPre);
+            $doc->addScript($uikitLocal . "js/coalaweb.uikit.min.js");
+            $doc->addStyleSheet($uikitLocal . $uikitCss);
+        }
+
+
+
         //Custom CSS -----------------------------------------------------------
         $ccssAdd = $this->params->get('ccss_add');
         if ($ccssAdd && !$app->isAdmin() && $doc->getType() == 'html') {

@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2014 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2015 Steven Palmer All rights reserved.
  *
  * CoalaWeb Contact is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,13 +36,20 @@ class CWElementVersion extends CWElement {
 
         // Load version.php
         jimport('joomla.filesystem.file');
-        $arr = explode("_", $label, 2);
-        if ($arr[0] == 'com') {
-            $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
-        } else {
-            $version_php = JPATH_SITE . '/' . 'modules/' . $label . '/version.php';
-        }
+        $arr = explode("_", $label);
         
+        switch ($arr[0]) {
+            case "com":
+                $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
+                break;
+            case "mod":
+                $version_php = JPATH_SITE . '/' . 'modules/' . $label . '/version.php';
+                break;
+            case "plg":
+                $version_php = JPATH_SITE . '/' . 'plugins/' . $arr[1] . '/' . $arr[2] . '/version.php';
+                break;
+        }
+                
         if (JFile::exists($version_php)) {
             require_once $version_php;
         }
@@ -78,6 +85,31 @@ class CWElementVersion extends CWElement {
                 $version = (MOD_CWFLAIR_VERSION);
                 $date = (MOD_CWFLAIR_DATE);
                 $ispro = (MOD_CWFLAIR_PRO);
+                break;
+            case "mod_coalawebzones":
+                $version = (MOD_CWZONES_VERSION);
+                $date = (MOD_CWZONES_DATE);
+                $ispro = (MOD_CWZONES_PRO);
+                break;
+            case "plg_system_cwgears":
+                $version = (PLG_CWGEARS_VERSION);
+                $date = (PLG_CWGEARS_DATE);
+                $ispro = (PLG_CWGEARS_PRO);
+                break;
+            case "plg_content_cwgithub":
+                $version = (PLG_CWGITHUB_VERSION);
+                $date = (PLG_CWGITHUB_DATE);
+                $ispro = (PLG_CWGITHUB_PRO);
+                break;
+            case "plg_content_cwversions":
+                $version = (PLG_CWVERSIONS_VERSION);
+                $date = (PLG_CWVERSIONS_DATE);
+                $ispro = (PLG_CWVERSIONS_PRO);
+                break;
+            case "plg_content_cwmarkdown":
+                $version = (PLG_CWMARKDOWN_VERSION);
+                $date = (PLG_CWMARKDOWN_DATE);
+                $ispro = (PLG_CWMARKDOWN_PRO);
                 break;
         }
 

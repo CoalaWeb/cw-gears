@@ -1,5 +1,17 @@
 ##Change Log
 
+#### Version 0.1.1
+- **(A)** Integrated CoalaWeb Zones into version field.
+- **(A)** Integrated CoalaWeb Gears into version field.
+- **(A)** Integrated CoalaWeb Markdown into version field.
+- **(A)** Integrated CoalaWeb Versions into version field.
+- **(A)** Integrated CoalaWeb Github into version field.
+- **(C)** Merged the two version fields into one.
+- **(R)** Removed gearversion fields.
+- **(A)** Integrated CoalaWeb's custom prefix version of Uikit.
+- **(C)** Updated copyright.
+- **(A)** New language strings.
+
 #### Version 0.1.0 December 2014
 - **(A)** Integrated CoalaWeb Flair into version field
 - **(A)** Version field can now handle modules without components
