@@ -24,7 +24,7 @@
         <folder>language</folder>
     </files>
         
-    <media destination="coalaweb" folder="media">
+    <media destination="coalaweb" folder="media/coalaweb">
         <filename>index.html</filename>
         <folder>components</folder>
         <folder>modules</folder>
