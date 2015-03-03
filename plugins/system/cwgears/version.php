@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
  * @license             GNU/GPL, see /assets/en-GB.license.txt
  * @copyright           Copyright (c) 2015 Steven Palmer All rights reserved.
  *
- * CoalaWeb Contact is free software: you can redistribute it and/or modify
+ * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -26,5 +26,5 @@ defined('_JEXEC') or die('Restricted access');
  */
 
 define('PLG_CWGEARS_VERSION', '0.1.1');
-define('PLG_CWGEARS_DATE', '2015-02-12');
+define('PLG_CWGEARS_DATE', '2015-03-05');
 define('PLG_CWGEARS_PRO', '0');

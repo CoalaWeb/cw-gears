@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
  * @license             GNU/GPL, see /assets/en-GB.license.txt
  * @copyright           Copyright (c) 2015 Steven Palmer All rights reserved.
  *
- * CoalaWeb Contact is free software: you can redistribute it and/or modify
+ * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -116,7 +116,9 @@ class plgSystemCwgears extends JPlugin {
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
 
-        //Jquery Loading--------------------------------------------------------
+        //----------------------------------------------------------------------
+        //Jquery Loading
+        //----------------------------------------------------------------------
         $loadJquery = $this->params->get('jquery_on', 0);
         if ($loadJquery && !$app->isAdmin()) {
 
@@ -204,9 +206,12 @@ class plgSystemCwgears extends JPlugin {
             unset($headData);
         }
         
-        // Uikit ---------------------------------------------------------------
-        $uikitAdd = $this->params->get('uikit_add');
-        $uikitTheme = $this->params->get('uikit_theme');
+        //----------------------------------------------------------------------
+        // Uikit
+        //----------------------------------------------------------------------
+        
+        $uikitAdd = $this->params->get('uikit_add', 1);
+        $uikitTheme = $this->params->get('uikit_theme', 'flat');
         $uikitCount = $app->get('CWUikitCount', 0);
 
         if ($uikitCount > 0 && $uikitAdd) {
@@ -237,9 +242,10 @@ class plgSystemCwgears extends JPlugin {
             $doc->addStyleSheet($uikitLocal . $uikitCss);
         }
 
-
-
-        //Custom CSS -----------------------------------------------------------
+        //----------------------------------------------------------------------
+        //Custom CSS
+        //----------------------------------------------------------------------
+        
         $ccssAdd = $this->params->get('ccss_add');
         if ($ccssAdd && !$app->isAdmin() && $doc->getType() == 'html') {
             $ccssCode = $this->params->get('ccss_code');
@@ -270,7 +276,10 @@ class plgSystemCwgears extends JPlugin {
             }
         }
 
-        //Custom Javascript ----------------------------------------------------
+        //----------------------------------------------------------------------
+        //Custom Javascript
+        //----------------------------------------------------------------------
+        
         $cjsAdd = $this->params->get('cjs_add');
         if ($cjsAdd && !$app->isAdmin() && $doc->getType() == 'html') {
             $cjsCode = $this->params->get('cjs_code');
@@ -291,14 +300,20 @@ class plgSystemCwgears extends JPlugin {
             $doc->addScriptDeclaration($cjsCode);
         }
         
-        //Zoo Editor Tweak -----------------------------------------------------
+        //----------------------------------------------------------------------
+        //Zoo Editor Tweak
+        //----------------------------------------------------------------------
+        
         $yooEditorTweak = $this->params->get('zoo_editor_tweak');
         if ($yooEditorTweak && $app->isAdmin()) {
             $zooEditorTweak = '.creation-form textarea {width: 100%; height:400px;}';
             $doc->addCustomTag('<style type="text/css">' . $zooEditorTweak . '</style>');
         }
 
-        //Async ----------------------------------------------------------------
+        //----------------------------------------------------------------------
+        //Async
+        //----------------------------------------------------------------------
+        
         $defer = $this->params->get('defer');
         $async = $this->params->get('async');
         if (($defer || $async) && !$app->isAdmin() && $doc->getType() == 'html') {

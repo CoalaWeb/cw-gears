@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 
 /**
  * @package             Joomla
- * @subpackage          CoalaWeb Info Element
+ * @subpackage          CoalaWeb CSS MSG Element
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
@@ -26,30 +26,33 @@ defined('_JEXEC') or die('Restricted access');
  */
 require_once (JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 
-class CWElementInfo extends CWElement {
+class CWElementCssmsg extends CWElement {
 
     public function fetchElement($name, $value, &$node, $control_name) {
 
-        return NULL;
+        $doc = JFactory::getDocument();
+
+        if (version_compare(JVERSION, '3.0', '>')) {
+            $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-msg-j3.css');
+        } else {
+            $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-msg.css');
+        }
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        return '<div class="cw-message-block">'
-                . '<div class="cw-message">'
-                . '<p class="info">' . JText::_($label) . '</p>'
-                . '</div></div>';
+        return NULL;
     }
 
 }
 
-class JFormFieldInfo extends CWElementInfo {
+class JFormFieldCssmsg extends CWElementCssmsg {
 
-    var $type = 'info';
+    var $type = 'cssmsg';
 
 }
 
-class JElementInfo extends CWElementInfo {
+class JElementCssmsg extends CWElementCssmsg {
 
-    var $_name = 'info';
+    var $_name = 'cssmsg';
 
 }

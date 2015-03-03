@@ -6,9 +6,11 @@
 - **(A)** Integrated CoalaWeb Markdown into version field.
 - **(A)** Integrated CoalaWeb Versions into version field.
 - **(A)** Integrated CoalaWeb Github into version field.
+- **(A)** New cssmsg field to included minimum CSS for messages and spacers.
 - **(C)** Merged the two version fields into one.
 - **(R)** Removed gearversion fields.
-- **(A)** Integrated CoalaWeb's custom prefix version of Uikit.
+- **(R)** Removed ogtypes fields.
+- **(A)** Integrated CoalaWeb's custom prefix version of Uikit version 2.17.
 - **(C)** Updated copyright.
 - **(A)** New language strings.
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2015-02-12</creationDate>
+    <creationDate>2015-03-05</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
@@ -207,8 +207,8 @@
                 
                 <field 
                     name="uikit_theme" 
-                    type="list" 
-                    default="default" 
+                    type="list"
+                    default="flat" 
                     label="PLG_CWGEARS_FIELD_UIKIT_THEME_LABEL" 
                     description="PLG_CWGEARS_FIELD_UIKIT_THEME_DESC" >
                     <option value="default">PLG_CWGEARS_FIELD_UIKIT_THEME_OP1</option>
