@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2015-03-05</creationDate>
+    <creationDate>2015-03-18</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
@@ -20,6 +20,7 @@
         <filename>index.html</filename>
         <filename>version.php</filename>
         <folder>fields</folder>
+        <folder>helpers</folder>
         <folder>assets</folder>
         <folder>language</folder>
     </files>

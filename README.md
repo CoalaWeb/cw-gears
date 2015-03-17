@@ -13,12 +13,16 @@
 
 
 ### Languages
+
 **Need CoalaWeb Gears in a different language?**
+
 [Language Packs](http://coalaweb.com/downloads/language-packs/joomla-extensions) thanks to the **Open Translators** and hosted on **Transifex**.
 
 ### Support
+
 **Need help with CoalaWeb Gears?**
-1. Try the [Documentation](http://coalaweb.com/support/documentation/category/extensions)
-2. Search the [Forum](http://coalaweb.com/forum/index) to see if your question has already been answered. 
-3. Start a new topic.
+
+1.Try the [Documentation](http://coalaweb.com/support/documentation/category/extensions)
+2.Search the [Forum](http://coalaweb.com/forum/index) to see if your question has already been answered. 
+3.Start a new topic.
  

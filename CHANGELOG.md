@@ -1,6 +1,7 @@
 ##Change Log
 
-#### Version 0.1.1
+#### Version 0.1.1 March 2015
+- **(A)** New popup close HTML file.
 - **(A)** Integrated CoalaWeb Zones into version field.
 - **(A)** Integrated CoalaWeb Gears into version field.
 - **(A)** Integrated CoalaWeb Markdown into version field.
@@ -8,6 +9,7 @@
 - **(A)** Integrated CoalaWeb Github into version field.
 - **(A)** New cssmsg field to included minimum CSS for messages and spacers.
 - **(C)** Merged the two version fields into one.
+- **(C)** Gzip help now using IP Tools to check for bot.
 - **(R)** Removed gearversion fields.
 - **(R)** Removed ogtypes fields.
 - **(A)** Integrated CoalaWeb's custom prefix version of Uikit version 2.17.

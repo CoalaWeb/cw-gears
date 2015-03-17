@@ -77,12 +77,46 @@ class plgSystemCwgears extends JPlugin {
             }
         }
         
+        //----------------------------------------------------------------------
+        // Gzip Help
+        //----------------------------------------------------------------------
+        
         //Lets stop Gzip affecting Facebook and Linkedin scrapper bots.
         $gziphelp = $this->params->get('gzip_help', 1);
-        if ($gziphelp && !$app->isAdmin()) {
-            
+        
+        //Is Gzip turned on
+        $gzip = $app->get('gzip');
+        
+        if ($gziphelp && $gzip && !$app->isAdmin()) {
+
+            //Lets include our IP helper tools
+            include_once JPATH_PLUGINS . '/system/cwgears/helpers/iptools.php';
+
+            //Now get an IP for the current visitor
+            $ip = CwGearsIptools::getUserIp();
+
+            //Intiate our agent variable
             $agent = false;
-            
+
+            //Grab our Facebook IP array to check against
+            //Last checked from https://developers.facebook.com/docs/sharing/best-practices#crawl on March 16 2015
+            $ipTable = array(
+                '31.13.24.0/21',
+                '31.13.64.0/18',
+                '66.220.144.0/20',
+                '69.63.176.0/20',
+                '69.171.224.0/19',
+                '74.119.76.0/22',
+                '103.4.96.0/22',
+                '173.252.64.0/18',
+                '204.15.20.0/22');
+
+            //Use some more of our tools to check if the visitor is in the list
+            if (isset($ip)) {
+                $agent = CwGearsIptools::ipinList($ip, $ipTable);
+            }
+
+            //lets do a quick check against the user agent for facebook or Linkedin bots
             if (isset($_SERVER['HTTP_USER_AGENT'])) {
                 /* Facebook User Agent
                  * facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
@@ -96,10 +130,14 @@ class plgSystemCwgears extends JPlugin {
                 }
             }
             
-            if (($app->get('gzip') == 1) && ($agent)) {
+            if ($gzip && $agent) {
                 $app->set('gzip', 0);
             }
         }
+
+        //----------------------------------------------------------------------
+        // Cache Control
+        //----------------------------------------------------------------------
         
         //Let stop Joomla cache from affecting specific parts of the website.
         //Inspired by Crosstec
@@ -484,6 +522,22 @@ class plgSystemCwgears extends JPlugin {
                 $op[$k] = $v;
             }
             return $op;
-        } 
+        }
+        
+    function crawlerDetect($server) {
+        $crawlers = array(
+            'Google' => 'Google',
+            'Facebook' => 'facebookexternalhit',
+        );
+
+        $crawlers_agents = implode('|', $crawlers);
+
+        if (strpos($server, $crawlers_agents) !== false) {
+            return true; // Is a bot
+        }
+
+
+        return false; // Not a bot
+    }
 
 }
