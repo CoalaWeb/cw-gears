@@ -1,4 +1,4 @@
-/*! UIkit 2.17.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.21.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 /* ========================================================================
    Component: Base
  ========================================================================== */
@@ -606,10 +606,13 @@ iframe {
  * 1. Behave like a block element
  */
 .cw-grid-match > * > * {
+  /* 1 */
   -ms-flex: none;
   -webkit-flex: none;
   flex: none;
-  /* 1 */
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
@@ -1321,6 +1324,98 @@ iframe {
   border-top-right-radius: 4px;
   overflow: hidden;
   -webkit-transform: translateZ(0);
+}
+/* ========================================================================
+   Component: Block
+ ========================================================================== */
+.cw-block {
+  position: relative;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 768px) {
+  .cw-block {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+/*
+ * Micro clearfix to make blocks more robust
+ */
+.cw-block:before,
+.cw-block:after {
+  content: "";
+  display: table;
+}
+.cw-block:after {
+  clear: both;
+}
+/*
+ * Remove margin from the last-child
+ */
+.cw-block > :last-child {
+  margin-bottom: 0;
+}
+/* Padding Modifier
+ ========================================================================== */
+/*
+ * Large padding
+ */
+.cw-block-large {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* Tablets and bigger */
+@media (min-width: 768px) {
+  .cw-block-large {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .cw-block-large {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+/* Color Modifier
+ ========================================================================== */
+/*
+ * Default
+ */
+.cw-block-default {
+  background: #ffffff;
+}
+/*
+ * Muted
+ */
+.cw-block-muted {
+  background: #f9f9f9;
+}
+/*
+ * Primary
+ */
+.cw-block-primary {
+  background: #00a8e6;
+}
+/*
+ * Secondary
+ */
+.cw-block-secondary {
+  background: #222222;
+}
+/*
+ * Adjust padding between equal colored blocks
+ */
+.cw-block-default + .cw-block-default,
+.cw-block-muted + .cw-block-muted,
+.cw-block-primary + .cw-block-primary,
+.cw-block-secondary + .cw-block-secondary {
+  padding-top: 0;
 }
 /* ========================================================================
    Component: Article
@@ -2134,8 +2229,8 @@ html:not(.cw-touch) .cw-nav-offcanvas ul a:hover {
  * Hover
  * 1. Apply hover style also to focus state
  */
-.cw-subnav > * > *:hover,
-.cw-subnav > * > *:focus {
+.cw-subnav > * > :hover,
+.cw-subnav > * > :focus {
   color: #0077dd;
   text-decoration: none;
 }
@@ -2168,8 +2263,8 @@ html:not(.cw-touch) .cw-nav-offcanvas ul a:hover {
  * 1. Apply hover style also to focus state
  * 2. Remove default focus style
  */
-.cw-subnav-pill > * > *:hover,
-.cw-subnav-pill > * > *:focus {
+.cw-subnav-pill > * > :hover,
+.cw-subnav-pill > * > :focus {
   background: #fafafa;
   color: #444444;
   text-decoration: none;
@@ -2732,8 +2827,8 @@ html:not(.cw-touch) .cw-nav-offcanvas ul a:hover {
 /*
  * Hover
  */
-.cw-thumbnav > * > *:hover > img,
-.cw-thumbnav > * > *:focus > img {
+.cw-thumbnav > * > :hover > img,
+.cw-thumbnav > * > :focus > img {
   opacity: 1;
 }
 /*
@@ -2884,6 +2979,12 @@ html:not(.cw-touch) .cw-nav-offcanvas ul a:hover {
 .cw-table caption {
   text-align: left;
   color: #999999;
+}
+/*
+ * Active State
+ */
+.cw-table tbody tr.cw-active {
+  background: #f0f0f0;
 }
 /* Sub-modifier: `cw-table-middle`
  ========================================================================== */
@@ -3745,17 +3846,23 @@ select.cw-form-width-mini {
 }
 /* Size modifiers
  ========================================================================== */
-.cw-icon-small:before {
+.cw-icon-small {
   font-size: 150%;
   vertical-align: -10%;
 }
-.cw-icon-medium:before {
+.cw-icon-medium {
   font-size: 200%;
   vertical-align: -16%;
 }
-.cw-icon-large:before {
+.cw-icon-large {
   font-size: 250%;
   vertical-align: -22%;
+}
+/* Modifier: `cw-icon-justify`
+ ========================================================================== */
+.cw-icon-justify {
+  width: 1em;
+  text-align: center;
 }
 /* Modifier: `cw-icon-spin`
  ========================================================================== */
@@ -5842,6 +5949,14 @@ a.cw-thumbnail:focus {
 .cw-overlay-background {
   background: rgba(0, 0, 0, 0.5);
 }
+/* Modifier `cw-overlay-image`
+ ========================================================================== */
+/*
+ * Reset panel
+ */
+.cw-overlay-image {
+  padding: 0;
+}
 /* Position modifiers
  ========================================================================== */
 .cw-overlay-top {
@@ -6833,8 +6948,6 @@ a.cw-thumbnail:focus {
   background: #ffffff;
   color: #444444;
   left: -1px;
-  border: 1px solid #cbcbcb;
-  border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .cw-open > .cw-dropdown-navbar {
@@ -6864,6 +6977,7 @@ a.cw-thumbnail:focus {
  * 4. Mask the background page
  * 5. Fade-in transition
  * 6. Deactivate browser history navigation in IE11
+ * 7. force hardware acceleration to prevent browser rendering hiccups
  */
 .cw-modal {
   /* 1 */
@@ -6886,6 +7000,9 @@ a.cw-thumbnail:focus {
   transition: opacity 0.15s linear;
   /* 6 */
   touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+  /* 7 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 /*
  * Open state
@@ -6964,7 +7081,7 @@ a.cw-thumbnail:focus {
 /*
  * Remove margin from adjacent element
  */
-.cw-modal-dialog > .cw-close:first-child + *:not([class*='cw-modal-']) {
+.cw-modal-dialog > .cw-close:first-child + :not([class*='cw-modal-']) {
   margin-top: 0;
 }
 /* Modifier: `cw-modal-dialog-lightbox`
@@ -6972,7 +7089,6 @@ a.cw-thumbnail:focus {
 .cw-modal-dialog-lightbox {
   margin: 15px auto;
   padding: 0;
-  min-height: 200px;
   max-width: 95%;
   max-width: calc(100% - 30px);
   border-radius: 0;
@@ -7200,7 +7316,7 @@ a.cw-thumbnail:focus {
 /*
  * Items
  */
-.cw-switcher > *:not(.cw-active) {
+.cw-switcher > :not(.cw-active) {
   display: none;
 }
 /* ========================================================================
@@ -7583,6 +7699,21 @@ a.cw-thumbnail:focus {
 .cw-margin-bottom-remove {
   margin-bottom: 0 !important;
 }
+/* Padding
+ ========================================================================== */
+.cw-padding-remove {
+  padding: 0 !important;
+}
+.cw-padding-top-remove {
+  padding-top: 0 !important;
+}
+.cw-padding-bottom-remove {
+  padding-bottom: 0 !important;
+}
+.cw-padding-vertical-remove {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 /* Border
  ========================================================================== */
 .cw-border-circle {
@@ -7623,7 +7754,9 @@ a.cw-thumbnail:focus {
 .cw-link-reset,
 .cw-link-reset a,
 .cw-link-reset:hover,
-.cw-link-reset a:hover {
+.cw-link-reset a:hover,
+.cw-link-reset:focus,
+.cw-link-reset a:focus {
   color: inherit;
   text-decoration: none;
 }
@@ -7657,6 +7790,9 @@ a.cw-thumbnail:focus {
 }
 /* Overflow
  ========================================================================== */
+.cw-overflow-hidden {
+  overflow: hidden;
+}
 /*
  * Enable scrollbars if content is clipped
  */
@@ -7713,6 +7849,12 @@ a.cw-thumbnail:focus {
  */
 .cw-position-relative {
   position: relative !important;
+}
+/*
+ * Z-index
+ */
+.cw-position-z-index {
+  z-index: 1;
 }
 /* Display
  ========================================================================== */
@@ -7877,6 +8019,11 @@ a.cw-thumbnail:focus {
 }
 /* Wrap
  ========================================================================== */
+.cw-flex-nowrap {
+  -ms-flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
 .cw-flex-wrap {
   -ms-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
@@ -8018,6 +8165,212 @@ a.cw-thumbnail:focus {
   -ms-flex: 1;
   -webkit-flex: 1;
   flex: 1;
+}
+/* ========================================================================
+   Component: Contrast
+ ========================================================================== */
+.cw-contrast {
+  color: #ffffff;
+}
+.cw-contrast a:not([class]),
+.cw-contrast .cw-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+.cw-contrast a:not([class]):hover,
+.cw-contrast .cw-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.cw-contrast :not(pre) > code,
+.cw-contrast :not(pre) > kbd,
+.cw-contrast :not(pre) > samp {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+.cw-contrast em {
+  color: #ffffff;
+}
+.cw-contrast h1,
+.cw-contrast h2,
+.cw-contrast h3,
+.cw-contrast h4,
+.cw-contrast h5,
+.cw-contrast h6 {
+  color: #ffffff;
+}
+.cw-contrast hr {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+.cw-contrast .cw-nav li > a,
+.cw-contrast .cw-nav li > a:hover {
+  text-decoration: none;
+}
+.cw-contrast .cw-nav-side > li > a {
+  color: #ffffff;
+}
+.cw-contrast .cw-nav-side > li > a:hover,
+.cw-contrast .cw-nav-side > li > a:focus {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  text-shadow: none;
+}
+.cw-contrast .cw-nav-side > li.cw-active > a {
+  background: #ffffff;
+  color: #444444;
+  text-shadow: none;
+}
+.cw-contrast .cw-nav-side .cw-nav-header {
+  color: #ffffff;
+}
+.cw-contrast .cw-nav-side .cw-nav-divider {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+.cw-contrast .cw-nav-side ul a {
+  color: rgba(255, 255, 255, 0.7);
+}
+.cw-contrast .cw-nav-side ul a:hover {
+  color: #ffffff;
+}
+.cw-contrast .cw-subnav > * > a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+.cw-contrast .cw-subnav > * > a:hover,
+.cw-contrast .cw-subnav > * > a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.cw-contrast .cw-subnav > .cw-active > a {
+  color: #ffffff;
+}
+.cw-contrast .cw-subnav-line > :nth-child(n+2):before {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
+.cw-contrast .cw-subnav-pill > * > a:hover,
+.cw-contrast .cw-subnav-pill > * > a:focus {
+  background: rgba(255, 255, 255, 0.7);
+  color: #444444;
+  text-decoration: none;
+}
+.cw-contrast .cw-subnav-pill > .cw-active > a {
+  background: #ffffff;
+  color: #444444;
+}
+.cw-contrast .cw-list-line > li:nth-child(n+2) {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+.cw-contrast .cw-form select,
+.cw-contrast .cw-form textarea,
+.cw-contrast .cw-form input:not([type]),
+.cw-contrast .cw-form input[type="text"],
+.cw-contrast .cw-form input[type="password"],
+.cw-contrast .cw-form input[type="datetime"],
+.cw-contrast .cw-form input[type="datetime-local"],
+.cw-contrast .cw-form input[type="date"],
+.cw-contrast .cw-form input[type="month"],
+.cw-contrast .cw-form input[type="time"],
+.cw-contrast .cw-form input[type="week"],
+.cw-contrast .cw-form input[type="number"],
+.cw-contrast .cw-form input[type="email"],
+.cw-contrast .cw-form input[type="url"],
+.cw-contrast .cw-form input[type="search"],
+.cw-contrast .cw-form input[type="tel"],
+.cw-contrast .cw-form input[type="color"] {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+  color: #444444;
+  background-clip: padding-box;
+}
+.cw-contrast .cw-form select:focus,
+.cw-contrast .cw-form textarea:focus,
+.cw-contrast .cw-form input:not([type]):focus,
+.cw-contrast .cw-form input[type="text"]:focus,
+.cw-contrast .cw-form input[type="password"]:focus,
+.cw-contrast .cw-form input[type="datetime"]:focus,
+.cw-contrast .cw-form input[type="datetime-local"]:focus,
+.cw-contrast .cw-form input[type="date"]:focus,
+.cw-contrast .cw-form input[type="month"]:focus,
+.cw-contrast .cw-form input[type="time"]:focus,
+.cw-contrast .cw-form input[type="week"]:focus,
+.cw-contrast .cw-form input[type="number"]:focus,
+.cw-contrast .cw-form input[type="email"]:focus,
+.cw-contrast .cw-form input[type="url"]:focus,
+.cw-contrast .cw-form input[type="search"]:focus,
+.cw-contrast .cw-form input[type="tel"]:focus,
+.cw-contrast .cw-form input[type="color"]:focus {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #444444;
+}
+.cw-contrast .cw-form :-ms-input-placeholder {
+  color: rgba(68, 68, 68, 0.7) !important;
+}
+.cw-contrast .cw-form ::-moz-placeholder {
+  color: rgba(68, 68, 68, 0.7);
+}
+.cw-contrast .cw-form ::-webkit-input-placeholder {
+  color: rgba(68, 68, 68, 0.7);
+}
+.cw-contrast .cw-button {
+  color: #444444;
+  background: #ffffff;
+  border-color: transparent;
+}
+.cw-contrast .cw-button:hover,
+.cw-contrast .cw-button:focus {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #444444;
+  border-color: transparent;
+}
+.cw-contrast .cw-button:active,
+.cw-contrast .cw-button.cw-active {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #444444;
+  box-shadow: none;
+}
+.cw-contrast .cw-button-primary {
+  background-color: #009dd8;
+  color: #ffffff;
+}
+.cw-contrast .cw-button-primary:hover,
+.cw-contrast .cw-button-primary:focus {
+  background-color: #00aff2;
+  color: #ffffff;
+}
+.cw-contrast .cw-button-primary:active,
+.cw-contrast .cw-button-primary.cw-active {
+  background-color: #008abf;
+  color: #ffffff;
+}
+.cw-contrast .cw-icon-hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+.cw-contrast .cw-icon-hover:hover {
+  color: #ffffff;
+}
+.cw-contrast .cw-icon-button {
+  background: #ffffff;
+  color: #444444;
+  border-color: transparent;
+}
+.cw-contrast .cw-icon-button:hover,
+.cw-contrast .cw-icon-button:focus {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #444444;
+  border-color: transparent;
+}
+.cw-contrast .cw-icon-button:active {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #444444;
+  box-shadow: none;
+}
+.cw-contrast .cw-text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.cw-contrast .cw-text-primary {
+  color: #2d7091 !important;
 }
 /* ========================================================================
    Component: Print

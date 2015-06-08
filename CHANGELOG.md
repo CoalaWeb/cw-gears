@@ -1,5 +1,10 @@
 ##Change Log
 
+#### Version 0.1.2 June 2015
+- **(A)** Added WhatsApp to sorting field.
+- **(A)** Integrated CoalaWeb News into version field.
+- **(C)** Updated CoalaWeb's custom prefix version of Uikit to 2.21.
+
 #### Version 0.1.1 March 2015
 - **(A)** New popup close HTML file.
 - **(A)** Integrated CoalaWeb Zones into version field.

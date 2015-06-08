@@ -71,7 +71,7 @@ class JFormFieldSorting extends JFormField {
         // Get possible new options.
         $possibleNew = '';
         if ($this->name === 'jform[params][sorting_tabs]') {
-            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,contact_f,customone_c,customtwo_c';
+            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,contact_f,customone_c,customtwo_c';
             $possibleNew = explode(',', $default);
         }
         // Explode currently stored values.
