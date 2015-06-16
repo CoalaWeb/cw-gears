@@ -309,6 +309,10 @@ fieldset.adminform-legacy fieldset.radio {
     border: 1px solid #FAE6BE;
 }
 
+.form-horizontal .control-label p.info {
+    width: 100% !important;
+}
+
 /* End
 ------------------------------------------------------------------------------*/
 

@@ -82,6 +82,9 @@ class JFormFieldSorting extends JFormField {
 
         //Append new options to list.
         $items = array_merge((array) $currentItems, (array) $newItems);
+        
+        //Create a string from our new appended array
+        $cvs = join(',', $items);
 
         $input = '<ul id="sortable">';
 
@@ -93,7 +96,7 @@ class JFormFieldSorting extends JFormField {
         }
 
         $input .= '</ul>
-		<input type="hidden" name="' . $this->name . '" value="' . $this->value . '" id="' . $this->id . '" />';
+		<input type="hidden" name="' . $this->name . '" value="' . $cvs . '" id="' . $this->id . '" />';
         return $input;
     }
 
