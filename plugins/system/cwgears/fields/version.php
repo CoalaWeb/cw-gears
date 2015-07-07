@@ -111,6 +111,11 @@ class CWElementVersion extends CWElement {
                 $date = (PLG_CWMARKDOWN_DATE);
                 $ispro = (PLG_CWMARKDOWN_PRO);
                 break;
+            case "plg_system_cwprint":
+                $version = (PLG_CWPRINT_VERSION);
+                $date = (PLG_CWPRINT_DATE);
+                $ispro = (PLG_CWPRINT_PRO);
+                break;
         }
 
         if ($ispro == 1) {
