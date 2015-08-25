@@ -86,10 +86,10 @@ class CWElementVersion extends CWElement {
                 $date = (MOD_CWFLAIR_DATE);
                 $ispro = (MOD_CWFLAIR_PRO);
                 break;
-            case "mod_coalawebzones":
-                $version = (MOD_CWZONES_VERSION);
-                $date = (MOD_CWZONES_DATE);
-                $ispro = (MOD_CWZONES_PRO);
+            case "mod_coalawebhours":
+                $version = (MOD_CWHOURS_VERSION);
+                $date = (MOD_CWHOURS_DATE);
+                $ispro = (MOD_CWHOURS_PRO);
                 break;
             case "plg_system_cwgears":
                 $version = (PLG_CWGEARS_VERSION);

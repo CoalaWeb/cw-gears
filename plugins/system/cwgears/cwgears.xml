@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2015-07-07</creationDate>
+    <creationDate>2015-08-26</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2015 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <languages folder="language">
@@ -84,6 +84,17 @@
                     default="0"
                     label="PLG_CWGEARS_FIELD_GZIPHELP_LABEL" 
                     description="PLG_CWGEARS_FIELD_GZIPHELP_DESC" >
+                    <option value="0">CW_NO</option>
+                    <option value="1">CW_YES</option>
+                </field>
+                
+                <field 
+                    name="recap_compact" 
+                    type="radio"
+                    class="btn-group"  
+                    default="0"
+                    label="PLG_CWGEARS_FIELD_RECAPCOMPACT_LABEL" 
+                    description="PLG_CWGEARS_FIELD_RECAPCOMPACT_DESC" >
                     <option value="0">CW_NO</option>
                     <option value="1">CW_YES</option>
                 </field>

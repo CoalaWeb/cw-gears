@@ -279,6 +279,32 @@ class plgSystemCwgears extends JPlugin {
             $doc->addScript($uikitLocal . "js/coalaweb.uikit.min.js");
             $doc->addStyleSheet($uikitLocal . $uikitCss);
         }
+        
+        //----------------------------------------------------------------------
+        // reCAPTCHA Size
+        //----------------------------------------------------------------------
+        
+        $recapCompact = $this->params->get('recap_compact', 0);
+
+        if ($recapCompact) {
+            $headData = $doc->getHeadData();
+            $recap = array();
+            foreach ($headData["script"] as $key => $value) {
+                if (strpos($value, 'theme: "light"') !== false) {
+                    $value = str_replace('theme: "light"', 'theme: "light", size: "compact"', $value);
+                    $recap["text/javascript"] = $value;
+                } elseif (strpos($value, 'theme: "dark"') !== false) {
+                    $value = str_replace('theme: "dark"', 'theme: "dark", size: "compact"', $value);
+                    $recap["text/javascript"] = $value;
+                }
+            }
+            
+            $headData["script"] = $recap;
+            $doc->setHeadData($headData);
+
+            unset($recap);
+            unset($headData);
+        }
 
         //----------------------------------------------------------------------
         //Custom CSS

@@ -310,7 +310,7 @@ fieldset.adminform-legacy fieldset.radio {
 }
 
 .form-horizontal .control-label p.info {
-    width: 100% !important;
+    width: auto;
 }
 
 /* End
