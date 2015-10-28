@@ -50,8 +50,8 @@ class plgSystemCwgears extends JPlugin {
 
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
-        $option = JRequest::getCmd('option');
-        $ext = JRequest::getCmd('extension');
+        $option = JFactory::getApplication()->input->get('option');
+        $ext = JFactory::getApplication()->input->get('extension');
         $baseUrl = '../media/coalaweb/';
 
         //Lets add some style for backend extension configurations.
@@ -251,12 +251,10 @@ class plgSystemCwgears extends JPlugin {
         $uikitAdd = $this->params->get('uikit_add', 1);
         $uikitTheme = $this->params->get('uikit_theme', 'flat');
         $uikitCount = $app->get('CWUikitCount', 0);
-
+        $uikitPlus = $app->get('CWUikitPlus', 0);
+        $uikitLocal = JURI::root(true) . "/media/coalaweb/plugins/system/gears/uikit/";
+        
         if ($uikitCount > 0 && $uikitAdd) {
-            // Let create a link to our local uikit directory.
-            $uikitLocal = JURI::root(true) . "/media/coalaweb/plugins/system/gears/uikit/";
-
-            //Now for a uikit theme
             switch ($uikitTheme) {
                 case "default":
                     $uikitCss = 'css/coalaweb.uikit.min.css';
@@ -270,7 +268,7 @@ class plgSystemCwgears extends JPlugin {
                 default:
                     $uikitCss = 'css/coalaweb.uikit.min.css';
             }
-
+            
             //Define our custom uikit prefix for the JavaScript
             $uikitPre = "var myUIkit = UIkit.noConflict('cw');";
 
@@ -278,6 +276,15 @@ class plgSystemCwgears extends JPlugin {
             $doc->addScriptDeclaration($uikitPre);
             $doc->addScript($uikitLocal . "js/coalaweb.uikit.min.js");
             $doc->addStyleSheet($uikitLocal . $uikitCss);
+        }
+        
+        if ($uikitCount > 0 && $uikitPlus > 0 && $uikitAdd) {
+            //adds slider naviagtion
+            $uikitExtra = 'css/components/slidenav.min.css';
+            
+            //lightbox support
+            $doc->addScript($uikitLocal . "js/components/coalaweb.lightbox.min.js");
+            $doc->addStyleSheet($uikitLocal . $uikitExtra);
         }
         
         //----------------------------------------------------------------------
@@ -304,6 +311,10 @@ class plgSystemCwgears extends JPlugin {
 
             unset($recap);
             unset($headData);
+            
+            //Add a little CSS to fix size issues
+            $doc->addStyleDeclaration('.recaptcha iframe{width:158px;height: 138px;border-radius:5px;}');
+            
         }
 
         //----------------------------------------------------------------------

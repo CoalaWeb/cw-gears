@@ -115,10 +115,10 @@ togglers
     min-width: 30%!important; 
 }
 
-input.readonly {
+/*input.readonly {
     padding:0px !important;
     color: rgb(18, 114, 165) !important;
-}
+}*/
 
 .pane-sliders .panel {
     border: medium none !important;

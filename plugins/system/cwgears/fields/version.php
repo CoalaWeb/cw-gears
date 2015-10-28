@@ -71,6 +71,11 @@ class CWElementVersion extends CWElement {
                 $date = (COM_CWTRAFFIC_DATE);
                 $ispro = (COM_CWTRAFFIC_PRO);
                 break;
+            case "com_coalawebmarket":
+                $version = (COM_CWMARKET_VERSION);
+                $date = (COM_CWMARKET_DATE);
+                $ispro = (COM_CWMARKET_PRO);
+                break;
             case "mod_coalawebpanel":
                 $version = (MOD_CWPANEL_VERSION);
                 $date = (MOD_CWPANEL_DATE);
@@ -115,6 +120,11 @@ class CWElementVersion extends CWElement {
                 $version = (PLG_CWPRINT_VERSION);
                 $date = (PLG_CWPRINT_DATE);
                 $ispro = (PLG_CWPRINT_PRO);
+                break;
+            case "plg_user_cwusers":
+                $version = (PLG_CWUSERS_VERSION);
+                $date = (PLG_CWUSERS_DATE);
+                $ispro = (PLG_CWUSERS_PRO);
                 break;
         }
 

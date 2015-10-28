@@ -1,5 +1,11 @@
 ##Change Log
 
+#### Version 0.1.5 October 2015
+- **(A)** CSS to fix reCAPTCHA compact layout background.
+- **(A)** Integrated CoalaWeb Market into version field.
+- **(A)** Integrated CoalaWeb Assign into version field.
+- **(A)** Added new UIkit plus option.
+
 #### Version 0.1.4 August 2015
 - **(C)** Update to Joomla 3.+ module CSS updating message width.
 - **(C)** Changed CoalaWeb Zones to Hours in version field.
