@@ -10,6 +10,22 @@
     <version>0.1.5</version>
     <description>PLG_CWGEARS_DESC</description>
 
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install/mysql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install/mysql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    <update> <!-- Runs on update; New in 1.6 -->
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    
     <languages folder="language">
         <language tag="en-GB">en-GB/en-GB.plg_system_cwgears.ini</language>
         <language tag="en-GB">en-GB/en-GB.plg_system_cwgears.sys.ini</language>

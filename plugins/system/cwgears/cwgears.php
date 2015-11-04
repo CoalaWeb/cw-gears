@@ -28,6 +28,7 @@ jimport('joomla.plugin.plugin');
 jimport('joomla.environment.browser');
 jimport('joomla.filesystem.file');
 jimport('joomla.application.module.helper');
+require_once __DIR__ . '/helpers/loadcount.php';
 
 class plgSystemCwgears extends JPlugin {
 
@@ -153,6 +154,7 @@ class plgSystemCwgears extends JPlugin {
 
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
+        $helpFunc = new CwGearsHelperLoadcount();
 
         //----------------------------------------------------------------------
         //Jquery Loading
@@ -250,11 +252,13 @@ class plgSystemCwgears extends JPlugin {
         
         $uikitAdd = $this->params->get('uikit_add', 1);
         $uikitTheme = $this->params->get('uikit_theme', 'flat');
-        $uikitCount = $app->get('CWUikitCount', 0);
-        $uikitPlus = $app->get('CWUikitPlus', 0);
+        $url = JURI::getInstance()->toString();
+        $uikit = $helpFunc::getCounts($url, 'uikit');
+        $uikitPlus = $helpFunc::getCounts($url, 'uikit_plus');
+
         $uikitLocal = JURI::root(true) . "/media/coalaweb/plugins/system/gears/uikit/";
         
-        if ($uikitCount > 0 && $uikitAdd) {
+        if ($uikit > 0 && $uikitAdd) {
             switch ($uikitTheme) {
                 case "default":
                     $uikitCss = 'css/coalaweb.uikit.min.css';
@@ -278,7 +282,7 @@ class plgSystemCwgears extends JPlugin {
             $doc->addStyleSheet($uikitLocal . $uikitCss);
         }
         
-        if ($uikitCount > 0 && $uikitPlus > 0 && $uikitAdd) {
+        if ($uikit > 0 && $uikitPlus > 0 && $uikitAdd) {
             //adds slider naviagtion
             $uikitExtra = 'css/components/slidenav.min.css';
             
