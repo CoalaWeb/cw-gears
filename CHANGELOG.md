@@ -13,6 +13,7 @@
 - **(A)** Added install script to help database creation and update.
 - **(A)** Added database table to control loading of scripts and frameworks based on page call.
 - **(A)** Added database table to control auto DB clean up.
+- **(L)** New and updated language strings.
 
 #### Version 0.1.4 August 2015
 - **(C)** Update to Joomla 3.+ module CSS updating message width.
