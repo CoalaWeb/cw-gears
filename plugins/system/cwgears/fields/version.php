@@ -66,6 +66,11 @@ class CWElementVersion extends CWElement {
                 $date = (COM_CWSOCIALLINKS_DATE);
                 $ispro = (COM_CWSOCIALLINKS_PRO);
                 break;
+            case "com_coalawebcomments":
+                $version = (COM_CWCOMMENTS_VERSION);
+                $date = (COM_CWCOMMENTS_DATE);
+                $ispro = (COM_CWCOMMENTS_PRO);
+                break;
             case "com_coalawebtraffic":
                 $version = (COM_CWTRAFFIC_VERSION);
                 $date = (COM_CWTRAFFIC_DATE);
@@ -100,6 +105,11 @@ class CWElementVersion extends CWElement {
                 $version = (PLG_CWGEARS_VERSION);
                 $date = (PLG_CWGEARS_DATE);
                 $ispro = (PLG_CWGEARS_PRO);
+                break;
+            case "plg_system_cwfacebookjs":
+                $version = (PLG_CWFACEBOOKJS_VERSION);
+                $date = (PLG_CWFACEBOOKJS_DATE);
+                $ispro = (PLG_CWFACEBOOKJS_PRO);
                 break;
             case "plg_content_cwgithub":
                 $version = (PLG_CWGITHUB_VERSION);

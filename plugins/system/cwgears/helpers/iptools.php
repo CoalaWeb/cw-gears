@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
  */
 
 /**
- *  component helper.
+ *  extension helper.
  */
 class CwGearsIptools {
 
