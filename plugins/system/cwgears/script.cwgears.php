@@ -25,10 +25,19 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
 
-class Plg_CwgearsInstallerScript {
+class PlgSystemCwgearsInstallerScript { 
 
      /** @var string The extension's name */
     protected $_coalaweb_extension = 'cwgears';
+    
+    /** @var array Plugin that should activated automatically */
+    private $cwActivatePlugins = array(
+        'plugins' => array(
+            'system' => array(
+                'cwgears' => 1,
+            )
+        )
+    );
     
     /**
      * Joomla! pre-flight event
@@ -38,6 +47,31 @@ class Plg_CwgearsInstallerScript {
      */
     public function preflight($type, $parent) {
 
+        // Only allow to install on Joomla! 3.2 or later with PHP 5.4 or later
+        if (defined('PHP_VERSION')) {
+            $version = PHP_VERSION;
+        } elseif (function_exists('phpversion')) {
+            $version = phpversion();
+        } else {
+            $version = '5.0.0'; // all bets are off!
+        }
+
+        if (!version_compare(JVERSION, '3.2', 'ge')) {
+            $msg = "<p>Sorry, you need Joomla! 3.2 or later to install this extension!</p>";
+
+            JError::raiseWarning(100, $msg);
+
+            return false;
+        }
+
+        if (!version_compare($version, '5.4', 'ge')) {
+            $msg = "<p>Sorry, you need PHP 5.4 or later to install this component!</p>";
+
+            JError::raiseWarning(100, $msg);
+
+            return false;
+        }
+        
         // Workarounds for JInstaller bugs
         if ($type != 'discover_install') {
             $this->_fixBrokenSQLUpdates($parent);
@@ -46,7 +80,19 @@ class Plg_CwgearsInstallerScript {
         return true;
     }
 
-  
+      /**
+     * Runs after install, update or discover_update
+     * @param string $type install, update or discover_update
+     * @param JInstaller $parent 
+     */
+    function postflight($type, $parent) {
+        
+        //Activate main plugin only on install
+        if ($type == 'install') {       
+            $this->_activatePlugin($parent);
+        }
+
+    }
 
     /**
      * Fixed failed install/update of database
@@ -147,7 +193,37 @@ class Plg_CwgearsInstallerScript {
         $db->execute();
     }
 
-  
-    
+    /**
+     * Activate if main extension is a plugin on install
+     *
+     * @param JInstaller $parent
+     */
+    private function _activatePlugin($parent) {
+        $db = JFactory::getDbo();
 
+        if (count($this->cwActivatePlugins['plugins'])) {
+            foreach ($this->cwActivatePlugins['plugins'] as $folder => $plugins) {
+                if (count($plugins)) {
+                    foreach ($plugins as $plugin => $published) {
+
+                        if ($published) {
+                            $query = $db->getQuery(true)
+                                    ->update($db->qn('#__extensions'))
+                                    ->set($db->qn('enabled') . ' = ' . $db->q('1'))
+                                    ->where($db->qn('element') . ' = ' . $db->q($plugin))
+                                    ->where($db->qn('folder') . ' = ' . $db->q($folder));
+                            $db->setQuery($query);
+
+                            try {
+                                $db->execute();
+                            } catch (Exception $exc) {
+                                // Nothing
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }

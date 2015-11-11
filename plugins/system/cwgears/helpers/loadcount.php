@@ -28,7 +28,6 @@ defined('_JEXEC') or die('Restricted access');
 /**
  *  component helper.
  */
-
 class CwGearsHelperLoadcount {
 
     /**
@@ -37,14 +36,14 @@ class CwGearsHelperLoadcount {
     public static function getCounts($url, $check) {
         //Start our database queries
         $db = JFactory::getDbo();
-        
+
         //Now lets check the count
         $query = $db->getQuery(true);
         $query->select($check);
         $query->from($db->quoteName('#__cwgears'));
         $query->where('url = ' . $db->quote($url));
         $db->setQuery($query);
-        
+
         //Get the result
         $count = $db->loadResult();
 
@@ -72,42 +71,40 @@ class CwGearsHelperLoadcount {
         $current = $db->loadResult();
 
         if ($current) {// we are updating
+            $query = $db->getQuery(true);
+
+            $fields = array(
+                $db->quoteName('uikit') . ' = ' . $db->quote('1'),
+                $db->quoteName('time') . ' = ' . $db->quote($now)
+            );
+
+            $conditions = array(
+                $db->quoteName('url') . ' = ' . $db->quote($url)
+            );
+
+            $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
+
+            $db->setQuery($query);
             try {
-                $query = $db->getQuery(true);
-
-                $fields = array(
-                    $db->quoteName('uikit') . ' = '. $db->quote('1'),
-                    $db->quoteName('time') . ' = ' . $db->quote($now)
-                );
-
-                $conditions = array(
-                    $db->quoteName('url') . ' = ' . $db->quote($url)
-                );
-
-                $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
-
-                $db->setQuery($query);
                 $db->execute();
             } catch (Exception $e) {
-                JLog::addLogger(array('text_file' => 'plg_cwgears.error.php'));
-                JLog::add($e->getMessage());
+                // Nothing
             }
         } else {//we are inserting
-            try {
-                $query = $db->getQuery(true);
-                $query->insert($db->quoteName('#__cwgears'));
-                $query->columns(
-                        'url, uikit, time');
-                $query->values(
-                        $db->quote($url) . ','
-                        . $db->quote('1') . ','
-                        . $db->quote($now));
+            $query = $db->getQuery(true);
+            $query->insert($db->quoteName('#__cwgears'));
+            $query->columns(
+                    'url, uikit, time');
+            $query->values(
+                    $db->quote($url) . ','
+                    . $db->quote('1') . ','
+                    . $db->quote($now));
 
-                $db->setQuery($query);
+            $db->setQuery($query);
+            try {
                 $db->execute();
             } catch (Exception $e) {
-//                JLog::addLogger(array('text_file' => 'plg_cwgears.error.php'));
-//                JLog::add($e->getMessage());
+                // Nothing
             }
         }
 
@@ -131,42 +128,40 @@ class CwGearsHelperLoadcount {
         $current = $db->loadResult();
 
         if ($current) {// we are updating
+            $query = $db->getQuery(true);
+
+            $fields = array(
+                $db->quoteName('uikit_plus') . ' = ' . $db->quote('1'),
+                $db->quoteName('time') . ' = ' . $db->quote($now)
+            );
+
+            $conditions = array(
+                $db->quoteName('url') . ' = ' . $db->quote($url)
+            );
+
+            $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
+
+            $db->setQuery($query);
             try {
-                $query = $db->getQuery(true);
-
-                $fields = array(
-                    $db->quoteName('uikit_plus') . ' = ' .$db->quote('1'),
-                    $db->quoteName('time') . ' = ' . $db->quote($now)
-                );
-
-                $conditions = array(
-                    $db->quoteName('url') . ' = ' . $db->quote($url)
-                );
-
-                $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
-
-                $db->setQuery($query);
                 $db->execute();
             } catch (Exception $e) {
-//                JLog::addLogger(array('text_file' => 'plg_cwgears.error.php'));
-//                JLog::add($e->getMessage());
+                // Nothing
             }
         } else {//we are inserting
-            try {
-                $query = $db->getQuery(true);
-                $query->insert($db->quoteName('#__cwgears'));
-                $query->columns(
-                        'url, uikit_plus, time');
-                $query->values(
-                        $db->quote($url) . ','
-                        . $db->quote('1') . ','
-                        . $db->quote($now));
+            $query = $db->getQuery(true);
+            $query->insert($db->quoteName('#__cwgears'));
+            $query->columns(
+                    'url, uikit_plus, time');
+            $query->values(
+                    $db->quote($url) . ','
+                    . $db->quote('1') . ','
+                    . $db->quote($now));
 
-                $db->setQuery($query);
+            $db->setQuery($query);
+            try {
                 $db->execute();
             } catch (Exception $e) {
-//                JLog::addLogger(array('text_file' => 'plg_cwgears.error.php'));
-//                JLog::add($e->getMessage());
+                // Nothing
             }
         }
 
@@ -193,42 +188,40 @@ class CwGearsHelperLoadcount {
         $current = $db->loadResult();
 
         if ($current) {// we are updating
+            $query = $db->getQuery(true);
+
+            $fields = array(
+                $db->quoteName('facebook_js') . ' = ' . $db->quote('1'),
+                $db->quoteName('time') . ' = ' . $db->quote($now)
+            );
+
+            $conditions = array(
+                $db->quoteName('url') . ' = ' . $db->quote($url)
+            );
+
+            $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
+
+            $db->setQuery($query);
             try {
-                $query = $db->getQuery(true);
-
-                $fields = array(
-                    $db->quoteName('facebook_js') . ' = ' .$db->quote('1'),
-                    $db->quoteName('time') . ' = ' . $db->quote($now)
-                );
-
-                $conditions = array(
-                    $db->quoteName('url') . ' = ' . $db->quote($url)
-                );
-
-                $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
-
-                $db->setQuery($query);
                 $db->execute();
             } catch (Exception $e) {
-//                JLog::addLogger(array('text_file' => 'plg_cwgears.error.php'));
-//                JLog::add($e->getMessage());
+                // Nothing
             }
         } else {//we are inserting
-            try {
-                $query = $db->getQuery(true);
-                $query->insert($db->quoteName('#__cwgears'));
-                $query->columns(
-                        'url, facebook_js, time ');
-                $query->values(
-                        $db->quote($url) . ','
-                        . $db->quote('1') . ','
-                        . $db->quote($now));
+            $query = $db->getQuery(true);
+            $query->insert($db->quoteName('#__cwgears'));
+            $query->columns(
+                    'url, facebook_js, time ');
+            $query->values(
+                    $db->quote($url) . ','
+                    . $db->quote('1') . ','
+                    . $db->quote($now));
 
-                $db->setQuery($query);
+            $db->setQuery($query);
+            try {
                 $db->execute();
             } catch (Exception $e) {
-//                JLog::addLogger(array('text_file' => 'plg_cwgears.error.php'));
-//                JLog::add($e->getMessage());
+                // Nothing
             }
         }
 
