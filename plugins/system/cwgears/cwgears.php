@@ -48,6 +48,13 @@ class plgSystemCwgears extends JPlugin {
     }
 
     public function onAfterInitialise() {
+        $app = JFactory::getApplication();
+        $doc = JFactory::getDocument();
+
+        if ($app->getName() !== 'site') {
+            return;
+        }
+        
         //Lets keep our resource loading table nice and up to date
         $dbClean = $this->params->get('db_clean', '1');
         $db = JFactory::getDbo();
@@ -78,7 +85,7 @@ class plgSystemCwgears extends JPlugin {
                         ->columns($db->quoteName($columns))
                         ->values(implode(',', $values));
                 $db->setQuery($query);
-                $db->query();
+                $db->execute();
                 $items = '';
             } else {
                 //Not our first time then lets check 
@@ -99,14 +106,14 @@ class plgSystemCwgears extends JPlugin {
                 $query->delete();
                 $query->where('time + ' . $db->quote($locktime) . '<' . $db->quote($now));
                 $db->setQuery($query);
-                $db->query();
+                $db->execute();
 
                 //Reset our lock time
                 $query = $db->getQuery(true);
                 $query->update($db->quoteName('#__cwgears_schedule'));
                 $query->set('time = ' . $db->quote($now));
                 $db->setQuery($query);
-                $db->query();
+                $db->execute();
             }
         }
         return;
@@ -216,7 +223,6 @@ class plgSystemCwgears extends JPlugin {
 
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
-        $helpFunc = new CwGearsHelperLoadcount();
 
         //----------------------------------------------------------------------
         //Jquery Loading
@@ -315,20 +321,24 @@ class plgSystemCwgears extends JPlugin {
         $uikitAdd = $this->params->get('uikit_add', 1);
         $uikitTheme = $this->params->get('uikit_theme', 'flat');
         $url = JURI::getInstance()->toString();
-        $newCount = $helpFunc::getCounts($url, 'uikit');
+        
+        if ($app->getName() === 'site' && $doc->getType() === 'html') {
+            
+            $helpFunc = new CwGearsHelperLoadcount();
+            $newCount = $helpFunc::getCounts($url, 'uikit');
 
-        if ($newCount) {
-            $uikitCount = $helpFunc::getCounts($url, 'uikit');
-        } elseif ($app->get('CWUikitCount', 0) > 0) {
-            $uikitCount = $app->get('CWUikitCount', 0);
-        } else {
-            $uikitCount = 0;
-        }
-        $uikitPlus = $helpFunc::getCounts($url, 'uikit_plus');
+            if ($newCount) {
+                $uikitCount = $helpFunc::getCounts($url, 'uikit');
+            } elseif ($app->get('CWUikitCount', 0) > 0) {
+                $uikitCount = $app->get('CWUikitCount', 0);
+            } else {
+                $uikitCount = 0;
+            }
+            $uikitPlus = $helpFunc::getCounts($url, 'uikit_plus');
 
-        $uikitLocal = JURI::root(true) . "/media/coalaweb/plugins/system/gears/uikit/";
+            $uikitLocal = JURI::root(true) . "/media/coalaweb/plugins/system/gears/uikit/";
 
-        if ($app->getName() === 'site' || $doc->getType() === 'html') {
+
             if ($uikitCount > 0 && $uikitAdd) {
                 switch ($uikitTheme) {
                     case "default":
@@ -612,7 +622,7 @@ class plgSystemCwgears extends JPlugin {
                     $found = 0;
                     $required = count($result);
                     foreach ($result As $key => $value) {
-                        if (JRequest::getVar($key) == $value || ( JRequest::getVar($key, null) !== null && $value == '?' )) {
+                        if (JFactory::getApplication()->input->get($key) == $value || ( JFactory::getApplication()->input->get($key, null) !== null && $value == '?' )) {
                             $found++;
                         }
                     }
