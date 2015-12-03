@@ -1,6 +1,6 @@
 ##Change Log
 
-#### Version 0.1.5 November 2015
+#### Version 0.1.5 December 2015
 - **(A)** CSS to fix reCAPTCHA compact layout background.
 - **(A)** Integrated CoalaWeb Market into version field.
 - **(A)** Integrated CoalaWeb Users into version field.

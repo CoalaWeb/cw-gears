@@ -66,7 +66,7 @@ class plgSystemCwgears extends JPlugin {
             $now = $dtnow->toUnix(true);
 
             //How long should an URL be kept for.
-            $locktime = $this->params->get('locktime', 5) * 60;
+            $locktime = $this->params->get('locktime', 60) * 60;
 
             //Check schedual table
             $query = $db->getQuery(true);
