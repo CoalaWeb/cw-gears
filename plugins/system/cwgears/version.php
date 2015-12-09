@@ -25,6 +25,6 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('PLG_CWGEARS_VERSION', '0.1.5');
-define('PLG_CWGEARS_DATE', '2015-12-04');
+define('PLG_CWGEARS_VERSION', '0.1.6');
+define('PLG_CWGEARS_DATE', '2015-12-09');
 define('PLG_CWGEARS_PRO', '0');

@@ -65,7 +65,7 @@ class PlgSystemCwgearsInstallerScript {
         }
 
         if (!version_compare($version, '5.4', 'ge')) {
-            $msg = "<p>Sorry, you need PHP 5.4 or later to install this component!</p>";
+            $msg = "<p>Sorry, you need PHP 5.4 or later to install this extension!</p>";
 
             JError::raiseWarning(100, $msg);
 

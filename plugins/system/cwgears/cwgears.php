@@ -49,7 +49,6 @@ class plgSystemCwgears extends JPlugin {
 
     public function onAfterInitialise() {
         $app = JFactory::getApplication();
-        $doc = JFactory::getDocument();
 
         if ($app->getName() !== 'site') {
             return;
