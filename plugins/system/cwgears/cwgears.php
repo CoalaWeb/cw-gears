@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2015 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2016 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -363,12 +363,39 @@ class plgSystemCwgears extends JPlugin {
             }
 
             if ($uikitCount > 0 && $uikitPlus > 0 && $uikitAdd) {
-                //adds slider naviagtion
-                $uikitExtra = 'css/components/slidenav.min.css';
+                switch ($uikitTheme) {
+                    case "default":
+                        //adds slider naviagtion
+                        $uikitSlider= 'css/components/coalaweb.slidenav.min.css';
+                        //adds sticky
+                        $uikitSticky = 'css/components/coalaweb.sticky.min.css';
+                        break;
+                    case "flat":
+                        //adds slider naviagtion
+                        $uikitSlider= 'css/components/coalaweb.slidenav.almost-flat.min.css';
+                        //adds sticky
+                        $uikitSticky = 'css/components/coalaweb.sticky.almost-flat.min.css';
+                        break;
+                    case "gradient":
+                        //adds slider naviagtion
+                        $uikitSlider= 'css/components/coalaweb.slidenav.gradient.min.css';
+                        //adds sticky
+                        $uikitSticky = 'css/components/coalaweb.sticky.gradient.min.css';
+                        break;
+                    default:
+                        //adds slider naviagtion
+                        $uikitSlider= 'css/components/coalaweb.slidenav.min.css';
+                        //adds sticky
+                        $uikitSticky = 'css/components/coalaweb.sticky.min.css';
+                }
 
                 //lightbox support
                 $doc->addScript($uikitLocal . "js/components/coalaweb.lightbox.min.js");
-                $doc->addStyleSheet($uikitLocal . $uikitExtra);
+                //Sticky support
+                $doc->addScript($uikitLocal . "js/components/coalaweb.sticky.min.js");
+                //Add CSS
+                $doc->addStyleSheet($uikitLocal . $uikitSlider);
+                $doc->addStyleSheet($uikitLocal . $uikitSticky);
             }
         }
 
