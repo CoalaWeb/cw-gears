@@ -8,5 +8,5 @@ nbactions.xml
 nb-configuration.xml
 
 # Transifex #
-.tx
+.tx/
 
