@@ -28,7 +28,6 @@ jimport('joomla.plugin.plugin');
 jimport('joomla.environment.browser');
 jimport('joomla.filesystem.file');
 jimport('joomla.application.module.helper');
-require_once __DIR__ . '/helpers/loadcount.php';
 
 class plgSystemCwgears extends JPlugin {
 
@@ -160,8 +159,14 @@ class plgSystemCwgears extends JPlugin {
 
         if ($gziphelp && $gzip && !$app->isAdmin()) {
 
-            //Lets include our IP helper tools
-            include_once JPATH_PLUGINS . '/system/cwgears/helpers/iptools.php';
+            // Lets check if it exists before including
+            $iptools_php = JPATH_SITE . '/plugins/system/cwgears/helpers/iptools.php';
+            if (JFile::exists($iptools_php)) {
+                include_once $iptools_php;
+            } else {
+                JFactory::getApplication()->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
+                return;
+            }
 
             //Now get an IP for the current visitor
             $ip = CwGearsIptools::getUserIp();
@@ -322,6 +327,15 @@ class plgSystemCwgears extends JPlugin {
         $url = JURI::getInstance()->toString();
         
         if ($app->getName() === 'site' && $doc->getType() === 'html') {
+            
+            // Lets check if it exists before including
+            $loadcount_php = JPATH_SITE . '/plugins/system/cwgears/helpers/loadcount.php';
+            if (JFile::exists($loadcount_php)) {
+                include_once $loadcount_php;
+            } else {
+                JFactory::getApplication()->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
+                return;
+            }
             
             $helpFunc = new CwGearsHelperLoadcount();
             $newCount = $helpFunc::getCounts($url, 'uikit');

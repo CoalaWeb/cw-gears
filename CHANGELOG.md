@@ -3,6 +3,8 @@
 #### Version 0.1.7 January 2016
 - **(C)** Extended UIkit plus features 
 - **(C)** Updated UIkit to version 2.24.3
+- **(C)** Check for required files before inclusion and display a message if found missing
+- **(L)** New language strings.
 
 #### Version 0.1.6 December 2015
 - **(A)** Added UIkit Sticky support
