@@ -1286,7 +1286,7 @@ iframe {
   top: 10px;
   right: 10px;
 }
-.cw-panel-box > .cw-panel-teaser {
+.cw-panel-box .cw-panel-teaser {
   margin-top: -16px;
   margin-left: -16px;
   margin-right: -16px;
