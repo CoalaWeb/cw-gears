@@ -39,9 +39,4 @@ class CWElement extends JFormField {
             return parent::getLabel();
         }
     }
-
-    function render() {
-        return $this->getInput();
-    }
-
 }
