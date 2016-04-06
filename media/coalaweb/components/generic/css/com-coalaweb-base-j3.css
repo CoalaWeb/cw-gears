@@ -231,7 +231,7 @@ togglers .pane-sliders .panel {
     clear: both;
     font-family: "Trebuchet MS",Helvetica,sans-serif;
     font-size: 22px;
-    margin: 10px 15px;
+    margin:15px 5px 10px 5px; 
     padding: 0;
     color: #333;
     font-weight: 400;

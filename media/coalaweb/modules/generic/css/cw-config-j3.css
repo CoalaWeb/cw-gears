@@ -20,8 +20,6 @@
 
 span.unit { line-height:34px; }
 
-/* togglers */
-
 .pane-sliders .panel { border: none !important; }
 
 div.panel > h3 { 
@@ -54,9 +52,7 @@ div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
     border-radius: 3px; 
 }
 
-
 /* form elements in the container */
-
 .panel fieldset.panelform > ul > li > label { 
     color: #444; 
     font-size: 11px; 
@@ -68,7 +64,6 @@ div.panel h3.pane-toggler-down { border-bottom: 4px solid #1272A5 !important }
     max-width: 40%!important; 
     min-width: 30%!important; 
 }
-
 
 fieldset.panelform input { 
     height: 16px; 
@@ -164,7 +159,7 @@ fieldset.adminform-legacy fieldset.radio {
     clear:both; 
     font-family: "Trebuchet MS", Helvetica, sans-serif; 
     font-size:22px; 
-    margin:10px 5px; 
+    margin:15px 5px 10px 5px; 
     padding:0px; 
     color:#333;  
     font-weight: normal;
@@ -187,46 +182,6 @@ fieldset.adminform-legacy fieldset.radio {
     color: #419EC9; 
     text-decoration:none; 
 }
-
-/*.cw-module p.info {
-    background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
-    border-bottom: 1px solid #D2DCE1;
-    border-top: 1px solid #D2DCE1; 
-    padding: 10px;
-}
-
-.cw-module p.forum a { color:#CE6A23; }
-.cw-module p.forum a:hover {color:#E2AB53;}
-.cw-module p.forum {
-    background: url("../images/icons/cw-forum.png") no-repeat scroll 0 0  #FFFAE6; 
-    border-bottom: 1px solid #FAE6BE;
-    border-top: 1px solid #FAE6BE; 
-    padding: 10px;
-}
-
-.cw-module p.vote a { color:#8a916e; }
-.cw-module p.vote a:hover {color:#b0bf7f;}
-.cw-module p.vote {
-    background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
-    border-bottom: 1px solid #DCE6BE;
-    border-top: 1px solid #DCE6BE; 
-    padding: 10px;
-}
-
-.cw-module p.donate a, span.cw-module p.donate em { color:#A05A2C; }
-.cw-module p.donate a:hover {color:#D38D5F;}
-.cw-module p.donate {
-    background: url("../images/icons/cw-coffee2.png") no-repeat scroll 0 0 #F6ECE6; 
-    border-bottom: 1px solid #EDD7C9;
-    border-top: 1px solid #EDD7C9;
-    padding: 10px;
-}
-
-.cw-module p.info, .cw-module p.forum, .cw-module p.vote, .cw-module p.donate {
-    padding-left:40px;
-    line-height: 18px; 
-    margin: 15px 20px; 
-}*/
 
 .cw-module p a:hover, span.cw-module ul a:hover  {
     -webkit-transition: color 0.2s ease-out;
