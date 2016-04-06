@@ -34,6 +34,7 @@ class CWElementCss extends CWElement {
 
         if (version_compare(JVERSION, '3.0', '>')) {
             $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/modules/generic/css/cw-config-j3.css');
+            $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/modules/generic/css/cw-config-v2.css');
         } else {
             $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/modules/generic/css/cw-config.css');
         }

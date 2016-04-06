@@ -1,7 +1,5 @@
 <?php
 
-defined('_JEXEC') or die('Restricted access');
-
 /**
  * @package             Joomla
  * @subpackage          CoalaWeb Gears
@@ -25,12 +23,21 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+defined('_JEXEC') or die('Restricted access');
+
 /**
  *  extension helper.
  */
-class CwGearsIptools {
+class CwGearsIptools 
+{
 
-    public static function getUserIP() {
+    public static function getUserIP() 
+    {
+    /**
+     * Get users IP address
+     * 
+     * @return string
+     */
         $ip = self::_real_getUserIP();
 
         if ((strstr($ip, ',') !== false) || (strstr($ip, ' ') !== false)) {
@@ -52,9 +59,10 @@ class CwGearsIptools {
     /**
      * Gets the visitor's IP address
      *
-     * @return  string
+     * @return string
      */
-    private static function _real_getUserIP() {
+    private static function _real_getUserIP() 
+    {
         // Normally the $_SERVER superglobal is set
         if (isset($_SERVER)) {
             // Do we have an x-forwarded-for HTTP header (e.g. NginX)?
@@ -100,11 +108,12 @@ class CwGearsIptools {
     /**
      * Is this an IPv6 IP address?
      *
-     * @param   string  $ip  An IPv4 or IPv6 address
+     * @param string $ip An IPv4 or IPv6 address
      *
-     * @return  boolean  True if it's IPv6
+     * @return boolean  True if it's IPv6
      */
-    public static function isIPv6($ip) {
+    public static function isIPv6($ip) 
+    {
         if (strstr($ip, ':')) {
             return true;
         }
@@ -115,11 +124,12 @@ class CwGearsIptools {
     /**
      * Converts inet_pton output to bits string
      *
-     * @param   string  $inet  The in_addr representation of an IPv4 or IPv6 address
+     * @param string $inet The in_addr representation of an IPv4 or IPv6 address
      *
-     * @return  string
+     * @return string
      */
-    protected static function inet_to_bits($inet) {
+    protected static function inet_to_bits($inet) 
+    {
         if (strlen($inet) == 4) {
             $unpacked = unpack('A4', $inet);
         } else {
@@ -138,12 +148,13 @@ class CwGearsIptools {
     /**
      * Checks if an IP is contained in a list of IPs or IP expressions
      *
-     * @param   string  $ip       The IPv4/IPv6 address to check
-     * @param   array   $ipTable  The list of IP expressions
+     * @param string $ip      The IPv4/IPv6 address to check
+     * @param array  $ipTable The list of IP expressions
      *
-     * @return  null|boolean  True if it's in the list, null if the filtering can't proceed
+     * @return null|boolean  True if it's in the list, null if the filtering can't proceed
      */
-    public static function ipinList($ip, $ipTable = array()) {
+    public static function ipinList($ip, $ipTable = array()) 
+    {
         // No point proceeding with an empty IP list
         if (empty($ipTable)) {
             return null;
@@ -265,8 +276,9 @@ class CwGearsIptools {
                     if (substr($ipExpression, -1) == '.') {
                         // Partial IP address. Convert to CIDR and re-match
                         foreach (count_chars($ipExpression, 1) as $i => $val) {
-                            if ($i == 46)
+                            if ($i == 46) {
                                 $dots = $val;
+                            }
                         }
                         switch ($dots) {
                             case 1:
@@ -331,12 +343,13 @@ class CwGearsIptools {
     /**
      * Checks if an IP is contained in a list of IPs or IP expressions
      *
-     * @param   string  $ip       The IPv4/IPv6 address to check
-     * @param   array   $ipTable  The list of IP expressions
+     * @param string $ip      The IPv4/IPv6 address to check
+     * @param array  $ipTable The list of IP expressions
      *
-     * @return  null|boolean  True if it's in the list, null if the filtering can't proceed
+     * @return null|boolean  True if it's in the list, null if the filtering can't proceed
      */
-    public static function titleinList($ip, $ipTable = array()) {
+    public static function titleinList($ip, $ipTable = array()) 
+    {
         // No point proceeding with an empty IP list
         if (empty($ipTable)) {
             return null;
@@ -463,8 +476,9 @@ class CwGearsIptools {
                     if (substr($ipExpression2, -1) == '.') {
                         // Partial IP address. Convert to CIDR and re-match
                         foreach (count_chars($ipExpression2, 1) as $i => $val) {
-                            if ($i == 46)
+                            if ($i == 46) {
                                 $dots = $val;
+                            }
                         }
                         switch ($dots) {
                             case 1:

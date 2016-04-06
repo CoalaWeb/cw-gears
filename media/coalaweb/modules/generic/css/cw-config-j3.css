@@ -26,7 +26,6 @@ span.unit { line-height:34px; }
 
 div.panel > h3 { 
     height: 43px; 
-    background: transparent url('../images/icons/cw-panel-bg.png') repeat-x 0 0 !important; 
     border: 1px solid #d8d8d8; 
     -moz-border-radius: 3px; 
     -webkit-border-radius: 3px; 
@@ -115,11 +114,6 @@ fieldset.panelform textarea {
     -webkit-border-radius: 2px; 
 }
 
-/*.fltrt ul.adminformlist li { 
-    padding: 1px 10px; 
-    margin: 0; 
-}*/
-
 fieldset.panelform .label { 
     font-size: 11px; 
     font-weight: bold; 
@@ -194,7 +188,7 @@ fieldset.adminform-legacy fieldset.radio {
     text-decoration:none; 
 }
 
-.cw-module p.info {
+/*.cw-module p.info {
     background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
     border-bottom: 1px solid #D2DCE1;
     border-top: 1px solid #D2DCE1; 
@@ -232,7 +226,7 @@ fieldset.adminform-legacy fieldset.radio {
     padding-left:40px;
     line-height: 18px; 
     margin: 15px 20px; 
-}
+}*/
 
 .cw-module p a:hover, span.cw-module ul a:hover  {
     -webkit-transition: color 0.2s ease-out;
@@ -253,67 +247,82 @@ fieldset.adminform-legacy fieldset.radio {
 
 /* Messages
 ------------------------------------------------------------------------------*/
-
 /* General message */
-.cw-message p.info, .cw-message p.alert, .cw-message p.vote, .cw-message p.upgrade {
-    padding:10px 10px 10px 40px;
-    line-height: 18px; 
-    margin: 0px 0px 5px 0px; 
-    border-radius:5px;
-    text-align:left;
+.cw-message p.info,.cw-message p.alert,.cw-message p.vote,.cw-message p.upgrade {
+    padding: 10px 10px 10px 40px;
+    line-height: 18px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    text-align: left;
     font-family: "Trebuchet MS",Helvetica,sans-serif;
     font-size: 14px !important;
-    font-weight: normal !important;
+    font-weight: 400 !important;
     color: #4D4D4D;
 }
-.cw-message p { margin: 10px 20px }
 
-.cw-message p a, .cw-message ul a  { 
-    color: #1272A5; 
-    text-decoration:none; 
+.cw-message p a,.cw-message ul a {
+    color: #1272A5;
+    text-decoration: none;
 }
 
-.cw-message p a:hover, .cw-message ul a:hover  { 
-    color: #419EC9; 
-    text-decoration:none; 
+.cw-message p a:hover,.cw-message ul a:hover {
+    color: #419EC9;
+    text-decoration: none;
 }
 
 /* Info Message */
-.cw-message p.info a, .cw-message p.info em { color: #1272A5;}
+.cw-message p.info a,.cw-message p.info em {
+    color: #1272A5;
+}
+
 .cw-message p.info {
-    background: url("../images/icons/cw-info.png") no-repeat scroll 0 0  #EBF5FA; 
+    background: url(../images/icons/cw-info.png) no-repeat scroll 0 0 #EBF5FA;
     border: 1px solid #D2DCE1;
 }
 
 /* Alert Message */
-.cw-message p.alert a, .cw-message p.alert em { color: #B1191C;}
-.cw-message p.alert a:hover { color: #D85863;}
+.cw-message p.alert a,.cw-message p.alert em {
+    color: #B1191C;
+}
+
+.cw-message p.alert a:hover {
+    color: #D85863;
+}
+
 .cw-message p.alert {
-    background: url("../images/icons/cw-alert.png") no-repeat scroll 0 0 #FFF0EB;
+    background: url(../images/icons/cw-alert.png) no-repeat scroll 0 0 #FFF0EB;
     border: 1px solid #FFD7CD;
 }
 
 /* Vote Message */
-.cw-message p.vote a, .cw-message p.vote em { color:#268413; }
-.cw-message p.vote a:hover {color:#b0bf7f;}
+.cw-message p.vote a,.cw-message p.vote em {
+    color: #268413;
+}
+
+.cw-message p.vote a:hover {
+    color: #b0bf7f;
+}
+
 .cw-message p.vote {
-    background: url("../images/icons/cw-vote.png") no-repeat scroll 0 0  #FAFFE6; 
+    background: url(../images/icons/cw-vote.png) no-repeat scroll 0 0 #FAFFE6;
     border: 1px solid #DCE6BE;
 }
 
 /* Upgrade message*/
-.cw-message p.upgrade a, .cw-message p.upgrade em  { color:#CE6A23; }
-.cw-message p.upgrade a:hover {color:#E2AB53;}
+.cw-message p.upgrade a,.cw-message p.upgrade em {
+    color: #CE6A23;
+}
+
+.cw-message p.upgrade a:hover {
+    color: #E2AB53;
+}
+
 .cw-message p.upgrade {
-    background: url("../images/icons/cw-forum.png") no-repeat scroll 0 0  #FFFAE6; 
+    background: url(../images/icons/cw-forum.png) no-repeat scroll 0 0 #FFFAE6;
     border: 1px solid #FAE6BE;
 }
 
-.form-horizontal .control-label p.info {
-    width: auto;
-}
-
-/* End
+/* END Messages
 ------------------------------------------------------------------------------*/
 
 /* Sorting Style */
