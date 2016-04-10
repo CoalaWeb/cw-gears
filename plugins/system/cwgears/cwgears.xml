@@ -421,6 +421,32 @@
                 
             </fieldset>
             
+            <fieldset
+                name="updates"
+                label="PLG_CWGEARS_UPDATES_TAB">
+        
+                <field 
+                    name="updates_info"
+                    type="info"
+                    default=""
+                    label="PLG_CWGEARS_UPDATES_MSG"/>
+                
+                <field
+                    type="spacer" 
+                    name="pro_extensions_spacer" 
+                    label="PLG_CWGEARS_SPACER_PRO_EXTENSIONS"
+                    class="cw_label" />
+            
+                <field 
+                    name="downloadid" 
+                    type="text" 
+                    default="" 
+                    size="30"
+                    label="PLG_CWGEARS_FIELD_DOWNLOADID_LABEL"
+                    description ="PLG_CWGEARS_FIELD_DOWNLOADID_DESC" />	
+                
+            </fieldset>
+            
             <fieldset 
                 name="VERSION"
                 label="PLG_CWGEARS_TITLE_VERSION">

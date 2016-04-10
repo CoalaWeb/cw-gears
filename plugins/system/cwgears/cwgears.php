@@ -59,7 +59,7 @@ class plgSystemCwgears extends JPlugin {
 
         if ($dbClean) {
             //Current date time
-            $siteOffset = JFactory::getApplication()->getCfg('offset');
+            $siteOffset = $app->getCfg('offset');
             $dtnow = JFactory::getDate('now', $siteOffset);
             $now = $dtnow->toUnix(true);
 
@@ -121,10 +121,14 @@ class plgSystemCwgears extends JPlugin {
 
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
-        $option = JFactory::getApplication()->input->get('option');
-        $ext = JFactory::getApplication()->input->get('extension');
+        $option = $app->input->get('option');
+        $ext = $app->input->get('extension');
         $baseUrl = '../media/coalaweb/';
 
+        //Update the Download ID
+        $this->updateDownloadKey();
+        $this->updateDownloadKeySub();
+        
         //Lets add some style for backend extension configurations.
         if ($app->isAdmin()) {
 
@@ -166,7 +170,7 @@ class plgSystemCwgears extends JPlugin {
             if (JFile::exists($iptools_php)) {
                 include_once $iptools_php;
             } else {
-                JFactory::getApplication()->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
+                $app->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
                 return;
             }
 
@@ -335,7 +339,7 @@ class plgSystemCwgears extends JPlugin {
             if (JFile::exists($loadcount_php)) {
                 include_once $loadcount_php;
             } else {
-                JFactory::getApplication()->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
+                $app->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
                 return;
             }
             
@@ -664,7 +668,7 @@ class plgSystemCwgears extends JPlugin {
                     $found = 0;
                     $required = count($result);
                     foreach ($result As $key => $value) {
-                        if (JFactory::getApplication()->input->get($key) == $value || ( JFactory::getApplication()->input->get($key, null) !== null && $value == '?' )) {
+                        if ($app->input->get($key) == $value || ( $app->input->get($key, null) !== null && $value == '?' )) {
                             $found++;
                         }
                     }
@@ -688,6 +692,12 @@ class plgSystemCwgears extends JPlugin {
         return $op;
     }
 
+    /**
+     * Detect Google and Facebook crawlers
+     * 
+     * @param type $server
+     * @return boolean
+     */
     function crawlerDetect($server) {
         $crawlers = array(
             'Google' => 'Google',
@@ -703,5 +713,166 @@ class plgSystemCwgears extends JPlugin {
 
         return false; // Not a bot
     }
+    
+    /**
+     * Add download ID to the update sites table when saving to a CoalaWeb 
+     * component configuration.
+     * 
+     * @return null
+     */
+    function updateDownloadKey() {
+        $app = JFactory::getApplication();
+        $option = $app->input->get('option');
+        $component = $app->input->get('component');
+        $task = $app->input->get('task');
+        
+        //Array of CoalaWeb extensions
+        $components = array(
+            'com_coalawebcontact',
+            'com_coalawebsociallinks',
+            'com_coalawebtraffic',
+            'com_coalawebmarket',
+            'com_coalawebpaypal',
+            'com_coalaweblingual',
+            'com_coalawebcomments'
+        );
+        
+        // Array of tasks
+        $tasks = array(
+            'config.save.component.apply',
+            'config.save.component.save'
+        );
+        
+        if (
+            $app->isSite() ||
+            $option != 'com_config' ||
+            !in_array($task, $tasks) ||
+            !in_array($component, $components)
+        ) {
+            return;
+        }
+        
+        switch ($component) {
+            case 'com_coalawebcontact':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-contact-pro.xml';
+                break;
+            case 'com_coalawebsociallinks':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-sociallinks-pro.xml';
+                break;
+            case 'com_coalawebtraffic':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-traffic-pro.xml';
+                break;
+            case 'com_coalawebmarket':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-market-pro.xml';
+                break;
+            case 'com_coalawebpaypal':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-paypal-pro.xml';
+                break;
+            case 'com_coalaweblingual':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-lingual-pro.xml';
+                break;
+            case 'com_coalawebcomments':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-comments-pro.xml';
+                break;
+            
+            default:
+                $updateurl = '';
+        }
 
+        $form = $app->input->post->get('jform', array(), 'array');
+        if (!isset($form['downloadid'])) {
+            return;
+        }
+        $dlid = $form['downloadid'];
+
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true)
+                ->update('#__update_sites')
+                ->set($db->qn('extra_query') . ' = ' . $db->q(''))
+                ->where($db->qn('location') . ' = ' . $db->q($updateurl));
+        $db->setQuery($query);
+        $db->execute();
+
+        $query->clear()
+                ->update('#__update_sites')
+                ->set($db->qn('extra_query') . ' = ' . $db->q('dlid=' . $dlid))
+                ->where($db->qn('location') . ' =' . $db->q($updateurl));
+        $db->setQuery($query);
+        $db->execute();
+    }
+    
+     /**
+     * Add download ID to the update sites table for CoalaWeb extensions 
+     * that don't come packaged with a component.
+     * 
+     * @return null
+     */
+    function updateDownloadKeySub() {
+        $app = JFactory::getApplication();
+        $option = $app->input->get('option');
+        $id = $app->input->get('extension_id');
+        $task = $app->input->get('task');
+
+        // Array of possible tasks
+        $tasks = array(
+            'plugin.apply', 
+            'plugin.save'
+        );
+        
+        $db = JFactory::getDbo();
+        
+        $query = $db->getQuery(true);
+        $query->select('count(*)');
+        $query->from($db->qn('#__extensions'));
+        $query->where($db->qn('element') . ' = ' . $db->q('cwgears'));
+        $query->where($db->qn('extension_id') . ' = ' . $db->q($id));
+        $db->setQuery($query);
+        $iscwgears = $db->loadResult();
+        
+        if (
+            $app->isSite() ||
+            $option != 'com_plugins' ||
+            !in_array($task, $tasks) ||
+            !$iscwgears
+        ) {
+            return;
+        }
+
+        $news = 'http://cdn.coalaweb.com/updates/cw-news-pro.xml';
+        $hours = 'http://cdn.coalaweb.com/updates/cw-hours-pro.xml';
+        $users = 'http://cdn.coalaweb.com/updates/cw-users-pro.xml';
+        $print = 'http://cdn.coalaweb.com/updates/cw-print-pro.xml';
+        $panel = 'http://cdn.coalaweb.com/updates/cw-panel-pro.xml';
+        $dbtools = 'http://cdn.coalaweb.com/updates/cw-dbtools-pro.xml';
+        
+        $form = $app->input->post->get('jform', array(), 'array');
+        if (!isset($form['params']['downloadid'])) {
+            return;
+        }
+        $dlid = $form['params']['downloadid'];
+
+        $query = $db->getQuery(true)
+                ->update('#__update_sites')
+                ->set($db->qn('extra_query') . ' = ' . $db->q(''))
+                ->where($db->qn('location') . ' = ' . $db->q($news), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($hours), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($users), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($print), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($dbtools));
+        $db->setQuery($query);
+        $db->execute();
+
+        $query->clear()
+                ->update('#__update_sites')
+                ->set($db->qn('extra_query') . ' = ' . $db->q('dlid=' . $dlid))
+                ->where($db->qn('location') . ' = ' . $db->q($news), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($hours), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($users), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($print), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($dbtools));
+        $db->setQuery($query);
+        $db->execute();
+    }
 }
