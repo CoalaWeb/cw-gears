@@ -7,7 +7,7 @@
     <authorUrl>http://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2016 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <install> <!-- Runs on install -->
