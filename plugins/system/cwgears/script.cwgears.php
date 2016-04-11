@@ -73,7 +73,6 @@ class PlgSystemCwgearsInstallerScript {
         
         // Workarounds for JInstaller bugs
         if ($type != 'discover_install') {
-            $this->_fixBrokenSQLUpdates($parent);
         }
 
         return true;
