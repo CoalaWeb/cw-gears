@@ -1,418 +1,21 @@
-/*! UIkit 2.26.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-/* ========================================================================
-   Component: Base
+/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+
+/* Images
  ========================================================================== */
 /*
- * 1. Normalize default `font-family` and set `font-size` to support `rem` units
- * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
- * 3. Style
- */
-html {
-  /* 1 */
-  font: normal 14px / 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  /* 3 */
-  background: #fff;
-  color: #444;
-}
-/*
- * Removes default margin.
- */
-body {
-  margin: 0;
-}
-/* Links
- ========================================================================== */
-/*
- * Remove the gray background color from active links in IE 10.
- */
-a {
-  background: transparent;
-}
-/*
- * Improve readability of focused elements when they are also in an active/hover state.
- */
-a:active,
-a:hover {
-  outline: 0;
-}
-/*
- * Style
- */
-a,
-.cw-link {
-  color: #07D;
-  text-decoration: none;
-  cursor: pointer;
-}
-a:hover,
-.cw-link:hover {
-  color: #059;
-  text-decoration: underline;
-}
-/* Text-level semantics
- ========================================================================== */
-/*
- * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
- */
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-/*
- * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
- */
-b,
-strong {
-  font-weight: bold;
-}
-/*
- * 1. Address odd `em`-unit font size rendering in all browsers.
- * 2. Consolas has a better baseline in running text compared to `Courier`
- */
-:not(pre) > code,
-:not(pre) > kbd,
-:not(pre) > samp {
-  /* 1 */
-  font-size: 12px;
-  /* 2 */
-  font-family: Consolas, monospace, serif;
-  /* 3 */
-  color: #D05;
-  white-space: nowrap;
-  padding: 0 4px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  background: #fafafa;
-}
-/*
- * Emphasize
- */
-em {
-  color: #D05;
-}
-/*
- * Insert
- */
-ins {
-  background: #ffa;
-  color: #444;
-  text-decoration: none;
-}
-/*
- * Mark
- * Note: Addresses styling not present in IE 8/9.
- */
-mark {
-  background: #ffa;
-  color: #444;
-}
-/*
- * Quote
- */
-q {
-  font-style: italic;
-}
-/*
- * Addresses inconsistent and variable font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-/*
- * Prevents `sub` and `sup` affecting `line-height` in all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-sup {
-  top: -0.5em;
-}
-sub {
-  bottom: -0.25em;
-}
-/* Embedded content
- ========================================================================== */
-/*
- * Remove the gap between embedded content and the bottom of their containers.
- */
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-/*
- * Responsiveness
- * 1. Sets a maximum width relative to the parent and auto scales the height
+ * 1. Responsiveness: Sets a maximum width relative to the parent and auto scales the height
  * 2. Corrects `max-width` behavior if padding and border are used
+ * 3. Remove border when inside `a` element in IE 8/9/10.
+ * 4. Remove the gap between images and the bottom of their containers
  */
-audio,
-canvas,
-img,
-svg,
-video {
-  /* 1 */
-  max-width: 100%;
-  height: auto;
-  /* 2 */
-  box-sizing: border-box;
-}
 /*
- * Preserve original dimensions
+ * Preserve original image dimensions
  */
 .cw-img-preserve,
-.cw-img-preserve audio,
-.cw-img-preserve canvas,
-.cw-img-preserve img,
-.cw-img-preserve svg,
-.cw-img-preserve video {
+.cw-img-preserve img {
   max-width: none;
 }
-/*
- * Remove border when inside `a` element in IE 8/9/10.
- */
-img {
-  border: 0;
-}
-/*
- * Correct overflow not hidden in IE 9/10/11.
- */
-svg:not(:root) {
-  overflow: hidden;
-}
-/* Block elements
- ========================================================================== */
-/*
- * Reset margin
- */
-blockquote,
-figure {
-  margin: 0;
-}
-/*
- * Margins
- */
-p,
-ul,
-ol,
-dl,
-blockquote,
-pre,
-address,
-fieldset,
-figure {
-  margin: 0 0 15px 0;
-}
-* + p,
-* + ul,
-* + ol,
-* + dl,
-* + blockquote,
-* + pre,
-* + address,
-* + fieldset,
-* + figure {
-  margin-top: 15px;
-}
-/* Headings
- ========================================================================== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 15px 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #444;
-  text-transform: none;
-}
-/*
- * Margins
- */
-* + h1,
-* + h2,
-* + h3,
-* + h4,
-* + h5,
-* + h6 {
-  margin-top: 25px;
-}
-/*
- * Sizes
- */
-h1,
-.cw-h1 {
-  font-size: 36px;
-  line-height: 42px;
-}
-h2,
-.cw-h2 {
-  font-size: 24px;
-  line-height: 30px;
-}
-h3,
-.cw-h3 {
-  font-size: 18px;
-  line-height: 24px;
-}
-h4,
-.cw-h4 {
-  font-size: 16px;
-  line-height: 22px;
-}
-h5,
-.cw-h5 {
-  font-size: 14px;
-  line-height: 20px;
-}
-h6,
-.cw-h6 {
-  font-size: 12px;
-  line-height: 18px;
-}
-/* Lists
- ========================================================================== */
-ul,
-ol {
-  padding-left: 30px;
-}
-/*
- * Reset margin for nested lists
- */
-ul > li > ul,
-ul > li > ol,
-ol > li > ol,
-ol > li > ul {
-  margin: 0;
-}
-/* Description lists
- ========================================================================== */
-dt {
-  font-weight: bold;
-}
-dd {
-  margin-left: 0;
-}
-/* Horizontal rules
- ========================================================================== */
-/*
- * 1. Address differences between Firefox and other browsers.
- * 2. Style
- */
-hr {
-  /* 1 */
-  box-sizing: content-box;
-  height: 0;
-  /* 2 */
-  margin: 15px 0;
-  border: 0;
-  border-top: 1px solid #ddd;
-}
-/* Address
- ========================================================================== */
-address {
-  font-style: normal;
-}
-/* Blockquotes
- ========================================================================== */
-blockquote {
-  padding-left: 15px;
-  border-left: 5px solid #ddd;
-  font-size: 16px;
-  line-height: 22px;
-  font-style: italic;
-}
-/* Preformatted text
- ========================================================================== */
-/*
- * 1. Contain overflow in all browsers.
- */
-pre {
-  padding: 10px;
-  background: #fafafa;
-  font: 12px / 18px Consolas, monospace, serif;
-  color: #444;
-  -moz-tab-size: 4;
-  tab-size: 4;
-  /* 1 */
-  overflow: auto;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-}
-/* Selection pseudo-element
- ========================================================================== */
-::-moz-selection {
-  background: #39f;
-  color: #fff;
-  text-shadow: none;
-}
-::selection {
-  background: #39f;
-  color: #fff;
-  text-shadow: none;
-}
-/* HTML5 elements
- ========================================================================== */
-/*
- * Correct `block` display not defined for any HTML5 element in IE 8/9.
- * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
- * Correct `block` display not defined for `main` in IE 11.
- */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-nav,
-section,
-summary {
-  display: block;
-}
-/*
- * Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-/*
- * Prevent displaying `audio` without controls in Chrome, Safari and Opera
- */
-audio:not([controls]) {
-  display: none;
-}
-/*
- * Address `[hidden]` styling not present in IE 8/9/10.
- * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
- */
-[hidden],
-template {
-  display: none;
-}
-/* Iframe
- ========================================================================== */
-iframe {
-  border: 0;
-}
-/* Fix viewport for IE10 snap mode
- ========================================================================== */
-@media screen and (max-width: 400px) {
-  @-ms-viewport {
-    width: device-width;
-  }
-}
+
 /* ========================================================================
    Component: Grid
  ========================================================================== */
@@ -549,41 +152,6 @@ iframe {
 .cw-grid-medium > * > .cw-panel + .cw-panel {
   margin-top: 25px;
 }
-/*
- * Large gutter
- */
-/* Large screen and bigger */
-@media (min-width: 960px) {
-  /* Horizontal */
-  .cw-grid-large {
-    margin-left: -35px;
-  }
-  .cw-grid-large > * {
-    padding-left: 35px;
-  }
-  /* Vertical */
-  .cw-grid-large + .cw-grid-large,
-  .cw-grid-large-margin,
-  .cw-grid-large > * > .cw-panel + .cw-panel {
-    margin-top: 35px;
-  }
-}
-/* Extra Large screens */
-@media (min-width: 1220px) {
-  /* Horizontal */
-  .cw-grid-large {
-    margin-left: -50px;
-  }
-  .cw-grid-large > * {
-    padding-left: 50px;
-  }
-  /* Vertical */
-  .cw-grid-large + .cw-grid-large,
-  .cw-grid-large-margin,
-  .cw-grid-large > * > .cw-panel + .cw-panel {
-    margin-top: 50px;
-  }
-}
 /* Modifier: `cw-grid-divider`
  ========================================================================== */
 /*
@@ -694,14 +262,8 @@ iframe {
 .cw-grid-width-1-10 > * {
   width: 10%;
 }
-.cw-grid-width-auto > * {
-  width: auto;
-}
 /* Phone landscape and bigger */
 @media (min-width: 480px) {
-  .cw-grid-width-small-1-1 > * {
-    width: 100%;
-  }
   .cw-grid-width-small-1-2 > * {
     width: 50%;
   }
@@ -723,9 +285,6 @@ iframe {
 }
 /* Tablet and bigger */
 @media (min-width: 768px) {
-  .cw-grid-width-medium-1-1 > * {
-    width: 100%;
-  }
   .cw-grid-width-medium-1-2 > * {
     width: 50%;
   }
@@ -747,9 +306,6 @@ iframe {
 }
 /* Desktop and bigger */
 @media (min-width: 960px) {
-  .cw-grid-width-large-1-1 > * {
-    width: 100%;
-  }
   .cw-grid-width-large-1-2 > * {
     width: 50%;
   }
@@ -771,9 +327,6 @@ iframe {
 }
 /* Large screen and bigger */
 @media (min-width: 1220px) {
-  .cw-grid-width-xlarge-1-1 > * {
-    width: 100%;
-  }
   .cw-grid-width-xlarge-1-2 > * {
     width: 50%;
   }
@@ -1413,7 +966,7 @@ iframe {
   top: 10px;
   right: 10px;
 }
-.cw-panel-hover .cw-panel-teaser {
+.cw-panel-hover > .cw-panel-teaser {
   margin-top: -16px;
   margin-left: -16px;
   margin-right: -16px;
@@ -7586,7 +7139,6 @@ a.cw-thumbnail:focus {
   padding: 0;
   max-width: 95%;
   max-width: calc(100% - 30px);
-  min-height: 50px;
   border-radius: 0;
 }
 /*
@@ -7693,7 +7245,6 @@ a.cw-thumbnail:focus {
 }
 .cw-modal-spinner:after {
   content: "\f110";
-  display: block;
   font-family: FontAwesome;
   -webkit-animation: cw-rotate 2s infinite linear;
   animation: cw-rotate 2s infinite linear;
@@ -8042,10 +7593,12 @@ a.cw-thumbnail:focus {
 @media (min-width: 768px) {
   .cw-align-medium-left {
     margin-right: 15px;
+    margin-bottom: 15px;
     float: left;
   }
   .cw-align-medium-right {
     margin-left: 15px;
+    margin-bottom: 15px;
     float: right;
   }
 }
@@ -8916,49 +8469,4 @@ a.cw-thumbnail:focus {
 }
 .cw-contrast .cw-text-primary {
   color: #2d7091 !important;
-}
-/* ========================================================================
-   Component: Print
- ========================================================================== */
-@media print {
-  *,
-  *:before,
-  *:after {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  thead {
-    display: table-header-group;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  img {
-    max-width: 100% !important;
-  }
-  @page {
-    margin: 0.5cm;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
 }

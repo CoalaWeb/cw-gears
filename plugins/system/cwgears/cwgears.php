@@ -413,6 +413,8 @@ class plgSystemCwgears extends JPlugin {
                 $doc->addScript($uikitLocal . "js/components/coalaweb.lightbox.min.js");
                 //Sticky support
                 $doc->addScript($uikitLocal . "js/components/coalaweb.sticky.min.js");
+                //Grid support
+                $doc->addScript($uikitLocal . "js/components/coalaweb.grid.min.js");
                 //Add CSS
                 $doc->addStyleSheet($uikitLocal . $uikitSlider);
                 $doc->addStyleSheet($uikitLocal . $uikitSticky);
