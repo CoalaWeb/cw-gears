@@ -1,7 +1,6 @@
 ##Change Log
 
 ### Version 0.2.3 June 2016
-- **(C)** Updated JResponse to JApplicationWeb
 - **(C)** Changed JError to JLog for install script notices
 - **(C)** Added Try and Catch on queries
 - **(C)** Improved K2 category field code
