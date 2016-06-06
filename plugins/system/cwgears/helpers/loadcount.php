@@ -45,7 +45,11 @@ class CwGearsHelperLoadcount {
         $db->setQuery($query);
 
         //Get the result
-        $count = $db->loadResult();
+        try {
+            $count = $db->loadResult();
+        } catch (Exception $exc) {
+            $count = '';
+        }
 
         // Lastly send back the count
         return $count;
@@ -68,7 +72,12 @@ class CwGearsHelperLoadcount {
         $query->from($db->quoteName('#__cwgears'));
         $query->where('url = ' . $db->quote($url));
         $db->setQuery($query);
-        $current = $db->loadResult();
+         
+        try {
+            $current = $db->loadResult();
+        } catch (Exception $e) {
+            $current = '';
+        }
 
         if ($current) {// we are updating
             $query = $db->getQuery(true);
@@ -85,11 +94,13 @@ class CwGearsHelperLoadcount {
             $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
 
             $db->setQuery($query);
+            
             try {
                 $db->execute();
             } catch (Exception $e) {
                 // Nothing
             }
+            
         } else {//we are inserting
             $query = $db->getQuery(true);
             $query->insert($db->quoteName('#__cwgears'));
@@ -101,6 +112,7 @@ class CwGearsHelperLoadcount {
                     . $db->quote($now));
 
             $db->setQuery($query);
+            
             try {
                 $db->execute();
             } catch (Exception $e) {
@@ -125,7 +137,12 @@ class CwGearsHelperLoadcount {
         $query->from($db->quoteName('#__cwgears'));
         $query->where('url = ' . $db->quote($url));
         $db->setQuery($query);
-        $current = $db->loadResult();
+        
+        try {
+            $current = $db->loadResult();
+        } catch (Exception $e) {
+            $current = '';
+        }
 
         if ($current) {// we are updating
             $query = $db->getQuery(true);
@@ -142,11 +159,13 @@ class CwGearsHelperLoadcount {
             $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
 
             $db->setQuery($query);
+            
             try {
                 $db->execute();
             } catch (Exception $e) {
                 // Nothing
             }
+            
         } else {//we are inserting
             $query = $db->getQuery(true);
             $query->insert($db->quoteName('#__cwgears'));
@@ -158,6 +177,7 @@ class CwGearsHelperLoadcount {
                     . $db->quote($now));
 
             $db->setQuery($query);
+            
             try {
                 $db->execute();
             } catch (Exception $e) {
@@ -185,7 +205,12 @@ class CwGearsHelperLoadcount {
         $query->from($db->quoteName('#__cwgears'));
         $query->where('url = ' . $db->quote($url));
         $db->setQuery($query);
-        $current = $db->loadResult();
+        
+        try {
+            $current = $db->loadResult();
+        } catch (Exception $e) {
+            $current = '';
+        }
 
         if ($current) {// we are updating
             $query = $db->getQuery(true);
@@ -202,11 +227,13 @@ class CwGearsHelperLoadcount {
             $query->update($db->quoteName('#__cwgears'))->set($fields)->where($conditions);
 
             $db->setQuery($query);
+            
             try {
                 $db->execute();
             } catch (Exception $e) {
                 // Nothing
             }
+            
         } else {//we are inserting
             $query = $db->getQuery(true);
             $query->insert($db->quoteName('#__cwgears'));
@@ -218,6 +245,7 @@ class CwGearsHelperLoadcount {
                     . $db->quote($now));
 
             $db->setQuery($query);
+            
             try {
                 $db->execute();
             } catch (Exception $e) {

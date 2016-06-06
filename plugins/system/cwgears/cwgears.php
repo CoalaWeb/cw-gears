@@ -71,7 +71,12 @@ class plgSystemCwgears extends JPlugin {
             $query->select('count(*)');
             $query->from($db->quoteName('#__cwgears_schedule'));
             $db->setQuery($query);
-            $current = $db->loadResult();
+            
+            try {
+                $current = $db->loadResult();
+            } catch (Exception $e) {
+                $current = '';
+            }
 
             //First time? then lets insert a time
             if (empty($current)) {
@@ -83,8 +88,14 @@ class plgSystemCwgears extends JPlugin {
                         ->columns($db->quoteName($columns))
                         ->values(implode(',', $values));
                 $db->setQuery($query);
-                $db->execute();
-                $items = '';
+
+                try {
+                    $db->execute();
+                    $items = '';
+                } catch (Exception $e) {
+                    $items = '';
+                }
+            
             } else {
                 //Not our first time then lets check 
                 //to see if we have any clean up work to do
@@ -93,7 +104,12 @@ class plgSystemCwgears extends JPlugin {
                 $query->from($db->quoteName('#__cwgears_schedule'));
                 $query->where('time + ' . $db->quote($locktime) . '<' . $db->quote($now));
                 $db->setQuery($query);
-                $items = $db->loadResult();
+                
+                try {
+                    $items = $db->loadResult();
+                } catch (Exception $e) {
+                    $items = '';
+                }
             }
 
             //If we have some old entries we should remove them
@@ -104,14 +120,24 @@ class plgSystemCwgears extends JPlugin {
                 $query->delete();
                 $query->where('time + ' . $db->quote($locktime) . '<' . $db->quote($now));
                 $db->setQuery($query);
-                $db->execute();
+                
+                try {
+                    $db->execute();
+                } catch (Exception $e) {
+                    // Nothing
+                }
 
                 //Reset our lock time
                 $query = $db->getQuery(true);
                 $query->update($db->quoteName('#__cwgears_schedule'));
                 $query->set('time = ' . $db->quote($now));
                 $db->setQuery($query);
-                $db->execute();
+                
+                try {
+                    $db->execute();
+                } catch (Exception $e) {
+                    // Nothing
+                }
             }
         }
         return;
@@ -627,11 +653,11 @@ class plgSystemCwgears extends JPlugin {
 
 
             if ($this->pinterest) {
-                $body = JResponse::getBody();
+                $body = $app->getBody();
                 $pos = JString::strpos($body, "//assets.pinterest.com/js/pinit.js");
                 if (!$pos) {
                     $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
-                    JResponse::setBody($body);
+                    $app->setBody($body);
                 } else {
                     return;
                 }
@@ -793,14 +819,24 @@ class plgSystemCwgears extends JPlugin {
                 ->set($db->qn('extra_query') . ' = ' . $db->q(''))
                 ->where($db->qn('location') . ' = ' . $db->q($updateurl));
         $db->setQuery($query);
-        $db->execute();
+        
+        try {
+            $db->execute();
+        } catch (Exception $e) {
+            // Nothing
+        }
 
         $query->clear()
                 ->update('#__update_sites')
                 ->set($db->qn('extra_query') . ' = ' . $db->q('dlid=' . $dlid))
                 ->where($db->qn('location') . ' =' . $db->q($updateurl));
         $db->setQuery($query);
-        $db->execute();
+        
+        try {
+            $db->execute();
+        } catch (Exception $e) {
+            // Nothing
+        }
     }
     
      /**
@@ -829,7 +865,12 @@ class plgSystemCwgears extends JPlugin {
         $query->where($db->qn('element') . ' = ' . $db->q('cwgears'));
         $query->where($db->qn('extension_id') . ' = ' . $db->q($id));
         $db->setQuery($query);
-        $iscwgears = $db->loadResult();
+        
+        try {
+            $iscwgears = $db->loadResult();
+        } catch (Exception $e) {
+            $iscwgears = '';
+        }
         
         if (
             $app->isSite() ||
@@ -863,7 +904,12 @@ class plgSystemCwgears extends JPlugin {
                 ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($dbtools));
         $db->setQuery($query);
-        $db->execute();
+        
+        try {
+            $db->execute();
+        } catch (Exception $e) {
+            // Nothing
+        }
 
         $query->clear()
                 ->update('#__update_sites')
@@ -875,6 +921,11 @@ class plgSystemCwgears extends JPlugin {
                 ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($dbtools));
         $db->setQuery($query);
-        $db->execute();
+        
+        try {
+            $db->execute();
+        } catch (Exception $e) {
+            // Nothing
+        }
     }
 }

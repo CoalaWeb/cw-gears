@@ -31,13 +31,13 @@ defined('_JEXEC') or die('Restricted access');
 class CwGearsIptools 
 {
 
-    public static function getUserIP() 
-    {
     /**
      * Get users IP address
      * 
      * @return string
      */
+    public static function getUserIP() {
+
         $ip = self::_real_getUserIP();
 
         if ((strstr($ip, ',') !== false) || (strstr($ip, ' ') !== false)) {

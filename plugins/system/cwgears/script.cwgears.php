@@ -24,6 +24,7 @@ defined('_JEXEC') or die('Restricted access');
  */
 jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
+jimport('joomla.log.log');
 
 class PlgSystemCwgearsInstallerScript { 
 
@@ -58,7 +59,7 @@ class PlgSystemCwgearsInstallerScript {
         if (!version_compare(JVERSION, '3.2', 'ge')) {
             $msg = "<p>Sorry, you need Joomla! 3.2 or later to install this extension!</p>";
 
-            JError::raiseWarning(100, $msg);
+            JLog::add($msg, JLog::WARNING, 'jerror');
 
             return false;
         }
@@ -66,7 +67,7 @@ class PlgSystemCwgearsInstallerScript {
         if (!version_compare($version, '5.4', 'ge')) {
             $msg = "<p>Sorry, you need PHP 5.4 or later to install this extension!</p>";
 
-            JError::raiseWarning(100, $msg);
+            JLog::add($msg, JLog::WARNING, 'jerror');
 
             return false;
         }
@@ -201,7 +202,7 @@ class PlgSystemCwgearsInstallerScript {
 
                             try {
                                 $db->execute();
-                            } catch (Exception $exc) {
+                            } catch (Exception $e) {
                                 // Nothing
                             }
                         }

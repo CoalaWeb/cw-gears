@@ -323,3 +323,44 @@
 
 /* END Messages
 ------------------------------------------------------------------------------*/
+
+/* Buttons
+------------------------------------------------------------------------------*/
+.cw-slider .btn-primary,
+.cw-slider .btn-warning,
+.cw-slider .btn-danger,
+.cw-slider .btn-success,
+.cw-slider .btn-info,
+.cw-slider .btn-inverse {
+    color: #fff;
+}
+
+.cw-slider .btn-primary:hover,
+.cw-slider .btn-warning:hover,
+.cw-slider .btn-danger:hover,
+.cw-slider .btn-success:hover,
+.cw-slider .btn-info:hover,
+.cw-slider .btn-inverse:hover {
+    color: #fff;
+}
+
+.cw-slider .btn-primary:focus,
+.cw-slider .btn-warning:focus,
+.cw-slider .btn-danger:focus,
+.cw-slider .btn-success:focus,
+.cw-slider .btn-info:focus,
+.cw-slider .btn-inverse:focus {
+    color: #fff;
+}
+
+.cw-slider .btn-primary:active,
+.cw-slider .btn-warning:active,
+.cw-slider .btn-danger:active,
+.cw-slider .btn-success:active,
+.cw-slider .btn-info:active,
+.cw-slider .btn-inverse:active {
+    color: #fff;
+}
+
+/* END Buttons
+------------------------------------------------------------------------------*/

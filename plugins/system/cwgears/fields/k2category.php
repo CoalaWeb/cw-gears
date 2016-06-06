@@ -35,9 +35,25 @@ class JFormFieldK2Category extends JFormField {
         $fieldName = $this->name . '[]';
 
         if (file_exists(JPATH_BASE . '/components/com_k2')) {
-            $query = 'SELECT m.* FROM #__k2_categories m WHERE published=1 AND trash = 0 ORDER BY parent, ordering';
+            $query = $db->getQuery(true);
+            
+            $query->select('m.*');
+            $query->from('#__k2_categories AS m');
+            $query->where('trash = 0');
+            $query->where('published = 1');
+            $query->order('parent ASC');
+            $query->order('ordering ASC');
+            
             $db->setQuery($query);
-            $mitems = $db->loadObjectList();
+            
+            try {
+                $mitems = $db->loadObjectList();
+            } catch (Exception $exc) {
+                $mitems = '';
+                return;
+            }
+            
+            
             if (count($mitems)) {
                 $children = array();
                 if ($mitems) {
