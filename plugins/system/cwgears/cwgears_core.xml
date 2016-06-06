@@ -56,9 +56,6 @@
     <updateservers>
         <server type="extension" priority="1" name="CoalaWeb Gears Update">http://cdn.coalaweb.com/updates/cw-gears-core.xml</server>
     </updateservers>
-    
-    <!-- Installation / Uninstallation Script File -->
-    <scriptfile>script.cwgears.php</scriptfile>
 
     <config>
         <fields 
