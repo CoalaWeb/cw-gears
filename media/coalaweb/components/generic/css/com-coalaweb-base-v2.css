@@ -332,7 +332,7 @@
 .cw-slider .btn-success,
 .cw-slider .btn-info,
 .cw-slider .btn-inverse {
-    color: #fff;
+    color: #fff !important;
 }
 
 .cw-slider .btn-primary:hover,
