@@ -37,7 +37,8 @@ class CWElementInfo extends CWElement {
         return '<div class="cw-message-block">'
                 . '<div class="cw-message">'
                 . '<p class="info">' . JText::_($label) . '</p>'
-                . '</div></div>';
+                . '</div>'
+                . '</div>';
     }
 
 }

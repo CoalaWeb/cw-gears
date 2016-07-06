@@ -1,9 +1,15 @@
 ##Change Log
 
+### Version 0.2.5 July 2016
+- **(C)** Updated CSS V2 files
+- **(C)** Include CSS V2 file in component options
+- **(A)** Added Pro field type
+- **(L)** New language strings
+
 ### Version 0.2.4 June 2016
 - **(C)** Updated CSS V2 files
-- **(A)** Added datetime field type.
-- **(A)** Added time field type.
+- **(A)** Added datetime field type
+- **(A)** Added time field type
 
 ### Version 0.2.3 June 2016
 - **(C)** Changed JError to JLog for install script notices
