@@ -3,6 +3,7 @@
 ### Version 0.2.5 July 2016
 - **(C)** Updated CSS V2 files
 - **(C)** Include CSS V2 file in component options
+- **(C)** Time/Datetime fields are using local files to stop mixed content issues on HTTPS
 - **(A)** Added Pro field type
 - **(L)** New language strings
 

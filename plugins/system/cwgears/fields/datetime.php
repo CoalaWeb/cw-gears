@@ -25,10 +25,11 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Add CSS and JS
-JHtml::stylesheet('http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css');
-JHtml::stylesheet('http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css');
-JHtml::script('http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js');
+// Add CSS and JS some are local to stop potential mix content errors
+$gearsMedia = JURI::root() . 'media/coalaweb/plugins/system/gears/';
+JHtml::stylesheet('https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css');
+JHtml::stylesheet($gearsMedia . 'css/bootstrap-datetimepicker.min.css');
+JHtml::script($gearsMedia . 'js/bootstrap-datetimepicker.min.js');
 
 jimport('joomla.form.formfield');
 
