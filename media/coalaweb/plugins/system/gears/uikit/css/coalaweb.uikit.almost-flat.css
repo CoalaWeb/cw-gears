@@ -1,18 +1,14 @@
-/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 
-/* Images
- ========================================================================== */
 /*
- * 1. Responsiveness: Sets a maximum width relative to the parent and auto scales the height
- * 2. Corrects `max-width` behavior if padding and border are used
- * 3. Remove border when inside `a` element in IE 8/9/10.
- * 4. Remove the gap between images and the bottom of their containers
- */
-/*
- * Preserve original image dimensions
+ * Preserve original dimensions
  */
 .cw-img-preserve,
-.cw-img-preserve img {
+.cw-img-preserve audio,
+.cw-img-preserve canvas,
+.cw-img-preserve img,
+.cw-img-preserve svg,
+.cw-img-preserve video {
   max-width: none;
 }
 
@@ -152,6 +148,41 @@
 .cw-grid-medium > * > .cw-panel + .cw-panel {
   margin-top: 25px;
 }
+/*
+ * Large gutter
+ */
+/* Large screen and bigger */
+@media (min-width: 960px) {
+  /* Horizontal */
+  .cw-grid-large {
+    margin-left: -35px;
+  }
+  .cw-grid-large > * {
+    padding-left: 35px;
+  }
+  /* Vertical */
+  .cw-grid-large + .cw-grid-large,
+  .cw-grid-large-margin,
+  .cw-grid-large > * > .cw-panel + .cw-panel {
+    margin-top: 35px;
+  }
+}
+/* Extra Large screens */
+@media (min-width: 1220px) {
+  /* Horizontal */
+  .cw-grid-large {
+    margin-left: -50px;
+  }
+  .cw-grid-large > * {
+    padding-left: 50px;
+  }
+  /* Vertical */
+  .cw-grid-large + .cw-grid-large,
+  .cw-grid-large-margin,
+  .cw-grid-large > * > .cw-panel + .cw-panel {
+    margin-top: 50px;
+  }
+}
 /* Modifier: `cw-grid-divider`
  ========================================================================== */
 /*
@@ -262,8 +293,14 @@
 .cw-grid-width-1-10 > * {
   width: 10%;
 }
+.cw-grid-width-auto > * {
+  width: auto;
+}
 /* Phone landscape and bigger */
 @media (min-width: 480px) {
+  .cw-grid-width-small-1-1 > * {
+    width: 100%;
+  }
   .cw-grid-width-small-1-2 > * {
     width: 50%;
   }
@@ -285,6 +322,9 @@
 }
 /* Tablet and bigger */
 @media (min-width: 768px) {
+  .cw-grid-width-medium-1-1 > * {
+    width: 100%;
+  }
   .cw-grid-width-medium-1-2 > * {
     width: 50%;
   }
@@ -306,6 +346,9 @@
 }
 /* Desktop and bigger */
 @media (min-width: 960px) {
+  .cw-grid-width-large-1-1 > * {
+    width: 100%;
+  }
   .cw-grid-width-large-1-2 > * {
     width: 50%;
   }
@@ -327,6 +370,9 @@
 }
 /* Large screen and bigger */
 @media (min-width: 1220px) {
+  .cw-grid-width-xlarge-1-1 > * {
+    width: 100%;
+  }
   .cw-grid-width-xlarge-1-2 > * {
     width: 50%;
   }
@@ -2851,8 +2897,10 @@ html:not(.cw-touch) .cw-nav-offcanvas ul a:hover {
   border: 1px solid #ddd;
   background: #fff;
   color: #444;
-  -webkit-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  -webkit-transition: all 0.2s linear;
+  -webkit-transition-property: border, background, color, box-shadow, padding;
+  transition: all 0.2s linear;
+  transition-property: border, background, color, box-shadow, padding;
   border-radius: 4px;
 }
 .cw-form select:focus,
@@ -5469,6 +5517,94 @@ select.cw-form-width-mini {
 .cw-icon-usb:before {
   content: "\f287";
 }
+.cw-icon-american-sign-language-interpreting:before,
+.cw-icon-asl-interpreting:before {
+  content: "\f2a3";
+}
+.cw-icon-assistive-listening-systems:before {
+  content: "\f2a2";
+}
+.cw-icon-audio-description:before {
+  content: "\f29e";
+}
+.cw-icon-blind:before {
+  content: "\f29d";
+}
+.cw-icon-braille:before {
+  content: "\f2a1";
+}
+.cw-icon-deaf:before,
+.cw-icon-deafness:before {
+  content: "\f2a4";
+}
+.cw-icon-envira:before {
+  content: "\f299";
+}
+.cw-icon-font-awesome:before,
+.cw-icon-fa:before {
+  content: "\f2b4";
+}
+.cw-icon-first-order:before {
+  content: "\f2b0";
+}
+.cw-icon-gitlab:before {
+  content: "\f296";
+}
+.cw-icon-glide:before {
+  content: "\f2a5";
+}
+.cw-icon-glide-g:before {
+  content: "\f2a6";
+}
+.cw-icon-hard-of-hearing:before {
+  content: "\f2a4";
+}
+.cw-icon-low-vision:before {
+  content: "\f2a8";
+}
+.cw-icon-question-circle-o:before {
+  content: "\f29c";
+}
+.cw-icon-sign-language:before,
+.cw-icon-signing:before {
+  content: "\f2a7";
+}
+.cw-icon-snapchat:before {
+  content: "\f2ab";
+}
+.cw-icon-snapchat-ghost:before {
+  content: "\f2ac";
+}
+.cw-icon-snapchat-square:before {
+  content: "\f2ad";
+}
+.cw-icon-themeisle:before {
+  content: "\f2b2";
+}
+.cw-icon-universal-access:before {
+  content: "\f29a";
+}
+.cw-icon-viadeo:before {
+  content: "\f2a9";
+}
+.cw-icon-viadeo-square:before {
+  content: "\f2aa";
+}
+.cw-icon-volume-control-phone:before {
+  content: "\f2a0";
+}
+.cw-icon-wheelchair-alt:before {
+  content: "\f29b";
+}
+.cw-icon-wpbeginner:before {
+  content: "\f297";
+}
+.cw-icon-wpforms:before {
+  content: "\f298";
+}
+.cw-icon-yoast:before {
+  content: "\f2b1";
+}
 /* ========================================================================
    Component: Close
  ========================================================================== */
@@ -7139,6 +7275,7 @@ a.cw-thumbnail:focus {
   padding: 0;
   max-width: 95%;
   max-width: calc(100% - 30px);
+  min-height: 50px;
   border-radius: 0;
 }
 /*
@@ -7245,6 +7382,7 @@ a.cw-thumbnail:focus {
 }
 .cw-modal-spinner:after {
   content: "\f110";
+  display: block;
   font-family: FontAwesome;
   -webkit-animation: cw-rotate 2s infinite linear;
   animation: cw-rotate 2s infinite linear;
@@ -7283,6 +7421,7 @@ a.cw-thumbnail:focus {
  * Prepares the whole HTML page to slide-out
  * 1. Fix the main page and disallow scrolling
  * 2. Side-out transition
+ * 3. Needed for the transition to work instead of just letting it pop to the side
  */
 .cw-offcanvas-page {
   /* 1 */
@@ -7290,6 +7429,8 @@ a.cw-thumbnail:focus {
   /* 2 */
   -webkit-transition: margin-left 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out;
+  /* 3 */
+  margin-left: 0;
 }
 /* Sub-object `cw-offcanvas-bar`
  ========================================================================== */
@@ -7334,6 +7475,34 @@ a.cw-thumbnail:focus {
   right: 0;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
+}
+/* Offcanvase modes
+ ========================================================================== */
+.cw-offcanvas-bar[mode='none'] {
+  -webkit-transition: none;
+  transition: none;
+}
+.cw-offcanvas-bar[mode='reveal'] {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+  clip: rect(0, 0, 100vh, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, clip 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, clip 0.3s ease-in-out;
+}
+.cw-offcanvas-bar-flip[mode='reveal'] {
+  clip: none;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.cw-offcanvas-bar-flip[mode='reveal'] > * {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+.cw-offcanvas.cw-active .cw-offcanvas-bar-flip[mode='reveal'].cw-offcanvas-bar-show > * {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
 }
 /* Panel in offcanvas
  ========================================================================== */
@@ -7494,6 +7663,17 @@ a.cw-thumbnail:focus {
   -moz-hyphens: auto;
   hyphens: auto;
 }
+/* Transform modifiers
+ ========================================================================== */
+.cw-text-capitalize {
+  text-transform: capitalize !important;
+}
+.cw-text-lowercase {
+  text-transform: lowercase !important;
+}
+.cw-text-uppercase {
+  text-transform: uppercase !important;
+}
 /* ========================================================================
    Component: Utility
  ========================================================================== */
@@ -7593,12 +7773,10 @@ a.cw-thumbnail:focus {
 @media (min-width: 768px) {
   .cw-align-medium-left {
     margin-right: 15px;
-    margin-bottom: 15px;
     float: left;
   }
   .cw-align-medium-right {
     margin-left: 15px;
-    margin-bottom: 15px;
     float: right;
   }
 }
@@ -8469,4 +8647,49 @@ a.cw-thumbnail:focus {
 }
 .cw-contrast .cw-text-primary {
   color: #2d7091 !important;
+}
+/* ========================================================================
+   Component: Print
+ ========================================================================== */
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

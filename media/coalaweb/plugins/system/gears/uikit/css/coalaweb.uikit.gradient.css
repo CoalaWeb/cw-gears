@@ -1,4 +1,4 @@
-/*! UIkit 2.26.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 
 /*
  * Preserve original dimensions
@@ -1012,7 +1012,7 @@
   top: 10px;
   right: 10px;
 }
-.cw-panel-hover .cw-panel-teaser {
+.cw-panel-hover > .cw-panel-teaser {
   margin-top: -16px;
   margin-left: -16px;
   margin-right: -16px;
@@ -2915,8 +2915,10 @@ html:not(.cw-touch) .cw-nav-offcanvas ul a:hover {
   border: 1px solid #ddd;
   background: #fff;
   color: #444;
-  -webkit-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  -webkit-transition: all 0.2s linear;
+  -webkit-transition-property: border, background, color, box-shadow, padding;
+  transition: all 0.2s linear;
+  transition-property: border, background, color, box-shadow, padding;
   border-radius: 4px;
 }
 .cw-form select:focus,
@@ -5560,6 +5562,94 @@ select.cw-form-width-mini {
 .cw-icon-usb:before {
   content: "\f287";
 }
+.cw-icon-american-sign-language-interpreting:before,
+.cw-icon-asl-interpreting:before {
+  content: "\f2a3";
+}
+.cw-icon-assistive-listening-systems:before {
+  content: "\f2a2";
+}
+.cw-icon-audio-description:before {
+  content: "\f29e";
+}
+.cw-icon-blind:before {
+  content: "\f29d";
+}
+.cw-icon-braille:before {
+  content: "\f2a1";
+}
+.cw-icon-deaf:before,
+.cw-icon-deafness:before {
+  content: "\f2a4";
+}
+.cw-icon-envira:before {
+  content: "\f299";
+}
+.cw-icon-font-awesome:before,
+.cw-icon-fa:before {
+  content: "\f2b4";
+}
+.cw-icon-first-order:before {
+  content: "\f2b0";
+}
+.cw-icon-gitlab:before {
+  content: "\f296";
+}
+.cw-icon-glide:before {
+  content: "\f2a5";
+}
+.cw-icon-glide-g:before {
+  content: "\f2a6";
+}
+.cw-icon-hard-of-hearing:before {
+  content: "\f2a4";
+}
+.cw-icon-low-vision:before {
+  content: "\f2a8";
+}
+.cw-icon-question-circle-o:before {
+  content: "\f29c";
+}
+.cw-icon-sign-language:before,
+.cw-icon-signing:before {
+  content: "\f2a7";
+}
+.cw-icon-snapchat:before {
+  content: "\f2ab";
+}
+.cw-icon-snapchat-ghost:before {
+  content: "\f2ac";
+}
+.cw-icon-snapchat-square:before {
+  content: "\f2ad";
+}
+.cw-icon-themeisle:before {
+  content: "\f2b2";
+}
+.cw-icon-universal-access:before {
+  content: "\f29a";
+}
+.cw-icon-viadeo:before {
+  content: "\f2a9";
+}
+.cw-icon-viadeo-square:before {
+  content: "\f2aa";
+}
+.cw-icon-volume-control-phone:before {
+  content: "\f2a0";
+}
+.cw-icon-wheelchair-alt:before {
+  content: "\f29b";
+}
+.cw-icon-wpbeginner:before {
+  content: "\f297";
+}
+.cw-icon-wpforms:before {
+  content: "\f298";
+}
+.cw-icon-yoast:before {
+  content: "\f2b1";
+}
 /* ========================================================================
    Component: Close
  ========================================================================== */
@@ -7390,6 +7480,7 @@ a.cw-thumbnail:focus {
  * Prepares the whole HTML page to slide-out
  * 1. Fix the main page and disallow scrolling
  * 2. Side-out transition
+ * 3. Needed for the transition to work instead of just letting it pop to the side
  */
 .cw-offcanvas-page {
   /* 1 */
@@ -7397,6 +7488,8 @@ a.cw-thumbnail:focus {
   /* 2 */
   -webkit-transition: margin-left 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out;
+  /* 3 */
+  margin-left: 0;
 }
 /* Sub-object `cw-offcanvas-bar`
  ========================================================================== */
@@ -7441,6 +7534,34 @@ a.cw-thumbnail:focus {
   right: 0;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
+}
+/* Offcanvase modes
+ ========================================================================== */
+.cw-offcanvas-bar[mode='none'] {
+  -webkit-transition: none;
+  transition: none;
+}
+.cw-offcanvas-bar[mode='reveal'] {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+  clip: rect(0, 0, 100vh, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, clip 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, clip 0.3s ease-in-out;
+}
+.cw-offcanvas-bar-flip[mode='reveal'] {
+  clip: none;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.cw-offcanvas-bar-flip[mode='reveal'] > * {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+.cw-offcanvas.cw-active .cw-offcanvas-bar-flip[mode='reveal'].cw-offcanvas-bar-show > * {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
 }
 /* Panel in offcanvas
  ========================================================================== */
@@ -7600,6 +7721,17 @@ a.cw-thumbnail:focus {
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
+}
+/* Transform modifiers
+ ========================================================================== */
+.cw-text-capitalize {
+  text-transform: capitalize !important;
+}
+.cw-text-lowercase {
+  text-transform: lowercase !important;
+}
+.cw-text-uppercase {
+  text-transform: uppercase !important;
 }
 /* ========================================================================
    Component: Utility

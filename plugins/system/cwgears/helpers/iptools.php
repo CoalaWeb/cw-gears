@@ -22,14 +22,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 defined('_JEXEC') or die('Restricted access');
 
 /**
  *  extension helper.
  */
-class CwGearsIptools 
-{
+class CwGearsIptools {
 
     /**
      * Get users IP address
@@ -37,7 +35,6 @@ class CwGearsIptools
      * @return string
      */
     public static function getUserIP() {
-
         $ip = self::_real_getUserIP();
 
         if ((strstr($ip, ',') !== false) || (strstr($ip, ' ') !== false)) {
@@ -61,48 +58,64 @@ class CwGearsIptools
      *
      * @return string
      */
-    private static function _real_getUserIP() 
-    {
+    private static function _real_getUserIP() {
         // Normally the $_SERVER superglobal is set
         if (isset($_SERVER)) {
-            // Do we have an x-forwarded-for HTTP header (e.g. NginX)?
-            if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
-                return $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+            $ip_keys = array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR');
+
+            foreach ($ip_keys as $key) {
+                if (array_key_exists($key, $_SERVER) === true) {
+                    foreach (explode(',', $_SERVER[$key]) as $ip) {
+                        // trim for safety measures
+                        $ip = trim($ip);
+                        // attempt to validate IP
+                        if (self::validate_ip($ip)) {
+                            return $ip;
+                        }
+                    }
+                }
             }
 
-            // Do we have a client-ip header (e.g. non-transparent proxy)?
-            if (array_key_exists('HTTP_CLIENT_IP', $_SERVER)) {
-                return $_SERVER['HTTP_CLIENT_IP'];
-            }
-
-            // Normal, non-proxied server or server behind a transparent proxy
-            return $_SERVER['REMOTE_ADDR'];
+            return self::validate_ip($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
         }
 
         // This part is executed on PHP running as CGI, or on SAPIs which do
         // not set the $_SERVER superglobal
         // If getenv() is disabled, you're screwed
-        if (!function_exists('getenv')) {
-            return '';
-        }
+        if (function_exists('getenv')) {
 
-        // Do we have an x-forwarded-for HTTP header?
-        if (getenv('HTTP_X_FORWARDED_FOR')) {
-            return getenv('HTTP_X_FORWARDED_FOR');
-        }
+            $ip_keys = array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR');
 
-        // Do we have a client-ip header?
-        if (getenv('HTTP_CLIENT_IP')) {
-            return getenv('HTTP_CLIENT_IP');
-        }
+            foreach ($ip_keys as $key) {
+                if (getenv($key)) {
+                    foreach (explode(',', getenv($key)) as $ip) {
+                        // trim for safety measures
+                        $ip = trim($ip);
+                        // attempt to validate IP
+                        if (self::validate_ip($ip)) {
+                            return $ip;
+                        }
+                    }
+                }
+            }
 
-        // Normal, non-proxied server or server behind a transparent proxy
-        if (getenv('REMOTE_ADDR')) {
-            return getenv('REMOTE_ADDR');
+            return self::validate_ip(getenv('REMOTE_ADDR')) ? getenv('REMOTE_ADDR') : '';
         }
 
         // Catch-all case for broken servers, apparently
         return '';
+    }
+
+    /**
+     * Ensures an ip address is both a valid IP and does not fall within
+     * a private network range.
+     */
+    protected static function validate_ip($ip) {
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -112,8 +125,7 @@ class CwGearsIptools
      *
      * @return boolean  True if it's IPv6
      */
-    public static function isIPv6($ip) 
-    {
+    public static function isIPv6($ip) {
         if (strstr($ip, ':')) {
             return true;
         }
@@ -128,8 +140,7 @@ class CwGearsIptools
      *
      * @return string
      */
-    protected static function inet_to_bits($inet) 
-    {
+    protected static function inet_to_bits($inet) {
         if (strlen($inet) == 4) {
             $unpacked = unpack('A4', $inet);
         } else {
@@ -153,8 +164,7 @@ class CwGearsIptools
      *
      * @return null|boolean  True if it's in the list, null if the filtering can't proceed
      */
-    public static function ipinList($ip, $ipTable = array()) 
-    {
+    public static function ipinList($ip, $ipTable = array()) {
         // No point proceeding with an empty IP list
         if (empty($ipTable)) {
             return null;
@@ -348,8 +358,7 @@ class CwGearsIptools
      *
      * @return null|boolean  True if it's in the list, null if the filtering can't proceed
      */
-    public static function titleinList($ip, $ipTable = array()) 
-    {
+    public static function titleinList($ip, $ipTable = array()) {
         // No point proceeding with an empty IP list
         if (empty($ipTable)) {
             return null;
@@ -483,17 +492,17 @@ class CwGearsIptools
                         switch ($dots) {
                             case 1:
                                 $netmask = '255.0.0.0';
-                                $ipExpression2.= '0.0.0';
+                                $ipExpression2 .= '0.0.0';
                                 break;
 
                             case 2:
                                 $netmask = '255.255.0.0';
-                                $ipExpression2.= '0.0';
+                                $ipExpression2 .= '0.0';
                                 break;
 
                             case 3:
                                 $netmask = '255.255.255.0';
-                                $ipExpression2.= '0';
+                                $ipExpression2 .= '0';
                                 break;
 
                             default:
