@@ -1,6 +1,6 @@
 ##Change Log
 
-### Version 0.2.6 September 2016
+### Version 0.2.6 October 2016
 - **(C)** Iptools class has improved IP detection and validation
 - **(C)** Updated UIkit to version 2.27.1
 
