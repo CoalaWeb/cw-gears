@@ -25,6 +25,8 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+jimport('joomla.log.log');
+
 /**
  *  component helper.
  */
@@ -34,6 +36,20 @@ class CwGearsHelperLoadcount {
      * Get counts
      */
     public static function getCounts($url, $check) {
+
+        //Should we log SQL errors?
+        $plugin = JPluginHelper::getPlugin('system', 'cwgears');
+        $logsql = '';
+        // Check if plugin is enabled
+        if ($plugin) {
+            $pluginParams = new JRegistry($plugin->params);
+            $logsql = $pluginParams->get('log_sql', 1);
+        }
+        if ($logsql) {
+            //Start our log file code
+            JLog::addLogger(array('text_file' => 'coalaweb_gears_sql.log.php'), JLog::ERROR, 'coalaweb_gears_sql');
+        }
+
         //Start our database queries
         $db = JFactory::getDbo();
 
@@ -49,6 +65,11 @@ class CwGearsHelperLoadcount {
             $count = $db->loadResult();
         } catch (Exception $exc) {
             $count = '';
+            if ($logsql) {
+                //Log error
+                $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+            }
         }
 
         // Lastly send back the count
@@ -59,6 +80,20 @@ class CwGearsHelperLoadcount {
      * Get counts
      */
     public static function setUikitCount($url) {
+
+        //Should we log SQL errors?
+        $plugin = JPluginHelper::getPlugin('system', 'cwgears');
+        $logsql = '';
+        // Check if plugin is enabled
+        if ($plugin) {
+            $pluginParams = new JRegistry($plugin->params);
+            $logsql = $pluginParams->get('log_sql', 1);
+        }
+        if ($logsql) {
+            //Start our log file code
+            JLog::addLogger(array('text_file' => 'coalaweb_gears_sql.log.php'), JLog::ERROR, 'coalaweb_gears_sql');
+        }
+
         //Start our database queries
         $db = JFactory::getDbo();
         //Current date time
@@ -77,6 +112,11 @@ class CwGearsHelperLoadcount {
             $current = $db->loadResult();
         } catch (Exception $e) {
             $current = '';
+            if ($logsql) {
+                //Log error
+                $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+            }
         }
 
         if ($current) {// we are updating
@@ -98,7 +138,11 @@ class CwGearsHelperLoadcount {
             try {
                 $db->execute();
             } catch (Exception $e) {
-                // Nothing
+                if ($logsql) {
+                    //Log error
+                    $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                    JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+                }
             }
             
         } else {//we are inserting
@@ -116,7 +160,11 @@ class CwGearsHelperLoadcount {
             try {
                 $db->execute();
             } catch (Exception $e) {
-                // Nothing
+                if ($logsql) {
+                    //Log error
+                    $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                    JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+                }
             }
         }
 
@@ -124,6 +172,20 @@ class CwGearsHelperLoadcount {
     }
 
     public static function setUikitPlusCount($url) {
+
+        //Should we log SQL errors?
+        $plugin = JPluginHelper::getPlugin('system', 'cwgears');
+        $logsql = '';
+        // Check if plugin is enabled
+        if ($plugin) {
+            $pluginParams = new JRegistry($plugin->params);
+            $logsql = $pluginParams->get('log_sql', 1);
+        }
+        if ($logsql) {
+            //Start our log file code
+            JLog::addLogger(array('text_file' => 'coalaweb_gears_sql.log.php'), JLog::ERROR, 'coalaweb_gears_sql');
+        }
+
         //Start our database queries
         $db = JFactory::getDbo();
         //Current date time
@@ -142,6 +204,11 @@ class CwGearsHelperLoadcount {
             $current = $db->loadResult();
         } catch (Exception $e) {
             $current = '';
+            if ($logsql) {
+                //Log error
+                $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+            }
         }
 
         if ($current) {// we are updating
@@ -163,7 +230,11 @@ class CwGearsHelperLoadcount {
             try {
                 $db->execute();
             } catch (Exception $e) {
-                // Nothing
+                if ($logsql) {
+                    //Log error
+                    $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                    JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+                }
             }
             
         } else {//we are inserting
@@ -181,7 +252,11 @@ class CwGearsHelperLoadcount {
             try {
                 $db->execute();
             } catch (Exception $e) {
-                // Nothing
+                if ($logsql) {
+                    //Log error
+                    $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                    JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+                }
             }
         }
 
@@ -192,6 +267,20 @@ class CwGearsHelperLoadcount {
      * Get counts
      */
     public static function setFacebookJsCount($url) {
+
+        //Should we log SQL errors?
+        $plugin = JPluginHelper::getPlugin('system', 'cwgears');
+        $logsql = '';
+        // Check if plugin is enabled
+        if ($plugin) {
+            $pluginParams = new JRegistry($plugin->params);
+            $logsql = $pluginParams->get('log_sql', '');
+        }
+        if ($logsql) {
+            //Start our log file code
+            JLog::addLogger(array('text_file' => 'coalaweb_gears_sql.log.php'), JLog::ERROR, 'coalaweb_gears_sql');
+        }
+
         //Start our database queries
         $db = JFactory::getDbo();
         //Current date time
@@ -210,6 +299,11 @@ class CwGearsHelperLoadcount {
             $current = $db->loadResult();
         } catch (Exception $e) {
             $current = '';
+            if ($logsql) {
+                //Log error
+                $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+            }
         }
 
         if ($current) {// we are updating
@@ -231,7 +325,11 @@ class CwGearsHelperLoadcount {
             try {
                 $db->execute();
             } catch (Exception $e) {
-                // Nothing
+                if ($logsql) {
+                    //Log error
+                    $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                    JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+                }
             }
             
         } else {//we are inserting
@@ -249,7 +347,11 @@ class CwGearsHelperLoadcount {
             try {
                 $db->execute();
             } catch (Exception $e) {
-                // Nothing
+                if ($logsql) {
+                    //Log error
+                    $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                    JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
+                }
             }
         }
 

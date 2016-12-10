@@ -42,8 +42,14 @@ class CWElementVersion extends CWElement {
         // Load version.php
         jimport('joomla.filesystem.file');
         $arr = explode("_", $label);
+
+        //initiate variables
+        $version_php = '';
         $current = '';
-        
+        $version = '';
+        $ispro = '';
+        $date = '';
+
         switch ($arr[0]) {
             case "com":
                 $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';

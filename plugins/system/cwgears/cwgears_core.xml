@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.2" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2016-10-04</creationDate>
+    <creationDate>2016-12-09</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>http://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2016 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.2.6</version>
+    <version>0.2.7</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <install> <!-- Runs on install -->
@@ -73,7 +73,7 @@
                 <field 
                     name="zoo_editor_tweak" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0"
                     label="PLG_CWGEARS_FIELD_ZOOEDITOR_ON_LABEL" 
                     description="PLG_CWGEARS_FIELD_ZOOEDITOR_ON_DESC" >
@@ -84,7 +84,7 @@
                 <field 
                     name="sys_msg_demo" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0"
                     label="PLG_CWGEARS_FIELD_SYSMSG_ON_LABEL" 
                     description="PLG_CWGEARS_FIELD_SYSMSG_ON_DESC" >
@@ -95,7 +95,7 @@
                 <field 
                     name="gzip_help" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0"
                     label="PLG_CWGEARS_FIELD_GZIPHELP_LABEL" 
                     description="PLG_CWGEARS_FIELD_GZIPHELP_DESC" >
@@ -106,14 +106,25 @@
                 <field 
                     name="recap_compact" 
                     type="radio"
-                    class="btn-group"  
+                    class="btn-group btn-group-yesno"
                     default="0"
                     label="PLG_CWGEARS_FIELD_RECAPCOMPACT_LABEL" 
                     description="PLG_CWGEARS_FIELD_RECAPCOMPACT_DESC" >
                     <option value="0">CW_NO</option>
                     <option value="1">CW_YES</option>
                 </field>
-      		
+
+                <field
+                        name="log_sql"
+                        type="radio"
+                        default="0"
+                        class="btn-group btn-group-yesno"
+                        label="PLG_CWGEARS_FIELD_LOG_SQL_LABEL"
+                        description="PLG_CWGEARS_FIELD_LOG_SQL_DESC">
+                    <option value="0">CW_NO</option>
+                    <option value="1">CW_YES</option>
+                </field>
+
             </fieldset>
            
             <fieldset 
@@ -403,8 +414,8 @@
                     class="btn-group btn-group-yesno"
                     label="PLG_CWGEARS_FIELD_DBCLEAN_LABEL" 
                     description="PLG_CWGEARS_FIELD_DBCLEAN_DESC">
-                    <option value="1">CW_YES</option>
-                    <option value="0">CW_NO</option>
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
                 </field>
 
                 <field
