@@ -1,5 +1,5 @@
 ### NetBeans ###
-nbproject/private/
+nbproject/
 build/
 nbbuild/
 dist/
@@ -10,3 +10,4 @@ nb-configuration.xml
 # Transifex #
 .tx/
 
+.idea/
