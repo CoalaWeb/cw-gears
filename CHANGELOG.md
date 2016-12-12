@@ -4,6 +4,7 @@
 - **(A)** Added UIkit slide set support
 - **(C)** Improved version field
 - **(A)** New option to store DB errors in a log file
+- **(A)** New tools helper file for multi extension support
 - **(L)** New language strings
 
 ### Version 0.2.6 October 2016
