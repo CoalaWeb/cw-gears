@@ -33,6 +33,7 @@ jimport('joomla.log.log');
 class plgSystemCwgears extends JPlugin {
 
     var $pinterest;
+    var $share;
     private $caching = 0;
 
     function __construct(&$subject, $config) {
@@ -689,16 +690,17 @@ class plgSystemCwgears extends JPlugin {
                 $modParams = new JRegistry;
                 $modParams->loadString($module->params, 'JSON');
                 $this->pinterest = $modParams->get('display_pinterest_bm');
+                $this->share = $modParams->get('display_bm_sec');
             }
 
-            if ($moduleTwo && $this->pinterest == 0) {
-                $modParams = new JRegistry;
-                $modParams->loadString($moduleTwo->params, 'JSON');
-                $this->pinterest = $modParams->get('display_pinterest');
+            if ($moduleTwo && ($this->pinterest == 0 || $this->share == 0)) {
+                $modParamsTwo = new JRegistry;
+                $modParamsTwo->loadString($moduleTwo->params, 'JSON');
+                $this->pinterest = $this->share = $modParamsTwo->get('display_pinterest');
             }
 
 
-            if ($this->pinterest) {
+            if ($this->pinterest && $this->share) {
                 $body = $app->getBody();
                 $pos = JString::strpos($body, "//assets.pinterest.com/js/pinit.js");
                 if (!$pos) {
