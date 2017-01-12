@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /files/en-GB.license.txt
- * @copyright           Copyright (c) 2016 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,7 +67,7 @@ class CwGearsHelperLoadcount {
             $count = '';
             if ($logsql) {
                 //Log error
-                $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $e->getMessage());
+                $msg = JText::sprintf('PLG_CWGEARS_DATABASE_ERROR', $exc->getMessage());
                 JLog::add($msg, JLog::ERROR, 'coalaweb_gears_sql');
             }
         }

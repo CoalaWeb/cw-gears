@@ -2,7 +2,7 @@
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
- * @copyright           Copyright (c) 2016 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
 */
 /* Header icons 
 ------------------------------------------------------------------------------*/
@@ -559,7 +559,6 @@ div.liveupdate-infotable {
 
 div.liveupdate-infotable a {
     color: #025A8D;
-    transition: color .3s ease-out 0;
 }
 
 div.liveupdate-infotable a:hover {
@@ -694,7 +693,6 @@ div.liveupdate-noupdates .cw-liveupdate {
     margin: 5px;
     padding: 0 15px !important;
     text-transform: uppercase;
-    transition: background-color .3s ease-out 0;
 }
 
 .button-blue:active,.button-blue:focus,.button-blue:hover,.button-green:active,.button-green:focus,.button-green:hover,.button-red:active,.button-red:focus,.button-red:hover {

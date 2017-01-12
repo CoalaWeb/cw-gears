@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2016 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -449,6 +449,12 @@ class plgSystemCwgears extends JPlugin {
                         $uikitSticky = 'css/components/coalaweb.sticky.min.css';
                         //adds slider naviagtion
                         $uikitSlider= 'css/components/coalaweb.slider.min.css';
+                        //adds datepicker
+                        $uikitDate = 'css/components/coalaweb.datepicker.min.css';
+                        //adds form select needed for other components
+                        $uikitSelect = 'css/components/coalaweb.form-select.min.css';
+                        //adds tooltips
+                        $uikitTooltip = 'css/components/coalaweb.tooltip.min.css';
                         break;
                     case "flat":
                         //adds slider naviagtion
@@ -456,7 +462,13 @@ class plgSystemCwgears extends JPlugin {
                         //adds sticky
                         $uikitSticky = 'css/components/coalaweb.sticky.almost-flat.min.css';
                         //adds slider naviagtion
-                        $uikitSlider= 'css/components/coalaweb.slider.almost-flat.min.css';
+                        $uikitSlider = 'css/components/coalaweb.slider.almost-flat.min.css';
+                        //adds datepicker
+                        $uikitDate = 'css/components/coalaweb.datepicker.almost-flat.min.css';
+                        //adds form select needed for other components
+                        $uikitSelect = 'css/components/coalaweb.form-select.almost-flat.min.css';
+                        //adds tooltips
+                        $uikitTooltip = 'css/components/coalaweb.tooltip.almost-flat.min.css';
                         break;
                     case "gradient":
                         //adds slider naviagtion
@@ -465,6 +477,12 @@ class plgSystemCwgears extends JPlugin {
                         $uikitSticky = 'css/components/coalaweb.sticky.gradient.min.css';
                         //adds slide
                         $uikitSlider = 'css/components/coalaweb.slider.gradient.min.css';
+                        //adds datepicker
+                        $uikitDate = 'css/components/coalaweb.datepicker.gradient.min.css';
+                        //adds form select needed for other components
+                        $uikitSelect = 'css/components/coalaweb.form-select.gradient.min.css';
+                        //adds tooltips
+                        $uikitTooltip = 'css/components/coalaweb.tooltip.gradient.min.css';
                         break;
                     default:
                         //adds slider naviagtion
@@ -473,6 +491,12 @@ class plgSystemCwgears extends JPlugin {
                         $uikitSticky = 'css/components/coalaweb.sticky.min.css';
                         //adds slider naviagtion
                         $uikitSlider= 'css/components/coalaweb.slider.min.css';
+                        //adds datepicker
+                        $uikitDate = 'css/components/coalaweb.datepicker.min.css';
+                        //adds form select needed for other components
+                        $uikitSelect = 'css/components/coalaweb.form-select.min.css';
+                        //adds tooltips
+                        $uikitTooltip = 'css/components/coalaweb.tooltip.min.css';
                 }
 
                 //lightbox support
@@ -485,12 +509,20 @@ class plgSystemCwgears extends JPlugin {
                 $doc->addScript($uikitLocal . "js/components/coalaweb.slideset.min.js");
                 //Slideset support
                 $doc->addScript($uikitLocal . "js/components/coalaweb.slider.min.js");
-
+                //Date picker support
+                $doc->addScript($uikitLocal . 'js/components/coalaweb.datepicker.min.js');
+                //Tooltip support
+                $doc->addScript($uikitLocal . 'js/components/coalaweb.tooltip.min.js');
+                //Form select support needed for other components
+                $doc->addScript($uikitLocal . 'js/components/coalaweb.form-select.min.js');
 
                 //Add CSS
                 $doc->addStyleSheet($uikitLocal . $uikitSlider);
                 $doc->addStyleSheet($uikitLocal . $uikitSlidenav);
                 $doc->addStyleSheet($uikitLocal . $uikitSticky);
+                $doc->addStyleSheet($uikitLocal . $uikitDate);
+                $doc->addStyleSheet($uikitLocal . $uikitSelect);
+                $doc->addStyleSheet($uikitLocal . $uikitTooltip);
             }
         }
 

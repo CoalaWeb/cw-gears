@@ -2,7 +2,7 @@
  * @author              Steven Palmer
  * @author url          http://coalaweb.com
  * @author email        support@coalaweb.com
- * @copyright           Copyright (c) 2016 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
 */
 
 /* Module configuration styling
@@ -218,7 +218,7 @@ fieldset.adminform-legacy fieldset.radio {
 .cw-module p.donate a, .cw-module p.donate em { color:#A05A2C; }
 .cw-module p.donate a:hover {color:#D38D5F;}
 .cw-module p.donate {
-    background: url("../images/icons/cw-coffee2.png") no-repeat scroll 0 0 #F6ECE6; 
+    background: url("../images/icons/cw-coffee.png") no-repeat scroll 0 0 #F6ECE6;
     border-bottom: 1px solid #EDD7C9;
     border-top: 1px solid #EDD7C9;
     padding: 10px;
