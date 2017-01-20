@@ -993,7 +993,9 @@ class plgSystemCwgears extends JPlugin {
         $users = 'http://cdn.coalaweb.com/updates/cw-users-pro.xml';
         $print = 'http://cdn.coalaweb.com/updates/cw-print-pro.xml';
         $panel = 'http://cdn.coalaweb.com/updates/cw-panel-pro.xml';
+        $date = 'http://cdn.coalaweb.com/updates/cw-date-pro.xml';
         $dbtools = 'http://cdn.coalaweb.com/updates/cw-dbtools-pro.xml';
+
         
         $form = $app->input->post->get('jform', array(), 'array');
         if (!isset($form['params']['downloadid'])) {
@@ -1009,6 +1011,7 @@ class plgSystemCwgears extends JPlugin {
                 ->where($db->qn('location') . ' = ' . $db->q($users), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($print), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($date), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($dbtools));
         $db->setQuery($query);
         
@@ -1030,6 +1033,7 @@ class plgSystemCwgears extends JPlugin {
                 ->where($db->qn('location') . ' = ' . $db->q($users), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($print), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($date), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($dbtools));
         $db->setQuery($query);
         

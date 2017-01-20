@@ -212,6 +212,15 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-users-'. $type, $version );
                 }
                 break;
+            case "plg_content_cwdate":
+                $version = (PLG_CWDATE_VERSION);
+                $date = (PLG_CWDATE_DATE);
+                $ispro = (PLG_CWDATE_PRO);
+                $type = $ispro ? 'pro' : 'core';
+                if (class_exists('CwGearsLatestversion')) {
+                    $current = CwGearsLatestversion::getCurrent('cw-date-'. $type, $version );
+                }
+                break;
         }
 
         if ($ispro == 1) {
