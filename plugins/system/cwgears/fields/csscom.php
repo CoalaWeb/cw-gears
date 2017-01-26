@@ -51,9 +51,3 @@ class JFormFieldCsscom extends CWElementCsscom {
     var $type = 'csscom';
 
 }
-
-class JElementCsscom extends CWElementCsscom {
-
-    var $_name = 'csscom';
-
-}

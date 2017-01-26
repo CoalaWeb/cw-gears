@@ -48,9 +48,3 @@ class JFormFieldInfo extends CWElementInfo {
     var $type = 'info';
 
 }
-
-class JElementInfo extends CWElementInfo {
-
-    var $_name = 'info';
-
-}

@@ -48,9 +48,3 @@ class JFormFieldUpgrade extends CWElementUpgrade {
     var $type = 'upgrade';
 
 }
-
-class JElementUpgrade extends CWElementUpgrade {
-
-    var $_name = 'upgrade';
-
-}

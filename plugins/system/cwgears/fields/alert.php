@@ -47,9 +47,3 @@ class JFormFieldAlert extends CWElementAlert {
     var $type = 'alert';
 
 }
-
-class JElementAlert extends CWElementAlert {
-
-    var $_name = 'alert';
-
-}

@@ -46,9 +46,3 @@ class JFormFieldHeader extends CWElementHeader {
     var $type = 'header';
 
 }
-
-class JElementHeader extends CWElementHeader {
-
-    var $_name = 'header';
-
-}

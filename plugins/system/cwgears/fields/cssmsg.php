@@ -50,9 +50,3 @@ class JFormFieldCssmsg extends CWElementCssmsg {
     var $type = 'cssmsg';
 
 }
-
-class JElementCssmsg extends CWElementCssmsg {
-
-    var $_name = 'cssmsg';
-
-}

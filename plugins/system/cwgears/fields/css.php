@@ -51,9 +51,3 @@ class JFormFieldCss extends CWElementCss {
     var $type = 'css';
 
 }
-
-class JElementCss extends CWElementCss {
-
-    var $_name = 'css';
-
-}

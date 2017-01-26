@@ -65,7 +65,3 @@ class CWElementDependent extends CWElement {
 class JFormFieldDependent extends CWElementDependent {
     var $type = 'dependent';
 }
-
-class JElementDependent extends CWElementDependent {
-    var $_name = 'dependent';
-}

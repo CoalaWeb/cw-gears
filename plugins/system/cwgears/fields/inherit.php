@@ -65,7 +65,3 @@ class CWElementInherit extends CWElement {
 class JFormFieldInherit extends CWElementInherit {
     var $type = 'inherit';
 }
-
-class JElementInherit extends CWElementInherit {
-    var $_name = 'inherit';
-}

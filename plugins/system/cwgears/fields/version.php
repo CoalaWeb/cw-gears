@@ -259,9 +259,3 @@ class JFormFieldVersion extends CWElementVersion {
     var $type = 'version';
 
 }
-
-class JElementVersion extends CWElementVersion {
-
-    var $_name = 'version';
-
-}
