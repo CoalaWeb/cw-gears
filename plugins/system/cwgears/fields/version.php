@@ -104,6 +104,15 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-traffic-'. $type, $version );
                 }
                 break;
+            case "com_coalawebmembers":
+                $version = (COM_CWMEMBERS_VERSION);
+                $date = (COM_CWMEMBERS_DATE);
+                $ispro = (COM_CWMEMBERS_PRO);
+                $type = $ispro ? 'pro' : 'core';
+                if (class_exists('CwGearsLatestversion')) {
+                    $current = CwGearsLatestversion::getCurrent('cw-members-'. $type, $version );
+                }
+                break;
             case "com_coalawebmarket":
                 $version = (COM_CWMARKET_VERSION);
                 $date = (COM_CWMARKET_DATE);
@@ -238,18 +247,18 @@ class CWElementVersion extends CWElement {
         }
 
         return '<div class="cw-message-block">'
-                . '<div class="cw-module">'
-                . '<h3>' . JText::_('PLG_CWGEARS_RELEASE_TITLE') . '</h3>'
-                . '<ul class="cw_module">'
-                . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_TYPE_LABEL') . ' <strong>' . $ispro . '</strong></li>'
-                . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $version . '</strong></li>'
-                . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' <strong>' . $date . '</strong></li>'
-                . '</ul>'
-                . '<h3>' . JText::_('PLG_CWGEARS_LATEST_RELEASE_TITLE') . '</h3>'
-                . '<ul class="cw_module">'
-                . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $current['remote'] . '</strong> ' . $current['update'] . '</li>'
-                . '</ul>'
-                . '</div></div>';
+            . '<div class="cw-module">'
+            . '<h3>' . JText::_('PLG_CWGEARS_RELEASE_TITLE') . '</h3>'
+            . '<ul class="cw_module">'
+            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_TYPE_LABEL') . ' <strong>' . $ispro . '</strong></li>'
+            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $version . '</strong></li>'
+            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' <strong>' . $date . '</strong></li>'
+            . '</ul>'
+            . '<h3>' . JText::_('PLG_CWGEARS_LATEST_RELEASE_TITLE') . '</h3>'
+            . '<ul class="cw_module">'
+            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $current['remote'] . '</strong> ' . $current['update'] . '</li>'
+            . '</ul>'
+            . '</div></div>';
     }
 
 }

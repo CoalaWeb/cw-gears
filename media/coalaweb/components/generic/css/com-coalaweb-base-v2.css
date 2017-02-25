@@ -30,7 +30,7 @@
     text-decoration: none;
     transition-property: none;
     vertical-align: middle;
-    width: 108px;
+    min-width: 108px;
     color: #FFFFFF !important;
     font: bold 12px Arial,Helvetica,sans-serif;
     text-transform: uppercase;

@@ -190,7 +190,7 @@ class plgSystemCwgears extends JPlugin {
         //Lets add some style for backend extension configurations.
         if ($app->isAdmin()) {
 
-            if ($option == 'com_categories' && ($ext == 'com_coalawebcomments' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic' || $ext == 'com_coalaweblingual')) {
+            if ($option == 'com_categories' && ($ext == 'com_coalawebcomments' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic' || $ext == 'com_coalaweblingual' || $ext == 'com_coalawebmembers')) {
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
@@ -201,7 +201,7 @@ class plgSystemCwgears extends JPlugin {
                 }
             }
 
-            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket', 'com_coalawebpaypal', 'com_coalaweblingual', 'com_coalawebcomments'))) {
+            if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket', 'com_coalawebpaypal', 'com_coalaweblingual', 'com_coalawebcomments', 'com_coalawebmembers'))) {
 
                 if (version_compare(JVERSION, '3.0', '>')) {
                     $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
