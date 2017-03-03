@@ -1,6 +1,6 @@
 ##Change Log
 
-### Version 0.3.3 February 2017
+### Version 0.3.3 March 2017
 - **(C)** Changed Cpanel CSS to accommodate longer labels
 - **(A)** Added support for CoalaWeb Members
 
