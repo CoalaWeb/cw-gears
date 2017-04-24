@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
  * @package             Joomla
  * @subpackage          CoalaWeb Gears
  * @author              Steven Palmer
- * @author url          http://coalaweb.com
+ * @author url          https://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /files/en-GB.license.txt
  * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
@@ -68,5 +68,25 @@ class CwGearsHelperTools
         }
 
         return $cleanText;
+    }
+
+    /**
+     * Clean and minimize code
+     *
+     * @param type $code
+     * @return string
+     */
+    public static function codeClean($code) {
+
+        // Remove comments.
+        $pass1 = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', $cjsCode);
+        $pass2 = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\)\/\/[^"\'].*))/', '', $pass1);
+
+        // Minimize.
+        $pass3 = str_replace(array("\r\n", "\r", "\n", "\t"), '', $pass2);
+        $pass4 = preg_replace('/ +/', ' ', $pass3); // Replace multiple spaces with single space.
+        $codeClean = trim($pass4);  // Trim the string of leading and trailing space.
+
+        return $codeClean;
     }
 }

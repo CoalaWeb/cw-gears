@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
  * @package             Joomla
  * @subpackage          CoalaWeb Gears
  * @author              Steven Palmer
- * @author url          http://coalaweb.com
+ * @author url          https://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL, see /assets/en-GB.license.txt
  * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
@@ -25,6 +25,6 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('PLG_CWGEARS_VERSION', '0.3.4');
-define('PLG_CWGEARS_DATE', '2017-04-17');
+define('PLG_CWGEARS_VERSION', '0.3.5');
+define('PLG_CWGEARS_DATE', '2017-04-24');
 define('PLG_CWGEARS_PRO', '0');
