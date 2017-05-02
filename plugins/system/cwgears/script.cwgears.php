@@ -47,7 +47,7 @@ class PlgSystemCwgearsInstallerScript {
      * @param JInstaller $parent Parent object
      */
     public function preflight($type, $parent) {
-        // Only allow to install on Joomla! 3.2 or later with PHP 5.4 or later
+        // Only allow to install on Joomla! 3.6 or later with PHP 5.4 or later
         if (defined('PHP_VERSION')) {
             $version = PHP_VERSION;
         } elseif (function_exists('phpversion')) {
@@ -56,8 +56,8 @@ class PlgSystemCwgearsInstallerScript {
             $version = '5.0.0'; // all bets are off!
         }
 
-        if (!version_compare(JVERSION, '3.2', 'ge')) {
-            $msg = "<p>Sorry, you need Joomla! 3.2 or later to install this extension!</p>";
+        if (!version_compare(JVERSION, '3.6', 'ge')) {
+            $msg = "<p>Sorry, you need Joomla! 3.6 or later to install this extension!</p>";
 
             JLog::add($msg, JLog::WARNING, 'jerror');
 

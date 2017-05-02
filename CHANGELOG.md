@@ -1,6 +1,7 @@
 ##Change Log
 
 ### Version 0.3.6 May 2017
+- **(C)** Minimum Joomla version is now 3.6
 - **(C)** Updated Mobile Detect class to 2.8.25
 - **(C)** CSS updated for Control Panel layout in Joomla 3.7 + 
 - **(L)** Converted "_QQ_" to \" in Joomla 3.7 + 
