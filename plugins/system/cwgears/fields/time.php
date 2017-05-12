@@ -27,7 +27,6 @@ defined('_JEXEC') or die('Restricted access');
 
 // Add CSS and JS some are local to stop potential mix content errors
 $gearsMedia = JURI::root() . 'media/coalaweb/plugins/system/gears/';
-JHtml::stylesheet('https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css');
 JHtml::stylesheet($gearsMedia . 'css/bootstrap-datetimepicker.min.css');
 JHtml::script($gearsMedia . 'js/bootstrap-datetimepicker.min.js');
 
@@ -56,7 +55,7 @@ class JFormFieldTime extends JFormField {
                 . 'placeholder="' . $this->hint . '">'
                 . '</input>';
         $output[] = '<span class="add-on">';
-        $output[] = '<i data-time-icon="icon-time"></i>';
+        $output[] = '<i data-time-icon="icon-clock"></i>';
         $output[] = '</span>';
         $output[] = '</div>';
 

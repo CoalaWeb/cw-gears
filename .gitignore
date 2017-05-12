@@ -1,16 +1,11 @@
-# NetBeans #
-nbproject/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
-
-# Project #
+# Packages #
 build/
 
 # Transifex #
 .tx/
 
-# PhpStorm #
+# Markdown Files
+TODO.md
+
+# PHP Storm #
 .idea/

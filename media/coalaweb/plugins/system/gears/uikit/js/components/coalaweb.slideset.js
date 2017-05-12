@@ -1,15 +1,15 @@
-/*! UIkit 2.27.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(addon) {
 
     var component;
 
-    if (window.UIkit) {
-        component = addon(UIkit);
+    if (window.UIkit2cw) {
+        component = addon(UIkit2cw);
     }
 
-    if (typeof define == "function" && define.amd) {
-        define("uikit-slideset", ["uikit"], function(){
-            return component || addon(UIkit);
+    if (typeof define == 'function' && define.amd) {
+        define('uikit-slideset', ['uikit'], function(){
+            return component || addon(UIkit2cw);
         });
     }
 
@@ -40,12 +40,12 @@
             // auto init
             UI.ready(function(context) {
 
-                UI.$("[data-cw-slideset]", context).each(function(){
+                UI.$('[data-cw-slideset]', context).each(function(){
 
                     var ele = UI.$(this);
 
-                    if(!ele.data("slideset")) {
-                        UI.slideset(ele, UI.Utils.options(ele.attr("data-cw-slideset")));
+                    if(!ele.data('slideset')) {
+                        UI.slideset(ele, UI.Utils.options(ele.attr('data-cw-slideset')));
                     }
                 });
             });
@@ -60,7 +60,7 @@
             this.nav       = this.element.find('.cw-slideset-nav');
             this.controls  = this.options.controls ? UI.$(this.options.controls) : this.element;
 
-            UI.$win.on("resize load", UI.Utils.debounce(function() {
+            UI.$win.on('resize load', UI.Utils.debounce(function() {
                 $this.update();
             }, 100));
 
@@ -75,7 +75,7 @@
                 $this.list.addClass('cw-grid-width-'+bp+'-1-'+$this.options[bp]);
             });
 
-            this.on("click.uk.slideset", '[data-cw-slideset-item]', function(e) {
+            this.on('click.uk.slideset', '[data-cw-slideset-item]', function(e) {
 
                 e.preventDefault();
 

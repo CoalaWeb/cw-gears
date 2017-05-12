@@ -1,4 +1,4 @@
-/*! UIkit 2.27.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(UI) {
 
     "use strict";
@@ -9,7 +9,7 @@
 
         defaults: {
             connect   : false,
-            toggle    : ">*",
+            toggle    : '>*',
             active    : 0,
             animation : false,
             duration  : 200,
@@ -23,11 +23,11 @@
             // init code
             UI.ready(function(context) {
 
-                UI.$("[data-cw-switcher]", context).each(function() {
+                UI.$('[data-cw-switcher]', context).each(function() {
                     var switcher = UI.$(this);
 
-                    if (!switcher.data("switcher")) {
-                        var obj = UI.switcher(switcher, UI.Utils.options(switcher.attr("data-cw-switcher")));
+                    if (!switcher.data('switcher')) {
+                        var obj = UI.switcher(switcher, UI.Utils.options(switcher.attr('data-cw-switcher')));
                     }
                 });
             });
@@ -88,7 +88,7 @@
             this.connect.children().removeClass('cw-active').attr('aria-hidden', 'true');
 
             var toggles = this.find(this.options.toggle),
-                active  = toggles.filter(".cw-active");
+                active  = toggles.filter('.cw-active');
 
             if (active.length) {
                 this.show(active, false);
@@ -111,18 +111,16 @@
                 return;
             }
 
+            var toggles = this.find(this.options.toggle);
+
             if (isNaN(tab)) {
                 tab = UI.$(tab);
             } else {
-
-                var toggles = this.find(this.options.toggle);
-
                 tab = tab < 0 ? toggles.length-1 : tab;
                 tab = toggles.eq(toggles[tab] ? tab : 0);
             }
 
             var $this     = this,
-                toggles   = this.find(this.options.toggle),
                 active    = UI.$(tab),
                 animation = Animations[this.options.animation] || function(current, next) {
 
@@ -306,4 +304,4 @@
         return d.promise();
     }
 
-})(UIkit);
+})(UIkit2cw);

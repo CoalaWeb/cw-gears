@@ -1,15 +1,15 @@
-/*! UIkit 2.27.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(addon) {
 
     var component;
 
-    if (window.UIkit) {
-        component = addon(UIkit);
+    if (window.UIkit2cw) {
+        component = addon(UIkit2cw);
     }
 
-    if (typeof define == "function" && define.amd) {
-        define("uikit-form-select", ["uikit"], function(){
-            return component || addon(UIkit);
+    if (typeof define == 'function' && define.amd) {
+        define('uikit-form-select', ['uikit'], function(){
+            return component || addon(UIkit2cw);
         });
     }
 
@@ -20,20 +20,20 @@
     UI.component('formSelect', {
 
         defaults: {
-            'target': '>span:first',
-            'activeClass': 'cw-active'
+            target: '>span:first',
+            activeClass: 'cw-active'
         },
 
         boot: function() {
             // init code
             UI.ready(function(context) {
 
-                UI.$("[data-cw-form-select]", context).each(function(){
+                UI.$('[data-cw-form-select]', context).each(function(){
 
                     var ele = UI.$(this);
 
-                    if (!ele.data("formSelect")) {
-                        UI.formSelect(ele, UI.Utils.options(ele.attr("data-cw-form-select")));
+                    if (!ele.data('formSelect')) {
+                        UI.formSelect(ele, UI.Utils.options(ele.attr('data-cw-form-select')));
                     }
                 });
             });

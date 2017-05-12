@@ -1,4 +1,4 @@
-/*! UIkit 2.27.1 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(UI) {
 
     "use strict";
@@ -19,12 +19,12 @@
             // init code
             UI.ready(function(context) {
 
-                UI.$("[data-cw-tab]", context).each(function() {
+                UI.$('[data-cw-tab]', context).each(function() {
 
                     var tab = UI.$(this);
 
-                    if (!tab.data("tab")) {
-                        var obj = UI.tab(tab, UI.Utils.options(tab.attr("data-cw-tab")));
+                    if (!tab.data('tab')) {
+                        var obj = UI.tab(tab, UI.Utils.options(tab.attr('data-cw-tab')));
                     }
                 });
             });
@@ -36,7 +36,7 @@
 
             this.current = false;
 
-            this.on("click.uk.tab", this.options.target, function(e) {
+            this.on('click.uk.tab', this.options.target, function(e) {
 
                 e.preventDefault();
 
@@ -46,9 +46,9 @@
 
                 var current = $this.find($this.options.target).not(this);
 
-                current.removeClass("cw-active").blur();
+                current.removeClass('cw-active').blur();
 
-                $this.trigger("change.uk.tab", [UI.$(this).addClass("cw-active"), $this.current]);
+                $this.trigger('change.uk.tab', [UI.$(this).addClass('cw-active'), $this.current]);
 
                 $this.current = UI.$(this);
 
@@ -70,7 +70,7 @@
             this.responsivetab.lst      = this.responsivetab.dropdown.find('ul');
             this.responsivetab.caption  = this.responsivetab.find('a:first');
 
-            if (this.element.hasClass("cw-tab-bottom")) this.responsivetab.dropdown.addClass("cw-dropdown-up");
+            if (this.element.hasClass('cw-tab-bottom')) this.responsivetab.dropdown.addClass('cw-dropdown-up');
 
             // handle click
             this.responsivetab.lst.on('click.uk.tab', 'a', function(e) {
@@ -91,29 +91,30 @@
 
             // init UIkit components
             if (this.options.connect) {
+
                 this.switcher = UI.switcher(this.element, {
-                    'toggle'    : '>li:not(.cw-tab-responsive)',
-                    'connect'   : this.options.connect,
-                    'active'    : this.options.active,
-                    'animation' : this.options.animation,
-                    'duration'  : this.options.duration,
-                    'swiping'   : this.options.swiping
+                    toggle    : '>li:not(.cw-tab-responsive)',
+                    connect   : this.options.connect,
+                    active    : this.options.active,
+                    animation : this.options.animation,
+                    duration  : this.options.duration,
+                    swiping   : this.options.swiping
                 });
             }
 
-            UI.dropdown(this.responsivetab, {"mode": "click", "preventflip": "y"});
+            UI.dropdown(this.responsivetab, {mode: 'click', preventflip: 'y'});
 
             // init
-            $this.trigger("change.uk.tab", [this.element.find(this.options.target).not('.cw-tab-responsive').filter('.cw-active')]);
+            $this.trigger('change.uk.tab', [this.element.find(this.options.target).not('.cw-tab-responsive').filter('.cw-active')]);
 
             this.check();
 
             UI.$win.on('resize orientationchange', UI.Utils.debounce(function(){
-                if ($this.element.is(":visible"))  $this.check();
+                if ($this.element.is(':visible'))  $this.check();
             }, 100));
 
             this.on('display.uk.check', function(){
-                if ($this.element.is(":visible"))  $this.check();
+                if ($this.element.is(':visible'))  $this.check();
             });
         },
 
@@ -150,7 +151,8 @@
 
                         if (!item.hasClass('cw-disabled')) {
 
-                            clone = item[0].outerHTML.replace('<a ', '<a data-index="'+i+'" ');
+                            clone = UI.$(item[0].outerHTML);
+                            clone.find('a').data('index', i);
 
                             this.responsivetab.lst.append(clone);
                         }
@@ -164,4 +166,4 @@
         }
     });
 
-})(UIkit);
+})(UIkit2cw);
