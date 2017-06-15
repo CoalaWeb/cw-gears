@@ -1,4 +1,10 @@
-##Change Log
+##Change Log 
+
+### Version 0.3.8 June 2017
+- **(C)** Code improvements
+- **(C)** Convert tables to utf8mb4 character set with utf8mb4_unicode_ci collation
+- **(C)** Table CSS updates for admin area
+- **(C)** Name change for CoalaWeb Versions in version field
 
 ### Version 0.3.7 May 2017
 - **(B)** Fixed time form field styling for Joomla 3.7 +

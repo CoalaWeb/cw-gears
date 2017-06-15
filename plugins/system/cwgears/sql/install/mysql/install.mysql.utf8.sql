@@ -6,10 +6,10 @@ CREATE TABLE IF NOT EXISTS `#__cwgears` (
   `uikit` int(11) NOT NULL,
   `uikit_plus` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__cwgears_schedule` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `time` int NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;

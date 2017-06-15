@@ -350,6 +350,7 @@ togglers .pane-sliders .panel {
 /* IE7 and lower */
     border-spacing: 0;
     max-width: 100%;
+    width:95%;
     margin: 7px 15px 15px !important;
 }
 

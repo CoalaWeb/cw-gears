@@ -185,7 +185,7 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-github-'. $type, $version );
                 }
                 break;
-            case "plg_content_cwversions":
+            case "plg_content_coalawebversions":
                 $version = (PLG_CWVERSIONS_VERSION);
                 $date = (PLG_CWVERSIONS_DATE);
                 $ispro = (PLG_CWVERSIONS_PRO);

@@ -39,13 +39,13 @@ class plgSystemCwgears extends JPlugin {
     function __construct(&$subject, $config) {
         parent::__construct($subject, $config);
 
-        // load the CoalaWeb Gears language file
-        $lang = JFactory::getLanguage();
-        if ($lang->getTag() != 'en-GB') {
-            // Loads English language file as fallback (for undefined stuff in other language files)
-            $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, 'en-GB');
-        }
-        $lang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, null, 1);
+        // Load the language files
+        $jlang = JFactory::getLanguage();
+
+        // Plugin
+        $jlang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, 'en-GB', true);
+        $jlang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, $jlang->getDefault(), true);
+        $jlang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, null, true);
     }
 
     public function onAfterInitialise() {
