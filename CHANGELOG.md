@@ -1,7 +1,9 @@
 ##Change Log 
 
 ### Version 0.3.8 June 2017
+- **(C)** Updated GNU General Public License URL
 - **(C)** Code improvements
+- **(L)** Improved language file loading
 - **(C)** Convert tables to utf8mb4 character set with utf8mb4_unicode_ci collation
 - **(C)** Table CSS updates for admin area
 - **(C)** Name change for CoalaWeb Versions in version field
