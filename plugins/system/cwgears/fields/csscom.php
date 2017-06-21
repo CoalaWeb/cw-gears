@@ -22,7 +22,7 @@ defined('_JEXEC') or die('Restricted access');
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
 require_once (JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 
@@ -37,6 +37,17 @@ class CWElementCsscom extends CWElement {
             $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-base-v2.css');
         } else {
             $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-base.css');
+        }
+
+        // Fix help being displayed
+        if(JFactory::getApplication()->input->getCmd('option', '') == 'com_config')
+        {
+            $doc->addScriptDeclaration('
+				jQuery(document).ready(function($) {
+					$("button[rel=\'help\']").hide();
+					
+				});
+			');
         }
     }
 

@@ -22,9 +22,9 @@ defined('_JEXEC') or die('Restricted access');
  * GNU General Public License for more details.
 
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
 
-define('PLG_CWGEARS_VERSION', '0.3.8');
-define('PLG_CWGEARS_DATE', '2017-06-19');
+define('PLG_CWGEARS_VERSION', '0.3.9');
+define('PLG_CWGEARS_DATE', '2017-06-21');
 define('PLG_CWGEARS_PRO', '0');
