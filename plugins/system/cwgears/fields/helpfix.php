@@ -33,20 +33,7 @@ class JFormFieldHelpfix extends JFormFieldList
 
 	
 	/*
-	 * Workaround for missing online help for CoalaWeb components
-	 * Although we can easily control "Help" button display and behavior in all
-	 * backend views in the component, we have no power to change "Help" button
-	 * that appears in CoalaWeb Members configuration (options) view.
-	 * This button is generated automatically by com_config core component and
-	 * will try to reference joomla online help server (configured in helpsites.xml),
-	 * thus leading to a page that will never exist.
-	 * 
-	 * The solution is to hide "help" button in this case. We rely on this custom
-	 * field, as it will always be rendered on CoalaWeb Members comfiguration
-	 * screen and the script below will be executed.
-	 * 
-	 * Later we can render our own "help" button, using JToolbar::help('some_link', true)
-	 * to force local help files to be loaded.
+	 * This has been moved to the form field csscom
 	 */
 	protected function getInput()
 	{
@@ -56,7 +43,7 @@ class JFormFieldHelpfix extends JFormFieldList
 		{
 			JFactory::getDocument()->addScriptDeclaration('
 				jQuery(document).ready(function($) {
-					$("button[rel=\'help\']").hide();
+					$("label[for=\'jform_help_fix\']").closest(".control-group").remove()
 					
 				});
 			');
