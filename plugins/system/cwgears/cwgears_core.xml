@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.6" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2017-06-21</creationDate>
+    <creationDate>2017-07-11</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2017 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.3.9</version>
+    <version>0.4.0</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <install> <!-- Runs on install -->
@@ -403,9 +403,11 @@
                 
                 <field 
                     name="dbclean_info"
-                    type="info"
-                    default=""
-                    label="PLG_CWGEARS_DBCLEAN_MESSAGE"/>
+                    type="note"
+                    close="true"
+                    class="alert alert-info"
+                    label="PLG_CWGEARS_IMPORTANT_MSG_TITLE"
+                    description="PLG_CWGEARS_DBCLEAN_MESSAGE"/>
                                 
                 <field 
                     name="db_clean" 
@@ -434,9 +436,11 @@
         
                 <field 
                     name="updates_info"
-                    type="info"
-                    default=""
-                    label="PLG_CWGEARS_UPDATES_MSG"/>
+                    type="note"
+                    close="true"
+                    class="alert alert-info"
+                    label="PLG_CWGEARS_IMPORTANT_MSG_TITLE"
+                    description="PLG_CWGEARS_UPDATES_MSG"/>
                 
                 <field
                     type="spacer" 
@@ -450,7 +454,7 @@
                     default="" 
                     size="30"
                     label="PLG_CWGEARS_FIELD_DOWNLOADID_LABEL"
-                    description ="PLG_CWGEARS_FIELD_DOWNLOADID_DESC" />	
+                    description ="PLG_CWGEARS_FIELD_DOWNLOADID_DESC" />
                 
             </fieldset>
             

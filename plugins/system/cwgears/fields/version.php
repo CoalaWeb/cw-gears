@@ -246,19 +246,18 @@ class CWElementVersion extends CWElement {
             ];
         }
 
-        return '<div class="cw-message-block">'
-            . '<div class="cw-module">'
+        return '<div class="cw-message-block well">'
             . '<h3>' . JText::_('PLG_CWGEARS_RELEASE_TITLE') . '</h3>'
             . '<ul class="cw_module">'
-            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_TYPE_LABEL') . ' <strong>' . $ispro . '</strong></li>'
-            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $version . '</strong></li>'
-            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' <strong>' . $date . '</strong></li>'
+            . '<li><strong>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_TYPE_LABEL') . '</strong> <span class="badge badge-info">' . $ispro . '</span></li>'
+            . '<li><strong>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' </strong><span class="badge badge-info">' . $version . '</span></li>'
+            . '<li><strong>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_DATE_LABEL') . ' </strong><span class="badge badge-info">' . $date . '</span></li>'
             . '</ul>'
             . '<h3>' . JText::_('PLG_CWGEARS_LATEST_RELEASE_TITLE') . '</h3>'
             . '<ul class="cw_module">'
-            . '<li>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' <strong>' . $current['remote'] . '</strong> ' . $current['update'] . '</li>'
+            . '<li><strong>' . JText::_('PLG_CWGEARS_FIELD_RELEASE_VERSION_LABEL') . ' </strong><span class="badge badge-success">' . $current['remote'] . '</span> ' . $current['update'] . '</li>'
             . '</ul>'
-            . '</div></div>';
+            . '</div>';
     }
 
 }

@@ -16,8 +16,8 @@
     border-radius: 3px;
     *border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0;
-    max-width: 100%;    
-    margin: 7px 15px 15px !important;
+    width: 100%;
+    margin-bottom: 15px !important;
 }
 
 .coalaweb tr:hover {
@@ -91,7 +91,12 @@
 
 /* Messages
 ------------------------------------------------------------------------------*/
+/* Inbuilt Alerts */
+.control-group .alert { margin-bottom:0px; }
+
 /* General message */
+.control-label .cw-message-block {min-width: 250px;}
+
 .cw-module p.info, 
 .cw-module p.alert, 
 .cw-module p.vote, 

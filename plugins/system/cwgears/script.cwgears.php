@@ -107,33 +107,118 @@ class PlgSystemCwgearsInstallerScript {
     }
     
     /**
-     * Renders the post-installation message 
+     * Renders the post-installation message
+     *
+     * @param $parent
      */
-    private function _renderPostInstallation($parent) {
+    private function _renderPostInstallation($parent)
+    {
         ?>
 
         <?php $rows = 1; ?>
         <style type="text/css">
-            .coalaweb{font-family:"Trebuchet MS",Helvetica,sans-serif;font-size:13px!important;font-weight:400!important;color:#4D4D4D;border:solid #ccc 1px;background:#fff;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;*border-collapse:collapse;border-spacing:0;width:95%;margin:7px 15px 15px!important}.coalaweb tr:hover{background:#E8F6FE;-o-transition:all .1s ease-in-out;-webkit-transition:all .1s ease-in-out;-moz-transition:all .1s ease-in-out;-ms-transition:all .1s ease-in-out;transition:all .1s ease-in-out}.coalaweb tr.row1{background-color:#F0F0EE}.coalaweb td,.coalaweb th{border-left:1px solid #ccc;border-top:1px solid #ccc;padding:10px!important;text-align:left}.coalaweb th{border-top:none;color:#333!important;text-shadow:0 1px 1px #FFF;border-bottom:4px solid #1272a5!important}.coalaweb td:first-child,.coalaweb th:first-child{border-left:none}.coalaweb th:first-child{-moz-border-radius:3px 0 0;-webkit-border-radius:3px 0 0 0;border-radius:3px 0 0 0}.coalaweb th:last-child{-moz-border-radius:0 3px 0 0;-webkit-border-radius:0 3px 0 0;border-radius:0 3px 0 0}.coalaweb th:only-child{-moz-border-radius:6px 6px 0 0;-webkit-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0}.coalaweb tr:last-child td:first-child{-moz-border-radius:0 0 0 3px;-webkit-border-radius:0 0 0 3px;border-radius:0 0 0 3px}.coalaweb tr:last-child td:last-child{-moz-border-radius:0 0 3px;-webkit-border-radius:0 0 3px 0;border-radius:0 0 3px 0}.coalaweb em,.coalaweb strong{color:#1272A5;font-weight:700}
-        </style>
-        <link rel="stylesheet" href="../media/coalaweb/modules/generic/css/cw-config-j3.css" type="text/css">
-        <link rel="stylesheet" href="../media/coalaweb/modules/generic/css/cw-config-v2.css" type="text/css">
-        
-        <div class="cw-module" style="margin-left:-15px;" >
-            <h3><?php echo JText::_('PLG_CWGEARS_POST_INSTALL_TITLE'); ?></h3>
-            <p class="alert" style="width:95%;">
-                <?php echo JText::_('PLG_CWGEARS_POST_INSTALL_MSG'); ?>
-            </p>
-            <h3><?php echo JText::_('PLG_CWGEARS_INSTALL_DETAILS_TITLE'); ?></h3>
+            .coalaweb {
+                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-size: 13px !important;
+                font-weight: 400 !important;
+                color: #4D4D4D;
+                border: solid #ccc 1px;
+                background: #fff;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                *border-collapse: collapse;
+                border-spacing: 0;
+                width: 100%;
+                margin-bottom: 15px !important
+            }
 
-        <table class="coalaweb">
-            <thead align="left">
+            .coalaweb tr:hover {
+                background: #E8F6FE;
+                -o-transition: all .1s ease-in-out;
+                -webkit-transition: all .1s ease-in-out;
+                -moz-transition: all .1s ease-in-out;
+                -ms-transition: all .1s ease-in-out;
+                transition: all .1s ease-in-out
+            }
+
+            .coalaweb tr.row1 {
+                background-color: #F0F0EE
+            }
+
+            .coalaweb td, .coalaweb th {
+                border-left: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+                padding: 10px !important;
+                text-align: left
+            }
+
+            .coalaweb th {
+                border-top: none;
+                color: #333 !important;
+                text-shadow: 0 1px 1px #FFF;
+                border-bottom: 4px solid #1272a5 !important
+            }
+
+            .coalaweb td:first-child, .coalaweb th:first-child {
+                border-left: none
+            }
+
+            .coalaweb th:first-child {
+                -moz-border-radius: 3px 0 0;
+                -webkit-border-radius: 3px 0 0 0;
+                border-radius: 3px 0 0 0
+            }
+
+            .coalaweb th:last-child {
+                -moz-border-radius: 0 3px 0 0;
+                -webkit-border-radius: 0 3px 0 0;
+                border-radius: 0 3px 0 0
+            }
+
+            .coalaweb th:only-child {
+                -moz-border-radius: 6px 6px 0 0;
+                -webkit-border-radius: 6px 6px 0 0;
+                border-radius: 6px 6px 0 0
+            }
+
+            .coalaweb tr:last-child td:first-child {
+                -moz-border-radius: 0 0 0 3px;
+                -webkit-border-radius: 0 0 0 3px;
+                border-radius: 0 0 0 3px
+            }
+
+            .coalaweb tr:last-child td:last-child {
+                -moz-border-radius: 0 0 3px;
+                -webkit-border-radius: 0 0 3px 0;
+                border-radius: 0 0 3px 0
+            }
+
+            .coalaweb em, .coalaweb strong {
+                color: #1272A5;
+                font-weight: 700
+            }
+        </style>
+        <link rel="stylesheet" href="../media/coalaweb/components/generic/css/com-coalaweb-base-v2.css" type="text/css">
+        <div class="well well-lg">
+            <h3>
+                <?php echo JText::_('PLG_CWGEARS_POST_INSTALL_TITLE'); ?>
+            </h3>
+            <div class="alert alert-danger">
+                <?php echo JText::_('PLG_CWGEARS_POST_INSTALL_MSG'); ?>
+            </div>
+            <h3>
+                <?php echo JText::_('PLG_CWGEARS_INSTALL_DETAILS_TITLE'); ?>
+            </h3>
+
+            <table class="coalaweb">
+                <thead align="left">
                 <tr>
                     <th class="title" align="left">Main</th>
                     <th width="25%">Status</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr class="row0">
                     <td class="key">
                         <?php echo JText::_('PLG_CWGEARS_TITLE_CORE'); ?>
@@ -142,30 +227,117 @@ class PlgSystemCwgearsInstallerScript {
                         <strong style="color: green">Installed</strong>
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
         </div>
         <?php
     }
 
-    private function _renderPostUninstallation($parent) {
+    /**
+     * Renders the post-uninstallation message
+     *
+     * @param $status
+     * @param $parent
+     */
+    private function _renderPostUninstallation($parent)
+    {
         ?>
         <?php $rows = 0; ?>
         <style type="text/css">
-            .coalaweb{font-family:"Trebuchet MS",Helvetica,sans-serif;font-size:13px!important;font-weight:400!important;color:#4D4D4D;border:solid #ccc 1px;background:#fff;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;*border-collapse:collapse;border-spacing:0;width:95%;margin:7px 15px 15px!important}.coalaweb tr:hover{background:#E8F6FE;-o-transition:all .1s ease-in-out;-webkit-transition:all .1s ease-in-out;-moz-transition:all .1s ease-in-out;-ms-transition:all .1s ease-in-out;transition:all .1s ease-in-out}.coalaweb tr.row1{background-color:#F0F0EE}.coalaweb td,.coalaweb th{border-left:1px solid #ccc;border-top:1px solid #ccc;padding:10px!important;text-align:left}.coalaweb th{border-top:none;color:#333!important;text-shadow:0 1px 1px #FFF;border-bottom:4px solid #1272a5!important}.coalaweb td:first-child,.coalaweb th:first-child{border-left:none}.coalaweb th:first-child{-moz-border-radius:3px 0 0;-webkit-border-radius:3px 0 0 0;border-radius:3px 0 0 0}.coalaweb th:last-child{-moz-border-radius:0 3px 0 0;-webkit-border-radius:0 3px 0 0;border-radius:0 3px 0 0}.coalaweb th:only-child{-moz-border-radius:6px 6px 0 0;-webkit-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0}.coalaweb tr:last-child td:first-child{-moz-border-radius:0 0 0 3px;-webkit-border-radius:0 0 0 3px;border-radius:0 0 0 3px}.coalaweb tr:last-child td:last-child{-moz-border-radius:0 0 3px;-webkit-border-radius:0 0 3px 0;border-radius:0 0 3px 0}.coalaweb em,.coalaweb strong{color:#1272A5;font-weight:700}
+            .coalaweb {
+                font-family: "Trebuchet MS", Helvetica, sans-serif;
+                font-size: 13px !important;
+                font-weight: 400 !important;
+                color: #4D4D4D;
+                border: solid #ccc 1px;
+                background: #fff;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                *border-collapse: collapse;
+                border-spacing: 0;
+                width: 100%;
+                margin-bottom: 15px !important
+            }
+
+            .coalaweb tr:hover {
+                background: #E8F6FE;
+                -o-transition: all .1s ease-in-out;
+                -webkit-transition: all .1s ease-in-out;
+                -moz-transition: all .1s ease-in-out;
+                -ms-transition: all .1s ease-in-out;
+                transition: all .1s ease-in-out
+            }
+
+            .coalaweb tr.row1 {
+                background-color: #F0F0EE
+            }
+
+            .coalaweb td, .coalaweb th {
+                border-left: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+                padding: 10px !important;
+                text-align: left
+            }
+
+            .coalaweb th {
+                border-top: none;
+                color: #333 !important;
+                text-shadow: 0 1px 1px #FFF;
+                border-bottom: 4px solid #1272a5 !important
+            }
+
+            .coalaweb td:first-child, .coalaweb th:first-child {
+                border-left: none
+            }
+
+            .coalaweb th:first-child {
+                -moz-border-radius: 3px 0 0;
+                -webkit-border-radius: 3px 0 0 0;
+                border-radius: 3px 0 0 0
+            }
+
+            .coalaweb th:last-child {
+                -moz-border-radius: 0 3px 0 0;
+                -webkit-border-radius: 0 3px 0 0;
+                border-radius: 0 3px 0 0
+            }
+
+            .coalaweb th:only-child {
+                -moz-border-radius: 6px 6px 0 0;
+                -webkit-border-radius: 6px 6px 0 0;
+                border-radius: 6px 6px 0 0
+            }
+
+            .coalaweb tr:last-child td:first-child {
+                -moz-border-radius: 0 0 0 3px;
+                -webkit-border-radius: 0 0 0 3px;
+                border-radius: 0 0 0 3px
+            }
+
+            .coalaweb tr:last-child td:last-child {
+                -moz-border-radius: 0 0 3px;
+                -webkit-border-radius: 0 0 3px 0;
+                border-radius: 0 0 3px 0
+            }
+
+            .coalaweb em, .coalaweb strong {
+                color: #1272A5;
+                font-weight: 700
+            }
         </style>
-        <div class="cw-module">
+        <div class="well well-lg">
             <h3> CoalaWeb Gears Uninstallation Status</h3>
-        </div>
-        <table class="coalaweb">
-            <thead align="left">
+
+            <table class="coalaweb">
+                <thead align="left">
                 <tr>
                     <th class="title" align="left">Main</th>
                     <th width="25%">Status</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr class="row0">
                     <td class="key">
                         <?php echo JText::_('PLG_CWGEARS_TITLE_CORE'); ?>
@@ -174,8 +346,9 @@ class PlgSystemCwgearsInstallerScript {
                         <strong style="color: green">Uninstalled</strong>
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
         <?php
     }
 

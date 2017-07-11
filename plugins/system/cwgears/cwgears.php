@@ -191,24 +191,17 @@ class plgSystemCwgears extends JPlugin {
         if ($app->isAdmin()) {
 
             if ($option == 'com_categories' && ($ext == 'com_coalawebcomments' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic' || $ext == 'com_coalaweblingual' || $ext == 'com_coalawebmembers')) {
-                if (version_compare(JVERSION, '3.0', '>')) {
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
-                } else {
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base.css");
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-categories.css");
-                }
+
+                $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
+                $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
+
             }
 
             if (in_array($option, array('com_coalawebcontact', 'com_coalawebsociallinks', 'com_coalawebtraffic', 'com_coalawebmarket', 'com_coalawebpaypal', 'com_coalaweblingual', 'com_coalawebcomments', 'com_coalawebmembers'))) {
 
-                if (version_compare(JVERSION, '3.0', '>')) {
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
-                } else {
-                    $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base.css");
-                }
+                $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
+                $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
+
             }
         }
 

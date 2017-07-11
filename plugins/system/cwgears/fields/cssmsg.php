@@ -32,11 +32,8 @@ class CWElementCssmsg extends CWElement {
 
         $doc = JFactory::getDocument();
 
-        if (version_compare(JVERSION, '3.0', '>')) {
-            $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-msg-j3.css');
-        } else {
-            $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-msg.css');
-        }
+        $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/components/generic/css/com-coalaweb-msg-j3.css');
+
     }
 
     public function fetchTooltip($label, $description, &$node, $control_name, $name) {
