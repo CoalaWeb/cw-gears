@@ -230,6 +230,24 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-date-'. $type, $version );
                 }
                 break;
+            case "plg_system_coalaweboffline":
+                $version = (PLG_CWOFFLINE_VERSION);
+                $date = (PLG_CWOFFLINE_DATE);
+                $ispro = (PLG_CWOFFLINE_PRO);
+                $type = $ispro ? 'pro' : 'core';
+                if (class_exists('CwGearsLatestversion')) {
+                    $current = CwGearsLatestversion::getCurrent('cw-offline-'. $type, $version );
+                }
+                break;
+            case "plg_system_coalawebvideo":
+                $version = (PLG_CWVIDEO_VERSION);
+                $date = (PLG_CWVIDEO_DATE);
+                $ispro = (PLG_CWVIDEO_PRO);
+                $type = $ispro ? 'pro' : 'core';
+                if (class_exists('CwGearsLatestversion')) {
+                    $current = CwGearsLatestversion::getCurrent('cw-video-'. $type, $version );
+                }
+                break;
         }
 
         if ($ispro == 1) {

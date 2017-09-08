@@ -54,7 +54,7 @@ class plgSystemCwgears extends JPlugin {
         if ($app->getName() !== 'site') {
             return;
         }
-        
+
         //Lets keep our resource loading table nice and up to date
         $dbClean = $this->params->get('db_clean', '1');
         $db = JFactory::getDbo();
