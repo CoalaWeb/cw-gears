@@ -1,6 +1,7 @@
 **CoalaWeb Gears** is a system plugin that is included with all CoalaWeb extensions. Think of it as a Swiss army knife full of great little tools that you can use with or without a CoalaWeb extension.
 
 ### Plugin options and features
+
 - Facebook and Gzip fix
 - Zoo editor tweak
 - System message demo

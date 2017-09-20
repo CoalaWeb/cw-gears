@@ -32,12 +32,7 @@ class JFormFieldSorting extends JFormField {
         $document = JFactory::getDocument();
 
         //Include base jQuery
-        if (version_compare(JVERSION, '3.0', '>')) {
-            JHtml::_('jquery.framework');
-        } else {
-            $jquery = "//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js";
-            $document->addScript($jquery);
-        }
+        JHtml::_('jquery.framework');
 
         $baseurl = JURI::base(true);
         $baseurl = str_replace('administrator', '', $baseurl);
@@ -72,6 +67,11 @@ class JFormFieldSorting extends JFormField {
         $possibleNew = '';
         if ($this->name === 'jform[params][sorting_tabs]') {
             $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,contact_f,customone_c,customtwo_c';
+            $possibleNew = explode(',', $default);
+        }
+
+        if ($this->name === 'jform[params][sorting_pro]') {
+            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,contact_f,github_f';
             $possibleNew = explode(',', $default);
         }
         // Explode currently stored values.
