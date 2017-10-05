@@ -122,6 +122,15 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-market-'. $type, $version );
                 }
                 break;
+            case "com_coalawebvideo":
+                $version = (COM_CWVIDEO_VERSION);
+                $date = (COM_CWVIDEO_DATE);
+                $ispro = (COM_CWVIDEO_PRO);
+                $type = $ispro ? 'pro' : 'core';
+                if (class_exists('CwGearsLatestversion')) {
+                    $current = CwGearsLatestversion::getCurrent('cw-video-'. $type, $version );
+                }
+                break;
             case "mod_coalawebpanel":
                 $version = (MOD_CWPANEL_VERSION);
                 $date = (MOD_CWPANEL_DATE);
@@ -239,13 +248,13 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-offline-'. $type, $version );
                 }
                 break;
-            case "plg_system_coalawebvideo":
-                $version = (PLG_CWVIDEO_VERSION);
-                $date = (PLG_CWVIDEO_DATE);
-                $ispro = (PLG_CWVIDEO_PRO);
+            case "plg_system_coalawebanalytics":
+                $version = (PLG_CWANALYTICS_VERSION);
+                $date = (PLG_CWANALYTICS_DATE);
+                $ispro = (PLG_CWANALYTICS_PRO);
                 $type = $ispro ? 'pro' : 'core';
                 if (class_exists('CwGearsLatestversion')) {
-                    $current = CwGearsLatestversion::getCurrent('cw-video-'. $type, $version );
+                    $current = CwGearsLatestversion::getCurrent('cw-analytics-'. $type, $version );
                 }
                 break;
         }
