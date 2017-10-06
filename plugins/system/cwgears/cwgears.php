@@ -882,6 +882,12 @@ class plgSystemCwgears extends JPlugin {
             case 'com_coalawebcomments':
                 $updateurl = 'http://cdn.coalaweb.com/updates/cw-comments-pro.xml';
                 break;
+            case 'com_coalawebvideo':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-video-pro.xml';
+                break;
+            case 'com_coalawebmembers':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-members-pro.xml';
+                break;
             
             default:
                 $updateurl = '';
@@ -987,6 +993,9 @@ class plgSystemCwgears extends JPlugin {
         $print = 'http://cdn.coalaweb.com/updates/cw-print-pro.xml';
         $panel = 'http://cdn.coalaweb.com/updates/cw-panel-pro.xml';
         $date = 'http://cdn.coalaweb.com/updates/cw-date-pro.xml';
+        $versions = 'http://cdn.coalaweb.com/updates/cw-versions-pro.xml';
+        $analytics = 'http://cdn.coalaweb.com/updates/cw-analytics-pro.xml';
+        $offline = 'http://cdn.coalaweb.com/updates/cw-offline-pro.xml';
         $dbtools = 'http://cdn.coalaweb.com/updates/cw-dbtools-pro.xml';
 
         
@@ -1005,6 +1014,9 @@ class plgSystemCwgears extends JPlugin {
                 ->where($db->qn('location') . ' = ' . $db->q($print), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($date), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($versions), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($analytics), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($offline), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($dbtools));
         $db->setQuery($query);
         
@@ -1027,6 +1039,9 @@ class plgSystemCwgears extends JPlugin {
                 ->where($db->qn('location') . ' = ' . $db->q($print), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($panel), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($date), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($versions), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($analytics), 'OR')
+                ->where($db->qn('location') . ' = ' . $db->q($offline), 'OR')
                 ->where($db->qn('location') . ' = ' . $db->q($dbtools));
         $db->setQuery($query);
         

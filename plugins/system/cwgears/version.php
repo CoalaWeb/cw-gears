@@ -26,5 +26,5 @@ defined('_JEXEC') or die('Restricted access');
  */
 
 define('PLG_CWGEARS_VERSION', '0.4.3');
-define('PLG_CWGEARS_DATE', '2017-05-10');
+define('PLG_CWGEARS_DATE', '2017-10-06');
 define('PLG_CWGEARS_PRO', '0');
