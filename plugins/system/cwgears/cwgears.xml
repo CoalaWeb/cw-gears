@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.6" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2017-10-06</creationDate>
+    <creationDate>2017-11-29</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2017 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <install> <!-- Runs on install -->
@@ -25,29 +25,21 @@
             <schemapath type="mysql">sql/updates/mysql</schemapath>
         </schemas>
     </update>
-    
-    <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.plg_system_cwgears.ini</language>
-        <language tag="en-GB">en-GB/en-GB.plg_system_cwgears.sys.ini</language>
-    </languages>
 
-    <files>
-        <filename plugin="cwgears">cwgears.php</filename>
-        <filename>index.html</filename>
-        <filename>version.php</filename>
-        <folder>sql</folder>
-        <folder>fields</folder>
-        <folder>helpers</folder>
-        <folder>assets</folder>
-        <folder>language</folder>
-    </files>
-        
     <media destination="coalaweb" folder="media/coalaweb">
         <filename>index.html</filename>
         <folder>components</folder>
         <folder>modules</folder>
         <folder>plugins</folder>
     </media>
+
+    <languages folder="language">
+        ##FRONTENDLANGUAGEFILES##
+    </languages>
+
+    <files>
+        ##PACKAGEFILESPLUGIN##
+    </files>
         
     <!-- HELP FILE -->
     <help url="PLG_GWGEARS_HELP_URL" />
@@ -469,6 +461,7 @@
                     name="version_info"
                     type="version"
                     label="plg_system_cwgears"/>
+
             </fieldset>
             
         </fields>

@@ -50,17 +50,23 @@ class CWElementVersion extends CWElement {
         $ispro = '';
         $date = '';
 
-        switch ($arr[0]) {
-            case "com":
-                $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
-                break;
-            case "mod":
-                $version_php = JPATH_SITE . '/' . 'modules/' . $label . '/version.php';
-                break;
-            case "plg":
-                $version_php = JPATH_SITE . '/' . 'plugins/' . $arr[1] . '/' . $arr[2] . '/version.php';
-                break;
+        if (array_key_exists(0, $arr)) {
+            switch ($arr[0]) {
+                case "com":
+                    $version_php = JPATH_ADMINISTRATOR . '/' . 'components/' . $label . '/version.php';
+                    break;
+                case "mod":
+                    $version_php = JPATH_SITE . '/' . 'modules/' . $label . '/version.php';
+                    break;
+                case "plg":
+                    if (array_key_exists(1, $arr)) {
+                        $version_php = JPATH_SITE . '/' . 'plugins/' . $arr[1] . '/' . $arr[2] . '/version.php';
+                    }
+                    break;
+            }
+
         }
+
                 
         if (JFile::exists($version_php)) {
             require_once $version_php;
@@ -185,7 +191,7 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-facebookjs-'. $type, $version );
                 }
                 break;
-            case "plg_content_cwgithub":
+            case "plg_content_coalawebgithub":
                 $version = (PLG_CWGITHUB_VERSION);
                 $date = (PLG_CWGITHUB_DATE);
                 $ispro = (PLG_CWGITHUB_PRO);
