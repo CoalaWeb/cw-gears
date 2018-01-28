@@ -1,15 +1,12 @@
 <?php
 
-defined('_JEXEC') or die('Restricted access');
-
 /**
- * @package             Joomla
- * @subpackage          CoalaWeb Gears
- * @author              Steven Palmer
- * @author url          https://coalaweb.com
- * @author email        support@coalaweb.com
- * @license             GNU/GPL, see /files/en-GB.license.txt
- * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
+ * @package     Joomla
+ * @subpackage  CoalaWeb Gears
+ * @author      Steven Palmer <support@coalaweb.com>
+ * @link        https://coalaweb.com/
+ * @license     GNU/GPL, see /assets/en-GB.license.txt
+ * @copyright   Copyright (c) 2018 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,15 +22,20 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
 
+defined('_JEXEC') or die('Restricted access');
+
 jimport('joomla.log.log');
 
 /**
- *  component helper.
+ * Class CwGearsHelperLoadcount
  */
 class CwGearsHelperLoadcount {
 
     /**
      * Get counts
+     * @param $url
+     * @param $check
+     * @return string
      */
     public static function getCounts($url, $check) {
 
@@ -77,7 +79,9 @@ class CwGearsHelperLoadcount {
     }
 
     /**
-     * Get counts
+     * Set UIkit count
+     * @param $url
+     * @return mixed
      */
     public static function setUikitCount($url) {
 
@@ -171,6 +175,11 @@ class CwGearsHelperLoadcount {
         return $query;
     }
 
+    /**
+     * Set UIkit Plus count
+     * @param $url
+     * @return mixed
+     */
     public static function setUikitPlusCount($url) {
 
         //Should we log SQL errors?
@@ -264,7 +273,9 @@ class CwGearsHelperLoadcount {
     }
 
     /**
-     * Get counts
+     * Set Facebook count
+     * @param $url
+     * @return mixed
      */
     public static function setFacebookJsCount($url) {
 

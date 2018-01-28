@@ -1,15 +1,12 @@
 <?php
 
-defined('_JEXEC') or die('Restricted access');
-
 /**
- * @package             Joomla
- * @subpackage          CoalaWeb Sorting Field
- * @author              Steven Palmer
- * @author url          https://coalaweb.com
- * @author email        support@coalaweb.com
- * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
+ * @package     Joomla
+ * @subpackage  CoalaWeb Gears
+ * @author      Steven Palmer <support@coalaweb.com>
+ * @link        https://coalaweb.com/
+ * @license     GNU/GPL, see /assets/en-GB.license.txt
+ * @copyright   Copyright (c) 2018 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,10 +21,19 @@ defined('_JEXEC') or die('Restricted access');
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
+
+defined('_JEXEC') or die('Restricted access');
+
+/**
+ * Class JFormFieldSorting
+ */
 class JFormFieldSorting extends JFormField {
 
     protected $type = 'Sorting';
 
+    /**
+     * @return string
+     */
     protected function getInput() {
         $document = JFactory::getDocument();
 
@@ -66,12 +72,12 @@ class JFormFieldSorting extends JFormField {
         // Get possible new options.
         $possibleNew = '';
         if ($this->name === 'jform[params][sorting_tabs]') {
-            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,contact_f,customone_c,customtwo_c';
+            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,contact_f,customone_c,customtwo_c,customthree_c,customfour_c,customfive_c';
             $possibleNew = explode(',', $default);
         }
 
         if ($this->name === 'jform[params][sorting_pro]') {
-            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,contact_f,github_f';
+            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,contact_f,github_f,instagram_f';
             $possibleNew = explode(',', $default);
         }
         // Explode currently stored values.

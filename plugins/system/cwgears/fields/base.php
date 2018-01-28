@@ -1,15 +1,12 @@
 <?php
 
-defined('_JEXEC') or die('Restricted access');
-
 /**
- * @package             Joomla
- * @subpackage          CoalaWeb Base Field
- * @author              Steven Palmer
- * @author url          https://coalaweb.com
- * @author email        support@coalaweb.com
- * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
+ * @package     Joomla
+ * @subpackage  CoalaWeb Gears
+ * @author      Steven Palmer <support@coalaweb.com>
+ * @link        https://coalaweb.com/
+ * @license     GNU/GPL, see /assets/en-GB.license.txt
+ * @copyright   Copyright (c) 2018 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,14 +21,26 @@ defined('_JEXEC') or die('Restricted access');
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
+
+defined('_JEXEC') or die('Restricted access');
+
 jimport('joomla.form.formfield');
 
+/**
+ * Class CWElement
+ */
 class CWElement extends JFormField {
 
+    /**
+     * @return mixed
+     */
     function getInput() {
         return $this->fetchElement($this->name, $this->value, $this->element, $this->options['control']);
     }
 
+    /**
+     * @return mixed
+     */
     function getLabel() {
         if (method_exists($this, 'fetchTooltip')) {
             return $this->fetchTooltip($this->element['label'], $this->description, $this->element, $this->options['control'], $this->element['name'] = '');

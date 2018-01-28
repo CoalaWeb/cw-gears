@@ -1,15 +1,12 @@
 <?php
 
-defined('_JEXEC') or die('Restricted access');
-
 /**
- * @package             Joomla
- * @subpackage          CoalaWeb Time Element
- * @author              Steven Palmer
- * @author url          https://coalaweb.com
- * @author email        support@coalaweb.com
- * @license             GNU/GPL, see /assets/en-GB.license.txt
- * @copyright           Copyright (c) 2017 Steven Palmer All rights reserved.
+ * @package     Joomla
+ * @subpackage  CoalaWeb Gears
+ * @author      Steven Palmer <support@coalaweb.com>
+ * @link        https://coalaweb.com/
+ * @license     GNU/GPL, see /assets/en-GB.license.txt
+ * @copyright   Copyright (c) 2018 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +22,8 @@ defined('_JEXEC') or die('Restricted access');
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
 
+defined('_JEXEC') or die('Restricted access');
+
 // Add CSS and JS some are local to stop potential mix content errors
 $gearsMedia = JURI::root() . 'media/coalaweb/plugins/system/gears/';
 JHtml::stylesheet($gearsMedia . 'css/bootstrap-datetimepicker.min.css');
@@ -32,10 +31,16 @@ JHtml::script($gearsMedia . 'js/bootstrap-datetimepicker.min.js');
 
 jimport('joomla.form.formfield');
 
+/**
+ * Class JFormFieldTime
+ */
 class JFormFieldTime extends JFormField {
 
     protected $type = 'Time';
 
+    /**
+     * @return string
+     */
     public function getInput() {
         
         // Detect language
