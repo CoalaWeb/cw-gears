@@ -24,7 +24,7 @@
 
 **Need help with CoalaWeb Gears?**
 
-1.Try the [Documentation](https://coalaweb.com/support/documentation/category/extensions)
-2.Search the [Forum](https://coalaweb.com/forum/index) to see if your question has already been answered. 
-3.Start a new topic.
+1.  Try the [Documentation](https://coalaweb.com/support/documentation/category/extensions)
+2.  Search the [Forum](https://coalaweb.com/forum/index) to see if your question has already been answered. 
+3.  Start a new topic.
  

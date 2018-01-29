@@ -4,8 +4,12 @@ build/
 # Transifex #
 .tx/
 
-# Markdown Files
+# Markdown Files #
 TODO.md
 
 # PHP Storm #
 .idea/
+
+# HTML Files #
+RELEASENOTES.html
+DESCRIPTION.html
