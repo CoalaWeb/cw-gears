@@ -5,11 +5,11 @@ build/
 .tx/
 
 # Markdown Files #
-TODO.md
+/TODO.md
 
 # PHP Storm #
 .idea/
 
 # HTML Files #
-RELEASENOTES.html
-DESCRIPTION.html
+/RELEASENOTES.html
+/DESCRIPTION.html
