@@ -86,7 +86,7 @@ class CwGearsHelperTools
     public static function codeClean($code) {
 
         // Remove comments.
-        $pass1 = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', $cjsCode);
+        $pass1 = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', $code);
         $pass2 = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\)\/\/[^"\'].*))/', '', $pass1);
 
         // Minimize.
@@ -118,5 +118,135 @@ class CwGearsHelperTools
         }
 
         return count( $keys ) === $count;
+    }
+
+    /**
+     * Check if certain files/folders currently exist
+     *
+     * @param $filesAndFolders - files and folders lists
+     * @return array
+     */
+    public static function checkFilesAndFolders($filesAndFolders, $langRoot)
+    {
+
+        // Check files exist
+        jimport('joomla.filesystem.file');
+
+        // Loop through files
+        if (!empty($filesAndFolders['files'])) {
+            foreach ($filesAndFolders['files'] as $file) {
+                $f = JPATH_ROOT . '/' . $file;
+                if (!JFile::exists($f)) {
+                    $result = [
+                        'ok' => false,
+                        'type' => 'notice',
+                        'msg' => JText::_($langRoot . '_FILE_MISSING_MESSAGE')
+                    ];
+                    return $result;
+                } else {
+                    continue;
+                }
+            }
+        }
+        // Check folders exist
+        jimport('joomla.filesystem.folder');
+
+        // Lopp through folders
+        if (!empty($filesAndFolders['folders'])) {
+            foreach ($filesAndFolders['folders'] as $folder) {
+                $f = JPATH_ROOT . '/' . $folder;
+                if (!JFolder::exists($f)) {
+                    $result = [
+                        'ok' => false,
+                        'type' => 'notice',
+                        'msg' => JText::_($langRoot . '_FOLDER_MISSING_MESSAGE')
+                    ];
+                    return $result;
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        // Set up our response array
+        $result = [
+            'ok' => true,
+            'type' => '',
+            'msg' => ''
+        ];
+
+        // Return our result
+        return $result;
+
+    }
+
+    /**
+     * Check certain extensions are enabled
+     *
+     * @param $extensions
+     * @param $langRoot
+     * @return array
+     */
+    public static function checkExtensions($extensions, $langRoot)
+    {
+        // Loop through and check components are enabled
+        if (!empty($extensions['components'])) {
+            foreach ($extensions['components'] as $component) {
+                if (!JComponentHelper::isEnabled($component)) {
+                    $result = [
+                        'ok' => false,
+                        'type' => 'notice',
+                        'msg' => JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $component)
+                    ];
+                    return $result;
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        // Loop through and check modules are enabled
+        if (!empty($extensions['modules'])) {
+            foreach ($extensions['modules'] as $module) {
+                if (!JModuleHelper::isEnabled($module)) {
+                    $result = [
+                        'ok' => false,
+                        'type' => 'notice',
+                        'msg' => JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $module)
+                    ];
+                    return $result;
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        // Loop through and check plugins are enabled
+        if (!empty($extensions['plugins'])) {
+            foreach ($extensions['plugins'] as $plugin) {
+                $parts = explode('_', $plugin);
+                if (!JPluginHelper::isEnabled($parts[1], $parts[2])) {
+                    $result = [
+                        'ok' => false,
+                        'type' => 'notice',
+                        'msg' => JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $plugin)
+                    ];
+                    return $result;
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        // Set up our response array
+        $result = [
+            'ok' => true,
+            'type' => '',
+            'msg' => ''
+        ];
+
+        // Return our result
+        return $result;
+
     }
 }
