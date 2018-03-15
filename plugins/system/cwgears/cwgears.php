@@ -205,8 +205,6 @@ class plgSystemCwgears extends JPlugin {
             }
         }
 
-        $doc->addStyleSheet($baseUrl . "plugins/system/gears/fonts/style.css");
-
         //----------------------------------------------------------------------
         // Gzip Help
         //----------------------------------------------------------------------
