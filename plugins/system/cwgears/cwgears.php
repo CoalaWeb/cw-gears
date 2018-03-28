@@ -30,12 +30,20 @@ jimport('joomla.filesystem.file');
 jimport('joomla.application.module.helper');
 jimport('joomla.log.log');
 
+/**
+ * Class plgSystemCwgears
+ */
 class plgSystemCwgears extends JPlugin {
 
     var $pinterest;
     var $share;
     private $caching = 0;
 
+    /**
+     * plg System CW Gears constructor.
+     * @param $subject
+     * @param $config
+     */
     function __construct(&$subject, $config) {
         parent::__construct($subject, $config);
 
@@ -48,6 +56,9 @@ class plgSystemCwgears extends JPlugin {
         $jlang->load('plg_system_cwgears', JPATH_ADMINISTRATOR, null, true);
     }
 
+    /**
+     * After Initialise
+     */
     public function onAfterInitialise() {
         $app = JFactory::getApplication();
 
@@ -175,6 +186,9 @@ class plgSystemCwgears extends JPlugin {
         return;
     }
 
+    /**
+     * After Route
+     */
     public function onAfterRoute() {
 
         $app = JFactory::getApplication();
@@ -190,7 +204,7 @@ class plgSystemCwgears extends JPlugin {
         //Lets add some style for backend extension configurations.
         if ($app->isAdmin()) {
 
-            if ($option == 'com_categories' && ($ext == 'com_coalawebcomments' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic' || $ext == 'com_coalaweblingual' || $ext == 'com_coalawebmembers'|| $ext == 'com_coalawebvideo'|| $ext == 'com_coalawebimport')) {
+            if ($option == 'com_categories' && ($ext == 'com_coalawebcomments' || $ext == 'com_coalawebmarket' || $ext == 'com_coalawebtraffic' || $ext == 'com_coalaweblingual' || $ext == 'com_coalawebmembers'|| $ext == 'com_coalawebimport')) {
 
                 $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-v2.css");
                 $doc->addStyleSheet($baseUrl . "components/generic/css/com-coalaweb-base-j3.css");
@@ -280,6 +294,11 @@ class plgSystemCwgears extends JPlugin {
         }
     }
 
+    /**
+     * Before Compiling the Head
+     *
+     * @return bool
+     */
     public function onBeforeCompileHead() {
 
         $app = JFactory::getApplication();
@@ -680,6 +699,7 @@ class plgSystemCwgears extends JPlugin {
     /**
      * Order jQuery libraries in valid order
      * @param array $libs
+     * @return array
      */
     private function orderLibrarires($libs) {
 
@@ -783,6 +803,12 @@ class plgSystemCwgears extends JPlugin {
         }
     }
 
+    /**
+     * Explode the Options
+     *
+     * @param $str
+     * @return array
+     */
     function parseQueryString($str) {
         $op = array();
         $pairs = explode("&", $str);
@@ -835,7 +861,10 @@ class plgSystemCwgears extends JPlugin {
             'com_coalawebmarket',
             'com_coalawebpaypal',
             'com_coalaweblingual',
-            'com_coalawebcomments'
+            'com_coalawebcomments',
+            'com_coalawebvideo',
+            'com_coalawebmembers',
+            'com_coalawebimport'
         );
         
         // Array of tasks
@@ -887,6 +916,9 @@ class plgSystemCwgears extends JPlugin {
                 break;
             case 'com_coalawebmembers':
                 $updateurl = 'http://cdn.coalaweb.com/updates/cw-members-pro.xml';
+                break;
+            case 'com_coalawebimport':
+                $updateurl = 'http://cdn.coalaweb.com/updates/cw-import-pro.xml';
                 break;
             
             default:

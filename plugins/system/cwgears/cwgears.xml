@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.6" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2018-03-13</creationDate>
+    <creationDate>2018-03-28</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2018 Steven Palmer All rights reserved.</copyright>
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-    <version>0.4.6</version>
+    <version>0.4.8</version>
     <description>PLG_CWGEARS_DESC</description>
 
     <install> <!-- Runs on install -->

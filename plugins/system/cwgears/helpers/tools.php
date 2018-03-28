@@ -249,4 +249,65 @@ class CwGearsHelperTools
         return $result;
 
     }
+
+    /**
+     * Format messages
+     *
+     * @param $type
+     * @param $msg
+     * @param $string
+     * @param array $sprint
+     * @return string
+     */
+    public static function getMessage($type, $msg, $sprint = array())
+    {
+        $returnStatus= null;
+        $sprintCheck = array_filter($sprint);
+
+        if (!empty($sprintCheck)) {
+            $foo = JText::_($msg);
+            $msg = vsprintf($foo, $sprint);
+        } else {
+            $msg = JText::_($msg);
+        }
+
+        switch ($type) {
+            case 'info':
+                $output[] = '<div class="alert alert-info">';
+                $output[] = '<span class="icon-info-circle"></span>';
+                $output[] = $msg;
+                $output[] = '</div>';
+
+                $returnStatus = implode("\n", $output);
+                break;
+            case 'danger':
+                $output[] = '<div class="alert alert-danger">';
+                $output[] = '<span class="icon-warning"></span>';
+                $output[] = $msg;
+                $output[] = '</div>';
+
+                $returnStatus = implode("\n", $output);
+                break;
+            case 'warning':
+                $output[] = '<div class="alert alert-warning">';
+                $output[] = '<span class="icon-notification"></span>';
+                $output[] = $msg;
+                $output[] = '</div>';
+
+                $returnStatus = implode("\n", $output);
+                break;
+
+            case 'success':
+                $output[] = '<div class="alert alert-success">';
+                $output[] = '<span class="icon-checkmark"></span>';
+                $output[] = $msg;
+                $output[] = '</div>';
+
+                $returnStatus = implode("\n", $output);
+                break;
+
+        }
+
+        return $returnStatus;
+    }
 }
