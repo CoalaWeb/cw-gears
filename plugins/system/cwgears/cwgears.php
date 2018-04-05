@@ -447,9 +447,9 @@ class plgSystemCwgears extends JPlugin {
                 $uikitPre = "var myUIkit = UIkit.noConflict('cw');";
 
                 //Add all the stuff we need
-                $doc->addScriptDeclaration($uikitPre);
                 $doc->addScript($uikitLocal . "js/coalaweb.uikit.min.js");
                 $doc->addStyleSheet($uikitLocal . $uikitCss);
+                $doc->addScriptDeclaration($uikitPre);
             }
 
             if ($uikitCount > 0 && $uikitPlus > 0 && $uikitAdd) {

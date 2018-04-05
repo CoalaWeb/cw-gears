@@ -121,9 +121,33 @@ class CwGearsHelperTools
     }
 
     /**
+     * Check if array is empty
+     *
+     * @param array $arr
+     *
+     * @return boolean
+     */
+    function isEmptyArr($arr = array()) {
+        if (!empty($arr)) {
+            $count = count($arr);
+            $check = 0;
+            foreach ($arr as $id => $item) {
+                if (empty($item)) {
+                    $check++;
+                }
+            }
+            if ($check != $count) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Check if certain files/folders currently exist
      *
      * @param $filesAndFolders - files and folders lists
+     * @param $langRoot
      * @return array
      */
     public static function checkFilesAndFolders($filesAndFolders, $langRoot)
@@ -139,7 +163,7 @@ class CwGearsHelperTools
                 if (!JFile::exists($f)) {
                     $result = [
                         'ok' => false,
-                        'type' => 'notice',
+                        'type' => 'warning',
                         'msg' => JText::_($langRoot . '_FILE_MISSING_MESSAGE')
                     ];
                     return $result;
@@ -158,7 +182,7 @@ class CwGearsHelperTools
                 if (!JFolder::exists($f)) {
                     $result = [
                         'ok' => false,
-                        'type' => 'notice',
+                        'type' => 'warning',
                         'msg' => JText::_($langRoot . '_FOLDER_MISSING_MESSAGE')
                     ];
                     return $result;
@@ -195,7 +219,7 @@ class CwGearsHelperTools
                 if (!JComponentHelper::isEnabled($component)) {
                     $result = [
                         'ok' => false,
-                        'type' => 'notice',
+                        'type' => 'warning',
                         'msg' => JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $component)
                     ];
                     return $result;
@@ -211,7 +235,7 @@ class CwGearsHelperTools
                 if (!JModuleHelper::isEnabled($module)) {
                     $result = [
                         'ok' => false,
-                        'type' => 'notice',
+                        'type' => 'warning',
                         'msg' => JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $module)
                     ];
                     return $result;
@@ -228,7 +252,7 @@ class CwGearsHelperTools
                 if (!JPluginHelper::isEnabled($parts[1], $parts[2])) {
                     $result = [
                         'ok' => false,
-                        'type' => 'notice',
+                        'type' => 'warning',
                         'msg' => JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $plugin)
                     ];
                     return $result;
@@ -255,7 +279,6 @@ class CwGearsHelperTools
      *
      * @param $type
      * @param $msg
-     * @param $string
      * @param array $sprint
      * @return string
      */

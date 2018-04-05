@@ -54,7 +54,7 @@ class JFormFieldDependent extends JFormFieldNote
         }
 
         $description = (string)$this->element['description'];
-        $label = (string)$this->element['label'];
+        $langRoot = (string)$this->element['label'];
 
         $html = array();
 
@@ -64,22 +64,31 @@ class JFormFieldDependent extends JFormFieldNote
             case "com":
                 $url = JPATH_ADMINISTRATOR . '/' . 'components/' . $description . '/version.php';
                 $check = JComponentHelper::isEnabled($description, true);
+                if (!file_exists($url) || !$check) {
+                    $html[] = '<div class="alert alert-warning"><span class="icon-notification"></span><button type="button" class="close" data-dismiss="alert">&times;</button>' . JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $description);
+                    return '</div>' . implode('', $html);
+                }
                 break;
             case "mod":
                 $url = JPATH_SITE . '/' . 'modules/' . $description . '/version.php';
+                $check = JModuleHelper::isEnabled($description, true);
+                if (!file_exists($url) || !$check) {
+                    $html[] = '<div class="alert alert-warning"><span class="icon-notification"></span><button type="button" class="close" data-dismiss="alert">&times;</button>' . JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $description);
+                    return '</div>' . implode('', $html);
+                }
                 break;
             case "plg":
                 $url = JPATH_SITE . '/' . 'plugins/' . $arr[1] . '/' . $arr[2] . '/version.php';
                 $check = JPluginHelper::isEnabled($arr[1], $arr[2], true);
+                if (!file_exists($url) || !$check) {
+                    $html[] = '<div class="alert alert-warning"><span class="icon-notification"></span><button type="button" class="close" data-dismiss="alert">&times;</button>' . JText::sprintf($langRoot . '_NOEXT_CHECK_MESSAGE', $description);
+                    return '</div>' . implode('', $html);
+                }
                 break;
         }
 
-        if (!file_exists($url) || !$check) {
-            $html[] = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' . JText::_($label . '_MSG_DEPENDENT');
-            return '</div>' . implode('', $html);
-        } else {
-            return '';
-        }
+        return;
+
     }
 
     /**
