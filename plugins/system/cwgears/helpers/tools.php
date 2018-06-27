@@ -40,7 +40,6 @@ class CwGearsHelperTools
      */
     public static function textClean($text, $stripHtml = true, $limit)
     {
-
         // Now decoded the text
         $decoded = html_entity_decode($text);
 

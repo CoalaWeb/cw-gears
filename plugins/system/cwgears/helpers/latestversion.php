@@ -31,7 +31,7 @@ class CwGearsLatestversion
 {
 
     /**
-     * Get latests version of an extension and compare to currently installed
+     * Get latest version of an extension and compare to currently installed
      *
      * @param string $ext
      * @param datetime $installed
