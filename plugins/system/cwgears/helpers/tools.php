@@ -332,4 +332,89 @@ class CwGearsHelperTools
 
         return $returnStatus;
     }
+
+    /**
+     * Extract content between two delimiters.
+     * Example: $unit = extract_unit($text, 'from', 'to');
+     *
+     * @param $string
+     * @param $start
+     * @param $end
+     *
+     * @return string
+     */
+    public static function extract_unit($string, $start, $end)
+    {
+        $pos = stripos($string, $start);
+        $str = substr($string, $pos);
+        $str_two = substr($str, strlen($start));
+        $second_pos = stripos($str_two, $end);
+        $str_three = substr($str_two, 0, $second_pos);
+
+        $unit = trim($str_three); // remove whitespaces
+
+        return $unit;
+    }
+
+    /**
+     * Clean up HTML
+     *
+     * @param $input_string
+     * @param string $format
+     *
+     * @return string
+     */
+    public static function tidy_html($input_string, $format = 'html') {
+        if ($format == 'xml') {
+            $config = array(
+                'input-xml' => true,
+                'indent' => true,
+                'wrap'           => 800
+            );
+        } else {
+            $config = array(
+                'output-html'   => true,
+                'indent' => true,
+                'wrap'           => 800
+            );
+        }
+        // Detect if Tidy is in configured
+        if( function_exists('tidy_get_release') ) {
+            $tidy = new tidy;
+            $tidy->parseString($input_string, $config, 'raw');
+            $tidy->cleanRepair();
+            $cleaned_html  = tidy_get_output($tidy);
+        } else {
+            # Tidy not configured for this computer
+            $cleaned_html = $input_string;
+        }
+        return $cleaned_html;
+    }
+
+    /**
+     * Deletes ALL the string contents between the designated characters
+     *
+     * @param $start - pattern start
+     * @param $end   - pattern end
+     * @param $string - input string
+     *
+     * @return mixed - string
+     */
+    public static function deleteAllBetween($start, $end, $string) {
+        // it helps to assemble comma delimited strings
+        $string = strtr($start. $string . $end, array($start => ','.$start, $end => chr(2)));
+        $startPos  = 0;
+        $endPos = strlen($string);
+        while( $startPos !== false && $endPos !== false){
+            $startPos = strpos($string, $start);
+            $endPos = strpos($string, $end);
+            if ($startPos === false || $endPos === false) {
+                $run = false;
+                return $string;
+            }
+            $textToDelete = substr($string, $startPos, ($endPos + strlen($end)) - $startPos);
+            $string = str_replace($textToDelete, '', $string);
+        }
+        return $string;
+    }
 }

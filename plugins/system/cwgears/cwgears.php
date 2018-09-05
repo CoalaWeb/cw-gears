@@ -308,6 +308,7 @@ class plgSystemCwgears extends JPlugin {
         //Jquery Loading
         //----------------------------------------------------------------------
         $loadJquery = $this->params->get('jquery_on', 0);
+
         if ($loadJquery && !$app->isAdmin()) {
 
             // Let create a link to our local directory.
@@ -730,6 +731,7 @@ class plgSystemCwgears extends JPlugin {
             //Lets add Pinterest JS if the Social Links module needs it.
             $module = JModuleHelper::getModule('coalawebsociallinks');
             $moduleTwo = JModuleHelper::getModule('coalawebsocialtabs');
+            $body = $app->getBody();
 
             if ($module) {
                 $modParams = new JRegistry;
@@ -744,9 +746,7 @@ class plgSystemCwgears extends JPlugin {
                 $this->pinterest = $this->share = $modParamsTwo->get('display_pinterest');
             }
 
-
             if ($this->pinterest && $this->share) {
-                $body = $app->getBody();
                 $pos = JString::strpos($body, "//assets.pinterest.com/js/pinit.js");
                 if (!$pos) {
                     $body = JString::str_ireplace('</body>', '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>' . "\n</body>", $body);
