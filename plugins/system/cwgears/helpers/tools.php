@@ -12,12 +12,10 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
-
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl.html>.
  */
@@ -46,15 +44,16 @@ class CwGearsHelperTools
         // Remove any HTML based on module settings
         $notags = $stripHtml ? strip_tags($decoded) : $decoded;
 
-        // Remove brackets such as plugin code
-        $nobrackets = preg_replace("/\{[^}]+\}/", " ", $notags);
+        // Remove bracket or bracket sets such as with plugin code
+        $nobrackets = preg_replace('/{[^}]+\}(.*?){\/[^}]+\}/s', " ", $notags);
+        $nobracket = preg_replace("/\{[^}]+\}/", " ", $nobrackets);
 
         //Now reduce the text length if needed
         $chars = strlen($notags);
         if ($chars <= $limit) {
-            $description = $nobrackets;
+            $description = $nobracket;
         } else {
-            $description = JString::substr($nobrackets, 0, $limit) . "...";
+            $description = JString::substr($nobracket, 0, $limit) . "...";
         }
 
         // One last little clean up
@@ -82,7 +81,8 @@ class CwGearsHelperTools
      * @param string $code
      * @return string
      */
-    public static function codeClean($code) {
+    public static function codeClean($code)
+    {
 
         // Remove comments.
         $pass1 = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', $code);
@@ -104,19 +104,20 @@ class CwGearsHelperTools
      *
      * @return bool
      */
-    public static function keysExist( array $array, $keys ) {
+    public static function keysExist(array $array, $keys)
+    {
         $count = 0;
-        if ( ! is_array( $keys ) ) {
+        if (!is_array($keys)) {
             $keys = func_get_args();
-            array_shift( $keys );
+            array_shift($keys);
         }
-        foreach ( $keys as $key ) {
-            if ( array_key_exists( $key, $array ) ) {
-                $count ++;
+        foreach ($keys as $key) {
+            if (array_key_exists($key, $array)) {
+                $count++;
             }
         }
 
-        return count( $keys ) === $count;
+        return count($keys) === $count;
     }
 
     /**
@@ -126,7 +127,8 @@ class CwGearsHelperTools
      *
      * @return boolean
      */
-    function isEmptyArr($arr = array()) {
+    function isEmptyArr($arr = array())
+    {
         if (!empty($arr)) {
             $count = count($arr);
             $check = 0;
@@ -283,7 +285,7 @@ class CwGearsHelperTools
      */
     public static function getMessage($type, $msg, $sprint = array())
     {
-        $returnStatus= null;
+        $returnStatus = null;
         $sprintCheck = array_filter($sprint);
 
         if (!empty($sprintCheck)) {
@@ -364,26 +366,27 @@ class CwGearsHelperTools
      *
      * @return string
      */
-    public static function tidy_html($input_string, $format = 'html') {
+    public static function tidy_html($input_string, $format = 'html')
+    {
         if ($format == 'xml') {
             $config = array(
                 'input-xml' => true,
                 'indent' => true,
-                'wrap'           => 800
+                'wrap' => 800
             );
         } else {
             $config = array(
-                'output-html'   => true,
+                'output-html' => true,
                 'indent' => true,
-                'wrap'           => 800
+                'wrap' => 800
             );
         }
         // Detect if Tidy is in configured
-        if( function_exists('tidy_get_release') ) {
+        if (function_exists('tidy_get_release')) {
             $tidy = new tidy;
             $tidy->parseString($input_string, $config, 'raw');
             $tidy->cleanRepair();
-            $cleaned_html  = tidy_get_output($tidy);
+            $cleaned_html = tidy_get_output($tidy);
         } else {
             # Tidy not configured for this computer
             $cleaned_html = $input_string;
@@ -395,17 +398,18 @@ class CwGearsHelperTools
      * Deletes ALL the string contents between the designated characters
      *
      * @param $start - pattern start
-     * @param $end   - pattern end
+     * @param $end - pattern end
      * @param $string - input string
      *
      * @return mixed - string
      */
-    public static function deleteAllBetween($start, $end, $string) {
+    public static function deleteAllBetween($start, $end, $string)
+    {
         // it helps to assemble comma delimited strings
-        $string = strtr($start. $string . $end, array($start => ','.$start, $end => chr(2)));
-        $startPos  = 0;
+        $string = strtr($start . $string . $end, array($start => ',' . $start, $end => chr(2)));
+        $startPos = 0;
         $endPos = strlen($string);
-        while( $startPos !== false && $endPos !== false){
+        while ($startPos !== false && $endPos !== false) {
             $startPos = strpos($string, $start);
             $endPos = strpos($string, $end);
             if ($startPos === false || $endPos === false) {
@@ -413,8 +417,65 @@ class CwGearsHelperTools
                 return $string;
             }
             $textToDelete = substr($string, $startPos, ($endPos + strlen($end)) - $startPos);
-            $string = str_replace($textToDelete, '', $string);
+            // recursion to ensure all occurrences are replaced
+            $string = deleteAllBetween($start, $end, str_replace($textToDelete, '', $string));
         }
         return $string;
+    }
+
+    /**
+     * Get and return everything between two tags
+     *
+     * @param $string
+     * @param $tagname
+     * @return mixed
+     */
+    public static function everything_in_tags($string, $tagname)
+    {
+        $pattern = "#<\s*?$tagname\b[^>]*>(.*?)</$tagname\b[^>]*>#s";
+        preg_match($pattern, $string, $matches);
+        return $matches[1];
+    }
+
+    /**
+     * Get and set our dates and times
+     *
+     * @return array
+     */
+    public static function getDatetimeNow()
+    {
+        $config = JFactory::getConfig();
+        $siteOffset = $config->get('offset');
+
+        $dtz = new DateTimeZone($siteOffset);
+
+        $now = new DateTime();
+        $now->setTimezone($dtz);
+
+        $dates = array(
+            'unix' => $now->format('U'),
+            'long' => $now->format('Y-m-d H:i:s'),
+            'short' => $now->format('Y-m-d')
+        );
+
+        return $dates;
+    }
+
+    /**
+     * Function to clean and format url when using a CDN
+     *
+     * @param $url
+     * @param $cdnDomain
+     * @param $cdnRoot
+     * @return string
+     */
+    public static function cdnUrl($url, $cdnDomain, $cdnRoot)
+    {
+        $cdn = preg_replace(array('#^.*\://#', '#/$#'), '', $cdnDomain);
+
+        $path = parse_url($url, PHP_URL_PATH);
+        $cdnUrl = $cdnRoot . $cdn . $path;
+
+        return $cdnUrl;
     }
 }
