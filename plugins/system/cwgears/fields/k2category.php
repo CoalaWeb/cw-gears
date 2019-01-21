@@ -6,7 +6,7 @@
  * @author      Steven Palmer <support@coalaweb.com>
  * @link        https://coalaweb.com/
  * @license     GNU/GPL, see /assets/en-GB.license.txt
- * @copyright   Copyright (c) 2018 Steven Palmer All rights reserved.
+ * @copyright   Copyright (c) 2019 Steven Palmer All rights reserved.
  *
  * CoalaWeb Gears is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
