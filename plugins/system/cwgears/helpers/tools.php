@@ -34,15 +34,16 @@ class CwGearsHelperTools
      * @param $text
      * @param bool $stripHtml
      * @param $limit
+     * @param null $tags
      * @return null|string|string[]|Tidy
      */
-    public static function textClean($text, $stripHtml = true, $limit)
+    public static function textClean($text, $stripHtml = true, $limit, $tags = null)
     {
         // Now decoded the text
         $decoded = html_entity_decode($text);
 
         // Remove any HTML based on module settings
-        $notags = $stripHtml ? strip_tags($decoded) : $decoded;
+        $notags = $stripHtml ? strip_tags($decoded, $tags) : $decoded;
 
         // Remove bracket or bracket sets such as with plugin code
         $nobrackets = preg_replace('/{[^}]+\}(.*?){\/[^}]+\}/s', " ", $notags);
@@ -477,5 +478,31 @@ class CwGearsHelperTools
         $cdnUrl = $cdnRoot . $cdn . $path;
 
         return $cdnUrl;
+    }
+
+    /**
+     * Get params for a specific module based on ID
+     *
+     * @param $id
+     *
+     * @return JRegistry
+     *
+     * @since  0.5.5
+     */
+    public static function getModuleParams($id)
+    {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('m.*');
+        $query->from('#__modules AS m');
+        $query->where('id = ' . $id);
+        $db->setQuery($query);
+        $module = $db->loadObject();
+
+        $params = new JRegistry();
+        $params->loadString($module->params);
+
+        return $params;
+
     }
 }
