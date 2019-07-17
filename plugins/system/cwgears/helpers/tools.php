@@ -442,6 +442,7 @@ class CwGearsHelperTools
      * Get and set our dates and times
      *
      * @return array
+     * @throws Exception
      */
     public static function getDatetimeNow()
     {
@@ -491,6 +492,9 @@ class CwGearsHelperTools
      */
     public static function getModuleParams($id)
     {
+        //ref=https://stackoverflow.com/questions/12171947/how-to-get-module-params-in-component-area-in-joomla2-5
+        //Example of how to use the returned object
+        //$param = $moduleParams->get('param_name', 'default_value');
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('m.*');
@@ -499,8 +503,7 @@ class CwGearsHelperTools
         $db->setQuery($query);
         $module = $db->loadObject();
 
-        $params = new JRegistry();
-        $params->loadString($module->params);
+        $params = new JRegistry($module->params);
 
         return $params;
 

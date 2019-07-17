@@ -72,12 +72,12 @@ class JFormFieldSorting extends JFormField {
         // Get possible new options.
         $possibleNew = '';
         if ($this->name === 'jform[params][sorting_tabs]') {
-            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,digg_s,stumbleupon_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,rss_f,instagram_f,contact_f,customone_c,customtwo_c,customthree_c,customfour_c,customfive_c';
+            $default = 'facebook_s,twitter_s,linkedin_s,pinterest_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,linkedin_f,pinterest_f,rss_f,instagram_f,contact_f,customone_c,customtwo_c,customthree_c,customfour_c,customfive_c';
             $possibleNew = explode(',', $default);
         }
 
         if ($this->name === 'jform[params][sorting_pro]') {
-            $default = 'facebook_s,twitter_s,google_s,linkedin_s,pinterest_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,google_f,linkedin_f,pinterest_f,contact_f,github_f,instagram_f';
+            $default = 'facebook_s,twitter_s,linkedin_s,pinterest_s,reddit_s,email_s,whatsapp_s,facebook_f,twitter_f,linkedin_f,pinterest_f,contact_f,github_f,instagram_f';
             $possibleNew = explode(',', $default);
         }
         // Explode currently stored values.
