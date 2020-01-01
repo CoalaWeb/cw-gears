@@ -1,1 +1,0 @@
-# Dummy SQL file to set schema version to 0.1.6 so next update will work
