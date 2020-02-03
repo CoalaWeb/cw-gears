@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.7" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2020-01-01</creationDate>
+    <creationDate>2020-02-03</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
     <copyright>Copyright (c) 2020 Steven Palmer All rights reserved.</copyright>
     <license>GNU/GPL V3 or later; https://www.gnu.org/licenses/gpl-3.0.html</license>
-    <version>0.5.7</version>
+    <version>0.5.8</version>
+    <level>Core</level>
     <description>PLG_CWGEARS_DESC</description>
 
     <install> <!-- Runs on install -->
@@ -43,12 +44,14 @@
         
     <!-- HELP FILE -->
     <help url="PLG_GWGEARS_HELP_URL" />
-    
-    <!-- UPDATE SERVER -->
+
+    <!-- Update Server -->
     <updateservers>
-        <server type="extension" priority="1" name="CoalaWeb Gears Update">http://cdn.coalaweb.com/updates/cw-gears-core.xml</server>
+        <server type="extension" priority="1" name="CoalaWeb Gears Update">
+            <![CDATA[https://coalaweb.com/index.php?option=com_rdsubs&view=updater&format=xml&cat=19&element=cwgears&type=plugin]]>
+        </server>
     </updateservers>
-    
+
     <!-- Installation / Uninstallation Script File -->
     <scriptfile>script.plg_system_cwgears.php</scriptfile>
 
@@ -422,44 +425,38 @@
                     required="true"
                     label="PLG_CWGEARS_FIELD_LOCKTIME_LABEL"
                     description="PLG_CWGEARS_FIELD_LOCKTIME_DESC"/>
-                
-            </fieldset>
-            
-            <fieldset
-                name="updates"
-                label="PLG_CWGEARS_UPDATES_TAB">
-        
-                <field 
-                    name="updates_info"
-                    type="note"
-                    close="true"
-                    class="alert alert-info"
-                    label="PLG_CWGEARS_IMPORTANT_MSG_TITLE"
-                    description="PLG_CWGEARS_UPDATES_MSG"/>
-                
+
                 <field
-                    type="spacer" 
-                    name="pro_extensions_spacer" 
-                    label="PLG_CWGEARS_SPACER_PRO_EXTENSIONS"
-                    class="cw_label" />
-            
-                <field 
-                    name="downloadid" 
-                    type="text" 
-                    default="" 
-                    size="30"
-                    label="PLG_CWGEARS_FIELD_DOWNLOADID_LABEL"
-                    description ="PLG_CWGEARS_FIELD_DOWNLOADID_DESC" />
-                
+                        name="db_clean_depend_info"
+                        type="note"
+                        close="true"
+                        class="alert alert-danger"
+                        label="PLG_CWGEARS_IMPORTANT_MSG_TITLE"
+                        description="PLG_CWGEARS_DBCLEAN_DEPEND_MESSAGE"/>
+
+                <field
+                        name="db_clean_dependencies"
+                        type="radio"
+                        default="0"
+                        class="btn-group btn-group-yesno"
+                        label="PLG_CWGEARS_FIELD_DBCLEAN_DEPEND_LABEL"
+                        description="PLG_CWGEARS_FIELD_DBCLEAN_DEPEND_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field type="pluginsave"
+                       label="plg_system_cwgears"/>
+
             </fieldset>
             
             <fieldset 
                 name="VERSION"
                 label="PLG_CWGEARS_TITLE_VERSION">
                 
-                <field 
+                <field
                     name="version_info"
-                    type="version"
+                    type="versioncheck"
                     label="plg_system_cwgears"/>
 
             </fieldset>
