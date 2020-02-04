@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.7" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2020-02-03</creationDate>
+    <creationDate>2020-02-04</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
@@ -48,7 +48,7 @@
     <!-- Update Server -->
     <updateservers>
         <server type="extension" priority="1" name="CoalaWeb Gears Update">
-            <![CDATA[https://coalaweb.com/index.php?option=com_rdsubs&view=updater&format=xml&cat=19&element=cwgears&type=plugin]]>
+            <![CDATA[https://coalaweb.com/index.php?option=com_rdsubs&view=updater&format=xml&cat=19&type=.xml]]>
         </server>
     </updateservers>
 
