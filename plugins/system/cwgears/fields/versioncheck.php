@@ -18,11 +18,10 @@
  * GNU General Public License for more details.
  */
 
-use CoalaWeb\RegEx as CW_RegEx;
+defined('_JEXEC') or die;
+
 use CoalaWeb\Xml as CW_Xml;
 use CoalaWeb\UpdateKey as CW_UpdateKey;
-
-defined('_JEXEC') or die('Restricted access');
 
 require_once(JPATH_SITE . '/plugins/system/cwgears/fields/base.php');
 

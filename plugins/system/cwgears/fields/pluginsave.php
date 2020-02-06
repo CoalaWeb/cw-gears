@@ -1,20 +1,30 @@
 <?php
+
 /**
- * @package     Joomla.Plugin
- * @subpackage  System.kickgdpr
- * @author      Niels Nübel <niels@niels-nuebel.de>
- * @copyright   2018 Niels Nübel
- * @license     GNU/GPLv3 <http://www.gnu.org/licenses/gpl-3.0.de.html>
- * @link        https://kicktemp.com
+ * @package     Joomla
+ * @subpackage  CoalaWeb Gears
+ * @author      Steven Palmer <support@coalaweb.com>
+ * @link        https://coalaweb.com/
+ * @license     GNU/GPL V3 or later; https://www.gnu.org/licenses/gpl-3.0.html
+ * @copyright   Copyright (c) 2020 Steven Palmer All rights reserved.
+ *
+ * CoalaWeb Gears is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  */
 
-// No direct access
 defined('_JEXEC') or die;
+
 use Joomla\Registry\Registry;
 
+
 /**
- * Form Field class for Kubik-Rubik Joomla! Extensions.
- * Provides a donation code check.
+ * Class JFormFieldPluginSave
  */
 class JFormFieldPluginSave extends JFormField
 {
