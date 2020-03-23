@@ -26,6 +26,9 @@ jimport('joomla.form.helper');
 
 JFormHelper::loadFieldClass('text');
 
+// Example: <field name="dlid" type="downloadid" label="" description="" default="" extension="See Below" key="key="/>
+// Extension = Must be the same as the name attribute of update <server> as entered in the extension xml file
+
 class JFormFieldDownloadID extends JFormFieldText {
 
     //The field class must know its own type through the variable $type.

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.7" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2020-02-06</creationDate>
+    <creationDate>2020-03-12</creationDate>
     <author>Steven Palmer</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
     <copyright>© 2020 Steven Palmer (CoalaWeb), All rights reserved.</copyright>
     <license> GNU/GPL V3 or later.</license>
-    <version>0.5.8</version>
+    <version>0.5.9</version>
     <level>Core</level>
     <description>PLG_CWGEARS_DESC</description>
 

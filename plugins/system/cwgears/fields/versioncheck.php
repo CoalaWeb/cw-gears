@@ -91,10 +91,16 @@ class CWElementVersionCheck extends CWElement
             $version = $extXml->version;
             $date = $extXml->creationDate;
             $ispro = $extXml->level;
+        }else{
+            $version = JText::_('PLG_CWGEARS_RELEASE_UNKOWN');
         }
 
         // Load extension data such as the manifest cache
-        $current = $manifest->new_version;
+        if($manifest) {
+            $current = $manifest->new_version;
+        }else{
+            $current = null;
+        }
 
         //No current use default
         if ($current) {
