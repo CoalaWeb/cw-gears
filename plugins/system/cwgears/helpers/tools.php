@@ -44,15 +44,18 @@ class CwGearsHelperTools
         $notags = $stripHtml ? strip_tags($decoded, $tags) : $decoded;
 
         // Remove bracket or bracket sets such as with plugin code
-        $nobrackets = preg_replace('/{[^}]+\}(.*?){\/[^}]+\}/s', " ", $notags);
-        $nobracket = preg_replace("/\{[^}]+\}/", " ", $nobrackets);
+        $nobrackets1st = preg_replace('/{[^}]+\}(.*?){\/[^}]+\}/s', " ", $notags);
+        $nobrackets2nd = preg_replace("/\{[^}]+\}/", " ", $nobrackets1st);
+
+        //Lets make sure there are no page builder [] tags
+        $nobrackets3rd = preg_replace('/\[.*\]/', '', $nobrackets2nd);
 
         //Now reduce the text length if needed
-        $chars = strlen($notags);
+        $chars = strlen($nobrackets3rd);
         if ($chars <= $limit) {
-            $description = $nobracket;
+            $description = $nobrackets3rd;
         } else {
-            $description = JString::substr($nobracket, 0, $limit) . "...";
+            $description = JString::substr($nobrackets3rd, 0, $limit) . "...";
         }
 
         // One last little clean up
