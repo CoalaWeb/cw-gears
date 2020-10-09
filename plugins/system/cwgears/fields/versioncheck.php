@@ -41,10 +41,9 @@ class CWElementVersionCheck extends CWElement
      * @param $name
      * @param $value
      * @param $node
-     * @param $control_name
      * @return null
      */
-    public function fetchElement($name, $value, &$node, $control_name)
+    public function fetchElement($name, $value, &$node)
     {
         return NULL;
     }
@@ -53,11 +52,10 @@ class CWElementVersionCheck extends CWElement
      * @param $label
      * @param $description
      * @param $node
-     * @param $control_name
      * @param $name
      * @return string
      */
-    public function fetchTooltip($label, $description, &$node, $control_name, $name)
+    public function fetchTooltip($label, $description, &$node, $name)
     {
         // Load version.php
         jimport('joomla.filesystem.file');

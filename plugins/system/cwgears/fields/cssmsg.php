@@ -32,9 +32,8 @@ class CWElementCssmsg extends CWElement {
      * @param $name
      * @param $value
      * @param $node
-     * @param $control_name
      */
-    public function fetchElement($name, $value, &$node, $control_name) {
+    public function fetchElement($name, $value, &$node) {
 
         $doc = JFactory::getDocument();
 
@@ -46,11 +45,10 @@ class CWElementCssmsg extends CWElement {
      * @param $label
      * @param $description
      * @param $node
-     * @param $control_name
      * @param $name
      * @return null
      */
-    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
+    public function fetchTooltip($label, $description, &$node, $name) {
         return NULL;
     }
 

@@ -32,27 +32,27 @@ class CWElementCss extends CWElement {
      * @param $name
      * @param $value
      * @param $node
-     * @param $control_name
      */
-    public function fetchElement($name, $value, &$node, $control_name) {
+    public function fetchElement($name, $value, &$node) {
 
         $doc = JFactory::getDocument();
 
         $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/modules/generic/css/cw-config-j3.css');
         $doc->addStyleSheet(JURI::root(true) . '/media/coalaweb/modules/generic/css/cw-config-v2.css');
 
-    }
+        // Fix help being displayed
+        if(
+            JFactory::getApplication()->input->getCmd('option', '') == 'com_modules' ||
+            JFactory::getApplication()->input->getCmd('option', '') == 'com_plugins'
+        )
+        {
+            $doc->addScriptDeclaration('
+				jQuery(document).ready(function($) {
+					$(\'#jform_params_css_import-lbl\').closest(\'.control-group\').hide();
+				});
+			');
+        }
 
-    /**
-     * @param $label
-     * @param $description
-     * @param $node
-     * @param $control_name
-     * @param $name
-     * @return null
-     */
-    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        return NULL;
     }
 
 }

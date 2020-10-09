@@ -32,7 +32,7 @@ class CWElement extends JFormField {
      * @return mixed
      */
     function getInput() {
-        return $this->fetchElement($this->name, $this->value, $this->element, $this->options['control']);
+        return $this->fetchElement($this->name, $this->value, $this->element);
     }
 
     /**
@@ -40,7 +40,7 @@ class CWElement extends JFormField {
      */
     function getLabel() {
         if (method_exists($this, 'fetchTooltip')) {
-            return $this->fetchTooltip($this->element['label'], $this->description, $this->element, $this->options['control'], $this->element['name'] = '');
+            return $this->fetchTooltip($this->element['label'], $this->description, $this->element, $this->element['name'] = '');
         } else {
             return parent::getLabel();
         }

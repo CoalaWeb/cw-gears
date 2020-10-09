@@ -32,9 +32,8 @@ class CWElementCsscom extends CWElement {
      * @param $name
      * @param $value
      * @param $node
-     * @param $control_name
      */
-    public function fetchElement($name, $value, &$node, $control_name) {
+    public function fetchElement($name, $value, &$node) {
 
         $doc = JFactory::getDocument();
 
@@ -48,24 +47,11 @@ class CWElementCsscom extends CWElement {
             $doc->addScriptDeclaration('
 				jQuery(document).ready(function($) {
 					$("button[rel=\'help\']").hide();
-					
+					$(\'#jform_css_import-lbl\').closest(\'.control-group\').hide();
 				});
 			');
         }
     }
-
-    /**
-     * @param $label
-     * @param $description
-     * @param $node
-     * @param $control_name
-     * @param $name
-     * @return null
-     */
-    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
-        return NULL;
-    }
-
 }
 
 /**

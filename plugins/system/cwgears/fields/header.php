@@ -32,10 +32,9 @@ class CWElementHeader extends CWElement {
      * @param $name
      * @param $value
      * @param $node
-     * @param $control_name
      * @return string
      */
-    public function fetchElement($name, $value, &$node, $control_name) {
+    public function fetchElement($name, $value, &$node) {
 
         return '<div class="paramHeaderContainer">'
                 . '<div class="paramHeaderContent">' . JText::_($value) . '</div>'
@@ -46,11 +45,10 @@ class CWElementHeader extends CWElement {
      * @param $label
      * @param $description
      * @param $node
-     * @param $control_name
      * @param $name
      * @return null
      */
-    public function fetchTooltip($label, $description, &$node, $control_name, $name) {
+    public function fetchTooltip($label, $description, &$node, $name) {
         return NULL;
     }
 
