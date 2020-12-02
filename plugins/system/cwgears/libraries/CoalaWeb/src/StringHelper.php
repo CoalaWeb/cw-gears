@@ -44,7 +44,7 @@ class StringHelper extends \Joomla\String\StringHelper
 	{
 		if (is_array($data))
 		{
-			array_walk($data, function (&$part, $key, $quote_style, $encoding) {
+			array_walk($data, function (&$part, $quote_style, $encoding) {
 				$part = self::html_entity_decoder($part, $quote_style, $encoding);
 			}, $quote_style, $encoding);
 

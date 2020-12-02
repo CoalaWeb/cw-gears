@@ -23,6 +23,10 @@ namespace CoalaWeb;
 
 defined('_JEXEC') or die;
 
+/**
+ * Class SessionHelper
+ * @package CoalaWeb
+ */
 class SessionHelper
 {
     private $session;

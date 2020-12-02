@@ -84,7 +84,7 @@ class JFormFieldDependent extends JFormFieldNote
                 break;
         }
 
-        return;
+        return false;
 
     }
 

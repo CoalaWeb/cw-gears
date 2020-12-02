@@ -71,6 +71,7 @@ class CWElementInherit extends CWElement {
                     . '<p class="alert">' . JText::_($label . '_MSG_INHERIT') . '</p>'
                     . '</div></div>';
         }
+        return false;
     }
 
 }

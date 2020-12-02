@@ -24,6 +24,10 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text as JText;
 
+/**
+ * Class Github
+ * @package CoalaWeb
+ */
 class Github
 {
 
@@ -38,6 +42,23 @@ class Github
      */
     public static function getGitHubFile($url, $useCache = '')
     {
+        /* Example Use:
+        $lang = JFactory::getLanguage();
+        $joomla = JFactory::getApplication();
+
+        use Michelf\MarkdownExtra;
+        use CoalaWeb\Github as CW_Github;
+
+        $github = CW_Github::getGitHubFile('https://raw.githubusercontent.com');
+
+        if ($github['ok']) {
+            $my_html = MarkdownExtra::defaultTransform($github['output']);
+            echo $my_html;
+        } else {
+            $joomla->enqueueMessage($github['msg'], $github['type']);
+        }*/
+
+
         // Is cURL installed yet?
         if (!function_exists('curl_init')) {
             $result = [

@@ -26,7 +26,10 @@ use Joomla\CMS\User\UserHelper as UHelp;
 use Joomla\CMS\Crypt\Key;
 use Joomla\CMS\Crypt\Cipher\SodiumCipher;
 
-
+/**
+ * Class Secure
+ * @package CoalaWeb
+ */
 class Secure
 {
     /**

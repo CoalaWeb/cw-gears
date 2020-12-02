@@ -41,7 +41,6 @@ class plgSystemCwgears extends JPlugin
 
     var $pinterest;
     var $share;
-    private $caching = 0;
 
     /**
      * plg System CW Gears constructor.
@@ -190,7 +189,6 @@ class plgSystemCwgears extends JPlugin
                 }
             }
         }
-        return;
     }
 
     /**
@@ -300,7 +298,7 @@ class plgSystemCwgears extends JPlugin
         //Inspired by Crosstec
         $loadCacheControl = $this->params->get('cache_off', 0);
         if ($loadCacheControl && $this->checkRules() && !$app->isAdmin()) {
-            $this->caching = JFactory::getConfig()->get('caching');
+            $caching = JFactory::getConfig()->get('caching');
             JFactory::getConfig()->set('caching', 0);
         }
     }
@@ -423,7 +421,7 @@ class plgSystemCwgears extends JPlugin
                 include_once $loadcount_php;
             } else {
                 $app->enqueueMessage(JText::_('PLG_CWGEARS_ASSET_MISSING_MESSAGE'), 'notice');
-                return;
+                return false;
             }
 
             $helpFunc = new CwGearsHelperLoadcount();
@@ -707,6 +705,7 @@ class plgSystemCwgears extends JPlugin
 
             return true;
         }
+        return true;
     }
 
     /**
@@ -817,6 +816,7 @@ class plgSystemCwgears extends JPlugin
 
             return false;
         }
+        return false;
     }
 
     /**

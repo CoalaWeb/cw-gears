@@ -54,7 +54,7 @@ class JFormFieldK2Category extends JFormField {
                 $mitems = $db->loadObjectList();
             } catch (Exception $exc) {
                 $mitems = '';
-                return;
+                return false;
             }
             
             

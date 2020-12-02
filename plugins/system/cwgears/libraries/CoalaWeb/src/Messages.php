@@ -25,7 +25,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text as JText;
 
 /**
- * Class Xml
+ * Class Messages
  * @package CoalaWeb
  */
 class Messages

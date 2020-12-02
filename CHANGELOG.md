@@ -1,8 +1,8 @@
 ## Change Log
 
-### Version 0.6.1 October 2020
+### Version 0.6.1 December 2020
 - **(A)** New modal article picker form field
-- **(A)** Three new classes for the CoalaWeb library
+- **(A)** Four new classes for the CoalaWeb library
 - **(A)** New database table to help with ciphers
 - **(C)** Code updates and improvements to support PHP 7.4
 - **(C)** Code updates and improvements for CSS loading fields

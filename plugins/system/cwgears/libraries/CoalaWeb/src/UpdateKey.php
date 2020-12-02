@@ -70,6 +70,8 @@ class UpdateKey
             'downloadid' => !empty($component->extra_query) ? $component->extra_query : null,
             'available' => !empty($component->new_version) ? $component->new_version : null,
         ]);
+
+        return true;
     }
 
     /**
