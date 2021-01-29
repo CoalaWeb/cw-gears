@@ -48,7 +48,7 @@ class CwGearsLatestversion
         }
         
         if ($exist){
-        $update = $remote > $installed ? '<a class="btn btn-mini btn-success" href="https://coalaweb.com/downloads/joomla-extensions/latest-releases" target="_blank"><span class="icon-upload"></span>' . JText::_('PLG_CWGEARS_UPDATE_BTN') . '</a>' : '';
+        $update = $remote > $installed ? '<a class="btn btn-mini btn-success" href="https://coalaweb.com/downloads/joomla-extensions/official-releases" target="_blank"><span class="icon-upload"></span>' . JText::_('PLG_CWGEARS_UPDATE_BTN') . '</a>' : '';
         } else {
             $update = '';
         }

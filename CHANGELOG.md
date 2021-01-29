@@ -1,5 +1,9 @@
 ## Change Log
 
+### Version 0.6.2 January 2021
+- **(B)** Fixed update URL
+- **(A)** New class dependency MobileDetect for the CoalaWeb library
+
 ### Version 0.6.1 December 2020
 - **(A)** New modal article picker form field
 - **(A)** Four new classes for the CoalaWeb library
