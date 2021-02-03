@@ -85,7 +85,6 @@ class CwGearsHelperTools
      */
     public static function codeClean($code)
     {
-
         // Remove comments.
         $pass1 = preg_replace('~//<!\[CDATA\[\s*|\s*//\]\]>~', '', $code);
         $pass2 = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\)\/\/[^"\'].*))/', '', $pass1);
@@ -155,7 +154,6 @@ class CwGearsHelperTools
      */
     public static function checkFilesAndFolders($filesAndFolders, $langRoot)
     {
-
         // Check files exist
         jimport('joomla.filesystem.file');
 
