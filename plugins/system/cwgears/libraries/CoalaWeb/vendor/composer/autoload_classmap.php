@@ -6,10 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Bamarni\\Composer\\Bin\\BinCommand' => $vendorDir . '/bamarni/composer-bin-plugin/src/BinCommand.php',
+    'Bamarni\\Composer\\Bin\\CommandProvider' => $vendorDir . '/bamarni/composer-bin-plugin/src/CommandProvider.php',
+    'Bamarni\\Composer\\Bin\\Config' => $vendorDir . '/bamarni/composer-bin-plugin/src/Config.php',
+    'Bamarni\\Composer\\Bin\\Plugin' => $vendorDir . '/bamarni/composer-bin-plugin/src/Plugin.php',
     'CoalaWeb\\Cache' => $baseDir . '/src/Cache.php',
     'CoalaWeb\\Config' => $baseDir . '/src/Config.php',
     'CoalaWeb\\Github' => $baseDir . '/src/Github.php',
     'CoalaWeb\\Messages' => $baseDir . '/src/Messages.php',
+    'CoalaWeb\\MobileDetect' => $baseDir . '/src/MobileDetect.php',
     'CoalaWeb\\Parameters' => $baseDir . '/src/Parameters.php',
     'CoalaWeb\\RegEx' => $baseDir . '/src/RegEx.php',
     'CoalaWeb\\Secure' => $baseDir . '/src/Secure.php',
@@ -18,6 +23,7 @@ return array(
     'CoalaWeb\\SubExtensions' => $baseDir . '/src/SubExtensions.php',
     'CoalaWeb\\UpdateKey' => $baseDir . '/src/UpdateKey.php',
     'CoalaWeb\\Xml' => $baseDir . '/src/Xml.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Detection\\MobileDetect' => $vendorDir . '/mobiledetect/mobiledetectlib/namespaced/Detection/MobileDetect.php',
     'Michelf\\Markdown' => $vendorDir . '/michelf/php-markdown/Michelf/Markdown.php',
     'Michelf\\MarkdownExtra' => $vendorDir . '/michelf/php-markdown/Michelf/MarkdownExtra.php',

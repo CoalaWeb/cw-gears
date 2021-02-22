@@ -19,6 +19,10 @@ class ComposerStaticInit784b975369fd0b7ab45e916492886a39
         array (
             'CoalaWeb\\' => 9,
         ),
+        'B' => 
+        array (
+            'Bamarni\\Composer\\Bin\\' => 21,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -34,6 +38,10 @@ class ComposerStaticInit784b975369fd0b7ab45e916492886a39
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Bamarni\\Composer\\Bin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bamarni/composer-bin-plugin/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -47,10 +55,15 @@ class ComposerStaticInit784b975369fd0b7ab45e916492886a39
     );
 
     public static $classMap = array (
+        'Bamarni\\Composer\\Bin\\BinCommand' => __DIR__ . '/..' . '/bamarni/composer-bin-plugin/src/BinCommand.php',
+        'Bamarni\\Composer\\Bin\\CommandProvider' => __DIR__ . '/..' . '/bamarni/composer-bin-plugin/src/CommandProvider.php',
+        'Bamarni\\Composer\\Bin\\Config' => __DIR__ . '/..' . '/bamarni/composer-bin-plugin/src/Config.php',
+        'Bamarni\\Composer\\Bin\\Plugin' => __DIR__ . '/..' . '/bamarni/composer-bin-plugin/src/Plugin.php',
         'CoalaWeb\\Cache' => __DIR__ . '/../..' . '/src/Cache.php',
         'CoalaWeb\\Config' => __DIR__ . '/../..' . '/src/Config.php',
         'CoalaWeb\\Github' => __DIR__ . '/../..' . '/src/Github.php',
         'CoalaWeb\\Messages' => __DIR__ . '/../..' . '/src/Messages.php',
+        'CoalaWeb\\MobileDetect' => __DIR__ . '/../..' . '/src/MobileDetect.php',
         'CoalaWeb\\Parameters' => __DIR__ . '/../..' . '/src/Parameters.php',
         'CoalaWeb\\RegEx' => __DIR__ . '/../..' . '/src/RegEx.php',
         'CoalaWeb\\Secure' => __DIR__ . '/../..' . '/src/Secure.php',
@@ -59,6 +72,7 @@ class ComposerStaticInit784b975369fd0b7ab45e916492886a39
         'CoalaWeb\\SubExtensions' => __DIR__ . '/../..' . '/src/SubExtensions.php',
         'CoalaWeb\\UpdateKey' => __DIR__ . '/../..' . '/src/UpdateKey.php',
         'CoalaWeb\\Xml' => __DIR__ . '/../..' . '/src/Xml.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Detection\\MobileDetect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/namespaced/Detection/MobileDetect.php',
         'Michelf\\Markdown' => __DIR__ . '/..' . '/michelf/php-markdown/Michelf/Markdown.php',
         'Michelf\\MarkdownExtra' => __DIR__ . '/..' . '/michelf/php-markdown/Michelf/MarkdownExtra.php',

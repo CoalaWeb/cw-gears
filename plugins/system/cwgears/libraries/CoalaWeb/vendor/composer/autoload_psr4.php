@@ -9,4 +9,5 @@ return array(
     'splitbrain\\PHPArchive\\' => array($vendorDir . '/splitbrain/php-archive/src'),
     'Michelf\\' => array($vendorDir . '/michelf/php-markdown/Michelf'),
     'CoalaWeb\\' => array($baseDir . '/src'),
+    'Bamarni\\Composer\\Bin\\' => array($vendorDir . '/bamarni/composer-bin-plugin/src'),
 );

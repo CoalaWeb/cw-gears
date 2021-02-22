@@ -7,7 +7,7 @@
  * @author url          https://coalaweb.com
  * @author email        support@coalaweb.com
  * @license             GNU/GPL V3 or later; https://www.gnu.org/licenses/gpl-3.0.html
- * @copyright           Copyright (c) 2020 Steven Palmer All rights reserved.
+ * @copyright           Copyright (c) 2021 Steven Palmer All rights reserved.
  *
  * CoalaWeb Social Links is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
