@@ -150,6 +150,15 @@ class CWElementVersion extends CWElement {
                     $current = CwGearsLatestversion::getCurrent('cw-video-'. $type, $version );
                 }
                 break;
+            case "com_coalawebpaypal":
+                $version = (COM_COALAWEBPAYPAL_VERSION);
+                $date = (COM_COALAWEBPAYPAL_DATE);
+                $ispro = (COM_COALAWEBPAYPAL_PRO);
+                $type = $ispro ? 'pro' : 'core';
+                if (class_exists('CwGearsLatestversion')) {
+                    $current = CwGearsLatestversion::getCurrent('cw-paypal-'. $type, $version );
+                }
+                break;
             case "mod_coalawebpanel":
                 $version = (MOD_CWPANEL_VERSION);
                 $date = (MOD_CWPANEL_DATE);

@@ -35,7 +35,7 @@ class CwGearsHelperTools
      * @param null $tags
      * @return null|string|string[]|Tidy
      */
-    public static function textClean($text, $stripHtml = true, $limit, $tags = null)
+    public static function textClean($text, $stripHtml, $limit, $tags = null)
     {
         // Now decoded the text
         $decoded = html_entity_decode($text);

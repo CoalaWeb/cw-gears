@@ -1,5 +1,10 @@
 ## Change Log
 
+### Version 0.6.4 April 2021
+- **(C)** Extended CoalaWeb PayPal support
+- **(C)** PHP 8 compatibility improvements
+- **(C)** Code updates and improvement
+
 ### Version 0.6.3 February 2021
 - **(C)** Install script improvements
 - **(C)** Copyright year updated to 2021
