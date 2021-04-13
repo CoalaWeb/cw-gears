@@ -34,7 +34,7 @@ class CwGearsLatestversion
      * @param datetime $installed
      * @return array
      */
-    public static function getCurrent($ext, $installed) {
+    public static function getCurrent(string $ext, $installed) {
 
         $xmlfile = 'http://cdn.coalaweb.com/updates/' . $ext . '.xml';
         $xmlcheck = @simplexml_load_file($xmlfile);
@@ -42,7 +42,14 @@ class CwGearsLatestversion
             $remote = JText::_('PLG_CWGEARS_NO_FILE');
             $exist = false;
         } else {
-            $xml = new SimpleXMLElement(file_get_contents($xmlfile));
+            try {
+                $xml = new SimpleXMLElement(file_get_contents($xmlfile));
+            } catch (Exception $e) {
+                return [
+                    'remote' => JText::_('PLG_CWGEARS_NO_FILE'),
+                    'update' => ''
+                ];
+            }
             $remote = (string) $xml->update[0]->version;
             $exist = true;
         }
@@ -52,13 +59,11 @@ class CwGearsLatestversion
         } else {
             $update = '';
         }
-        
-        $info = [
+
+        return [
             'remote' => $remote,
             'update' => $update
-        ]; 
-
-        return $info;
+        ];
     }
 
 }
