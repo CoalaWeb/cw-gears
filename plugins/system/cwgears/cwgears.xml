@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.7" type="plugin" group="system" method="upgrade">
     <name>PLG_CWGEARS</name>
-    <creationDate>2021-04-13</creationDate>
-    <author>Steven Palmer</author>
+    <creationDate>2021-05-17</creationDate>
+    <author>Steven Palmer (CoalaWeb)</author>
     <authorEmail>support@coalaweb.com</authorEmail>
     <authorUrl>https://coalaweb.com</authorUrl>
     <copyright>© 2021 Steven Palmer (CoalaWeb), All rights reserved.</copyright>
     <license> GNU/GPL V3 or later.</license>
-    <version>0.6.4</version>
+    <version>0.6.5</version>
     <level>Core</level>
     <description>PLG_CWGEARS_DESC</description>
 
@@ -123,69 +123,6 @@
                     <option value="1">CW_YES</option>
                 </field>
       		
-            </fieldset>
-           
-            <fieldset 
-                name="JQUERY_PLG"
-                label="PLG_CWGEARS_JQUERY_TITLE">
-        
-                <field 
-                    name="jquery_on" 
-                    type="radio"
-                    class="btn-group btn-group-yesno"
-                    default="0"
-                    label="PLG_CWGEARS_FIELD_JQ_ON_LABEL" 
-                    description="PLG_CWGEARS_FIELD_JQ_ON_DESC" >
-                    <option value="0">CW_NO</option>
-                    <option value="1">CW_YES</option>
-                </field>
-             
-                <field 
-                    name="jquery_server" 
-                    type="list" 
-                    default="0" 
-                    label="PLG_CWGEARS_FIELD_JQ_SERVER_LABEL" 
-                    description="PLG_CWGEARS_FIELD_JQ_SERVER_DESC" >
-                    <option value="0">Localhost</option>
-                    <option value="1">jQuery CDN</option>
-                    <option value="2">Google CDN</option>
-                    <option value="3">Microsoft CDN</option>
-                    <option value="4">CDN JS</option>
-                </field>
-                
-                <field 
-                    name="jquery_library" 
-                    type="list" 
-                    default="2.0.2" 
-                    label="PLG_CWGEARS_FIELD_JQ_VERSION_LABEL" 
-                    description="PLG_CWGEARS_FIELD_JQ_VERSION_DESC" >
-                    <option value="1.8.3">1.8.3</option>
-                    <option value="1.10.1">1.10.1</option>
-                    <option value="2.0.2">2.0.2</option>
-                </field>
-                
-                <field 
-                    name="jquery_noconflict" 
-                    type="radio"
-                    class="btn-group btn-group-yesno" 
-                    default="0" 
-                    label="PLG_CWGEARS_FIELD_JQ_NOCONFLICT_LABEL" 
-                    description="PLG_CWGEARS_FIELD_JQ_NOCONFLICT_DESC" >
-                    <option value="0">CW_NO</option>
-                    <option value="1">CW_YES</option>
-                </field>
-                
-                <field 
-                    name="jquery_migrate" 
-                    type="radio"
-                    class="btn-group btn-group-yesno" 
-                    default="0" 
-                    label="PLG_CWGEARS_FIELD_JQ_MIGRATE_LABEL" 
-                    description="PLG_CWGEARS_FIELD_JQ_MIGRATE_DESC" >
-                    <option value="0">CW_NO</option>
-                    <option value="1">CW_YES</option>
-                </field>
-                		
             </fieldset>
             
             <fieldset 
